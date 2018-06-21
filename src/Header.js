@@ -18,8 +18,11 @@ class Header extends Component {
                 <NavLink exact to="/" activeStyle={this.active}>
                 Home
                 </NavLink>
-                <NavLink to="/MyIdeas" activeStyle={this.active}>
-                My Ideas
+                <NavLink to="/Subject" activeStyle={this.active}>
+                Subject
+                </NavLink>
+                <NavLink to="/Profile" activeStyle={this.active}>
+                Profile
                 </NavLink>
             </div>
 );}}

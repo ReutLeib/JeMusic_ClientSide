@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
 import Home from './Home'
+import SubjectByName from './SubjectByName'
 import MdAdd from 'react-icons/lib/md/add'
 
 
 
-class IdeasList extends Component {
+class SubjectByNameList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,19 +44,14 @@ class IdeasList extends Component {
   }
 
  componentDidMount() {      
-    const url = "https://jemusic.herokuapp.com/getSubjectsByFavorites/Yo";
+    const url = "https://jemusic.herokuapp.com/getSubjectByName/Jem2";
 
     fetch(url).then((res) => {        
       return res.json();      
     }).then((data) => {        
       var self=this;        
-      data.map((data) => {            
-        data.map((json) => {
-        self.add(json.name, json.date, json.hours, json.type,
-          json.location, json.about, json.price, json.requredSkills);        
-          console.log(json);  
-        })
-      })    // endOf data.map((data)  
+        self.add(data.name, data.date, data.hours, data.type,
+          data.location, data.about, data.price, data.requredSkills);                
     })  
 }
 
@@ -75,7 +71,7 @@ class IdeasList extends Component {
     return (          
       <div key={'container'+i}className="card" style={{width: 18 + 'rem'}}>
         <div className="card-body">
-          <Home key={'idea'+i} index={i} onChange={this.update}>         
+          <SubjectByName key={'idea'+i} index={i} onChange={this.update}>         
             <h1 className="card-title">{idea.name}</h1>
             <p className="card-text">{idea.date} * {idea.hours}</p>
             <p className="card-text">{idea.location}</p>
@@ -84,7 +80,7 @@ class IdeasList extends Component {
             <p className="card-text">{idea.price} $</p>
             <p className="card-text">{idea.requredSkills}</p>
             <p className="card-text">{idea.participent}</p>
-          </Home>
+          </SubjectByName>
         </div>
       </div>
       )
@@ -100,4 +96,4 @@ class IdeasList extends Component {
       )
   }
 }
-export default IdeasList
+export default SubjectByNameList

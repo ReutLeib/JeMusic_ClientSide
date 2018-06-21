@@ -1,7 +1,8 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import SubjectList from "../Components/SubjectList";
-import MyIdeas from "../Components/MyIdeas";
+import ProfileList from "../Components/ProfileList";
+import SubjectByNameList from "../Components/SubjectByNameList";
 import Header from "../Header";
 
 const ReactRouter =()=>{
@@ -9,7 +10,9 @@ const ReactRouter =()=>{
         <React.Fragment>
             <Header />
             <Route exact path="/" component={SubjectList} />
-            <Route path="/MyIdeas" component={MyIdeas} />
+            <Route exact path="/Profile" component={ProfileList} />
+            <Route exact path="/Subject" component={SubjectByNameList} />
+
         </React.Fragment>
     );}
 
