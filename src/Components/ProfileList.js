@@ -8,20 +8,19 @@ class ProfileList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ideas: [
+      profiles: [
       ]
     }
     this.eachIdea   = this.eachIdea.bind(this);
     this.update     = this.update.bind(this);
-    this.delete     = this.delete.bind(this);
     this.add        = this.add.bind(this)
     this.nextID     = this.nextID.bind(this)
   }
 
   add(txt1,txt2,txt3,txt4) {
     this.setState(prevState => ({
-      ideas: [
-      ...prevState.ideas,
+      profiles: [
+      ...prevState.profiles,
       {
           id: this.nextID(),
           userName: txt1,
@@ -48,27 +47,23 @@ class ProfileList extends Component {
     })  
 }
 
-  update(newIdea, i) {
+  update(newProf, i) {
     this.setState(() => ({
-      ideas: this.state.ideas.map(
-        (idea) => (idea.id !== i) ? idea : {...idea, name: newIdea}
+      profiles: this.state.profiles.map(
+        (prof) => (prof.id !== i) ? prof : {...prof, name: newProf}
       )
     }))
-  }    
+  } 
 
-  delete(id) {
-      //finish yourself- this should be called by onDelete
-  }
-
-  eachIdea (idea,i) {
+  eachIdea (prof,i) {
     return (          
       <div key={'container'+i}className="card" style={{width: 18 + 'rem'}}>
         <div className="card-body">
-          <Profile key={'idea'+i} index={i} onChange={this.update}>         
-            <h1 className="card-title">{idea.userName}</h1>
-            <p className="card-text">{idea.name}</p>
-            <p className="card-text">{idea.age}</p>
-            <p className="card-text">{idea.city}</p>
+          <Profile key={'prof'+i} index={i} onChange={this.update}>         
+            <h1 className="card-title">{prof.userName}</h1>
+            <p className="card-text">{prof.name}</p>
+            <p className="card-text">{prof.age}</p>
+            <p className="card-text">{prof.city}</p>
           </Profile>
         </div>
       </div>
@@ -78,51 +73,10 @@ class ProfileList extends Component {
   render() {
       return (
         <div className="ideaList">
-          {this.state.ideas.map(this.eachIdea)}
-          <button id="add" className="btn btn-primary" style={{marginTop:7+'px'}}>
-             <MdAdd/></button>
+          {this.state.profiles.map(this.eachIdea)}
         </div>
       )
   }
 }
-
-
-// import React from 'react';
-
-// // add the card of book
-// const ProfileList = ({ user, index }) => (
-//   <div>
-//        <div key={'container'+index}className="card" style={{width: 18 + 'rem'}}>
-//          <div className="card-body">
-//           <div key={'book'+index} index={index} >
-//               <h5 className="card-title">{user.userName}</h5>
-//               <p className="card-text">{user.name}</p>
-//           </div>
-//         </div>
-//       </div>
-   
-//   </div>
-    
-//   );
-
-// export default ProfileList;
-
-
-// import React from 'react';
-
-// // add the card of book
-// const ProfileList = ({ books, index }) => (
-//   <div>
-//        <div key={'container'+index}className="card" style={{width: 18 + 'rem'}}>
-//          <div className="card-body">
-//           <div key={'book'+index} index={index} >
-//               <h5 className="card-title">{books.userName}</h5>
-//               <p className="card-text">{books.name}</p>
-//           </div>
-//         </div>
-//       </div>
-//   </div>
-    
-//   );
 
 export default ProfileList;
