@@ -8,20 +8,19 @@ class IdeasList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ideas: [
+      subjects: [
       ]
     }
-    this.eachIdea   = this.eachIdea.bind(this);
+    this.eachSubjects   = this.eachSubjects.bind(this);
     this.update     = this.update.bind(this);
-    this.delete     = this.delete.bind(this);
     this.add        = this.add.bind(this)
     this.nextID     = this.nextID.bind(this)
   }
 
   add(txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9) {
     this.setState(prevState => ({
-      ideas: [
-      ...prevState.ideas,
+      subjects: [
+      ...prevState.subjects,
       {
           id: this.nextID(),
           name: txt1,
@@ -59,31 +58,27 @@ class IdeasList extends Component {
     })  
 }
 
-  update(newIdea, i) {
+  update(newSub, i) {
     this.setState(() => ({
-      ideas: this.state.ideas.map(
-        (idea) => (idea.id !== i) ? idea : {...idea, name: newIdea}
+      subjects: this.state.subjects.map(
+        (sub) => (sub.id !== i) ? sub : {...sub, name: newSub}
       )
     }))
-  }    
+  } 
 
-  delete(id) {
-      //finish yourself- this should be called by onDelete
-  }
-
-  eachIdea (idea,i) {
+  eachSubjects (sub,i) {
     return (          
       <div key={'container'+i}className="card" style={{width: 18 + 'rem'}}>
         <div className="card-body">
-          <Home key={'idea'+i} index={i} onChange={this.update}>         
-            <h1 className="card-title">{idea.name}</h1>
-            <p className="card-text">{idea.date} * {idea.hours}</p>
-            <p className="card-text">{idea.location}</p>
-            <p className="card-text">{idea.type}</p>
-            <p className="card-text">{idea.about}</p>
-            <p className="card-text">{idea.price} $</p>
-            <p className="card-text">{idea.requredSkills}</p>
-            <p className="card-text">{idea.participent}</p>
+          <Home key={'sub'+i} index={i} onChange={this.update}>         
+            <h1 className="card-title">{sub.name}</h1>
+            <p className="card-text">{sub.date} * {sub.hours}</p>
+            <p className="card-text">{sub.location}</p>
+            <p className="card-text">{sub.type}</p>
+            <p className="card-text">{sub.about}</p>
+            <p className="card-text">{sub.price} $</p>
+            <p className="card-text">{sub.requredSkills}</p>
+            <p className="card-text">{sub.participent}</p>
           </Home>
         </div>
       </div>
@@ -91,11 +86,9 @@ class IdeasList extends Component {
   }
 
   render() {
-      return (
+    return (
         <div className="ideaList">
-          {this.state.ideas.map(this.eachIdea)}
-          <button id="add" className="btn btn-primary" style={{marginTop:7+'px'}}>
-             <MdAdd/></button>
+          {this.state.subjects.map(this.eachSubjects)}
         </div>
       )
   }

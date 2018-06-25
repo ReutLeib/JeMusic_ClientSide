@@ -11,7 +11,7 @@ class ProfileList extends Component {
       profiles: [
       ]
     }
-    this.eachIdea   = this.eachIdea.bind(this);
+    this.eachProfile   = this.eachProfile.bind(this);
     this.update     = this.update.bind(this);
     this.add        = this.add.bind(this)
     this.nextID     = this.nextID.bind(this)
@@ -55,7 +55,7 @@ class ProfileList extends Component {
     }))
   } 
 
-  eachIdea (prof,i) {
+  eachProfile (prof,i) {
     return (          
       <div key={'container'+i}className="card" style={{width: 18 + 'rem'}}>
         <div className="card-body">
@@ -73,7 +73,7 @@ class ProfileList extends Component {
   render() {
       return (
         <div className="ideaList">
-          {this.state.profiles.map(this.eachIdea)}
+          {this.state.profiles.map(this.eachProfile)}
         </div>
       )
   }
