@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Home from './Home'
+import './style.css';
 
 class HomeList extends Component {
   constructor(props) {
@@ -65,7 +66,7 @@ class HomeList extends Component {
 
   eachSubjects (sub,i) {
     return (          
-      <div key={'container'+i}className="card" style={{width: 18 + 'rem'}}>
+      <div key={'container'+i} className="card bb" style={{width: 18 + 'rem'}}>
         <div className="card-body">
           <Home key={'sub'+i} index={i} onChange={this.update}>         
             <h1 className="card-title">{sub.name}</h1>
