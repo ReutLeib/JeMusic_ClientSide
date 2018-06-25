@@ -1,8 +1,5 @@
 import React, {Component} from 'react'
 import Profile from './Profile'
-import MdAdd from 'react-icons/lib/md/add'
-
-
 
 class ProfileList extends Component {
   constructor(props) {

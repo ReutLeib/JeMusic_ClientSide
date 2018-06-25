@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
-import Home from './Home'
 import SubjectByName from './SubjectByName'
-import MdAdd from 'react-icons/lib/md/add'
 
 
 

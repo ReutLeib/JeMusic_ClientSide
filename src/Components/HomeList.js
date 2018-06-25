@@ -1,8 +1,5 @@
 import React, {Component} from 'react'
 import Home from './Home'
-import MdAdd from 'react-icons/lib/md/add'
-
-
 
 class HomeList extends Component {
   constructor(props) {

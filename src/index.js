@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter as Router} from 'react-router-dom'
-//import IdeasList from './IdeasList'
 import ReactRouter from './router/router'
 
 ReactDOM.render(
