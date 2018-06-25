@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import MdSearch from "react-icons/lib/md/search";
 
 class Header extends Component {
     active = {
@@ -15,6 +16,7 @@ class Header extends Component {
     render() {
         return (
             <div>
+            <a><MdSearch size={35} onClick={this.save}/></a>
             <div style={this.header}>
                 <NavLink exact to="/" activeStyle={this.active}>
                 Home
