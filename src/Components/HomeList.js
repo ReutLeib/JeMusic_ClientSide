@@ -4,7 +4,7 @@ import MdAdd from 'react-icons/lib/md/add'
 
 
 
-class IdeasList extends Component {
+class HomeList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -93,4 +93,4 @@ class IdeasList extends Component {
       )
   }
 }
-export default IdeasList
+export default HomeList
