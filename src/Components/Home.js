@@ -11,6 +11,7 @@ class Home extends Component {
           return (
       <div className='book'>
           <div>{this.props.children}</div>
+          <a href="#" class="btn btn-primary followSub">Follow</a>
         </div>
     );
   }

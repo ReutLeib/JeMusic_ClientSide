@@ -14,6 +14,7 @@ class Header extends Component {
     };
     render() {
         return (
+            <div>
             <div style={this.header}>
                 <NavLink exact to="/" activeStyle={this.active}>
                 Home
@@ -24,6 +25,8 @@ class Header extends Component {
                 <NavLink to="/Profile" activeStyle={this.active}>
                 Profile
                 </NavLink>
+            </div>
+            <a href="#" class="btn btn-primary newJem">New Jem</a>
             </div>
 );}}
 export default Header;

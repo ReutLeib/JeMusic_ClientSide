@@ -2,3 +2,17 @@
   background-color: red;
   color: white;
 }
+
+.followSub{
+  display: block;
+  border-radius: 20px;
+}
+
+.newJem{
+  padding: 10px;
+  border-radius: 20px;
+  padding-right: 106px;
+  padding-left: 106px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
