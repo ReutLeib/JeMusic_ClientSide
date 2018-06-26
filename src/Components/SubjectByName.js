@@ -9,9 +9,9 @@ class Subject extends Component {
 
   render() {
           return (
-      <div className='book'>
-          <div>{this.props.children}</div>
-        </div>
+            <div className='book'>
+              <div>{this.props.children}</div>
+            </div>
     );
   }
 }

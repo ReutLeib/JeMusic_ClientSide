@@ -13,22 +13,25 @@ class Header extends Component {
         display: "flex",
         justifyContent: "space-evenly"
     };
+
     render() {
         return (
             <div>
-            <a><MdSearch size={35} onClick={this.save}/></a>
-            <div style={this.header}>
-                <NavLink exact to="/" activeStyle={this.active}>
-                Home
+                <NavLink to="/Search" activeStyle={this.active}>
+                    <MdSearch size={35} />
                 </NavLink>
-                <NavLink to="/Subject" activeStyle={this.active}>
-                Subject
-                </NavLink>
-                <NavLink to="/Profile" activeStyle={this.active}>
-                Profile
-                </NavLink>
-            </div>
-            <a href="#" class="btn btn-primary newJem">New Jem</a>
+                <div style={this.header}>
+                    <NavLink exact to="/" activeStyle={this.active}>
+                    Home
+                    </NavLink>
+                    <NavLink to="/Subject" activeStyle={this.active}>
+                    Subject
+                    </NavLink>
+                    <NavLink to="/Profile" activeStyle={this.active}>
+                    Profile
+                    </NavLink>
+                </div>
+                <a href="#" className="btn btn-primary newJem">New Jem</a>
             </div>
 );}}
 export default Header;

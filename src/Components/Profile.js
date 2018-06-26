@@ -9,9 +9,9 @@ import React, {Component} from 'react'
   
   render() {
           return (
-      <div className='book'>
-          <div>{this.props.children}</div>
-        </div>
+            <div className='book'>
+              <div>{this.props.children}</div>
+            </div>
     );
   }
 }
