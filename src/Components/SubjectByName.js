@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { NavLink } from "react-router-dom";
 
 class Subject extends Component {
   constructor(props) {
@@ -8,10 +9,12 @@ class Subject extends Component {
   }
 
   render() {
-          return (
-            <div className='book'>
-              <div>{this.props.children}</div>
-            </div>
+      return (
+
+          <div >
+            <div>{this.props.children}</div>
+            <NavLink to="/Subject" activeStyle={this.active} className="btn btn-primary followSub">Join</NavLink>
+          </div>
     );
   }
 }

@@ -16,11 +16,6 @@ class HomeList extends Component {
     this.flagHeader = false
   }
 
-  backgroundActive = {
-      width: `20rem`,
-      backgroundImage: `url(${this.background})`
-  };
-
   add(txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9) {
     this.setState(prevState => ({
       subjects: [
@@ -35,8 +30,7 @@ class HomeList extends Component {
           about: txt6,
           price: txt7,
           requredSkills: txt8,
-          background: txt9
-          
+          background: txt9  
       }]
     }))
   }

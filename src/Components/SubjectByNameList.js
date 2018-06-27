@@ -30,7 +30,7 @@ class SubjectByNameList extends Component {
           about: txt6,
           price: txt7,
           requredSkills: txt8,
-          participent: txt9
+          background: txt9
           
       }]
     }))
@@ -48,7 +48,7 @@ class SubjectByNameList extends Component {
     }).then((data) => {        
       var self=this;        
         self.add(data.name, data.date, data.hours, data.type,
-          data.location, data.about, data.price, data.requredSkills);                
+          data.location, data.about, data.price, data.requredSkills, data.background);                
     })  
 }
 
@@ -61,10 +61,11 @@ class SubjectByNameList extends Component {
   }    
 
   eachSubject (sub,i) {
+    const imageUrl = require(`../images/${sub.background}`)
     return (          
-      <div key={'container'+i}className="card" style={{width: 18 + 'rem'}}>
-        <div className="card-body">
-          <SubjectByName key={'sub'+i} index={i} onChange={this.update}>         
+      <div key={'container'+i} className="myCard" style={{width: `18rem`,borderRadius: `2px` , backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat' }}>
+        <div>
+          <SubjectByName key={'sub'+i} index={i} onChange={this.update} >         
             <h1 className="card-title">{sub.name}</h1>
             <p className="card-text">{sub.date} * {sub.hours}</p>
             <p className="card-text">{sub.location}</p>
@@ -75,13 +76,16 @@ class SubjectByNameList extends Component {
             <p className="card-text">{sub.participent}</p>
           </SubjectByName>
         </div>
+           <div style={{width: `18rem`, padding: "10px", background:`black` }}>
+            <p>asdasdasd</p>
+          </div>
       </div>
       )
   }
 
   render() {
     return (
-        <div className="ideaList">
+        <div >
           {this.state.subjects.map(this.eachSubject)}
         </div>
       )
