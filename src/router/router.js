@@ -2,7 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import HomeList from "../Components/HomeList";
 import ProfileList from "../Components/ProfileList";
-import SearchList from "../Components/SearchList";
+import Search from "../Components/Search";
 import SubjectByNameList from "../Components/SubjectByNameList";
 import Header from "../Header";
 
@@ -11,9 +11,9 @@ const ReactRouter =()=>{
         <React.Fragment>
             <Header />
             <Route exact path="/" component={HomeList} />
-            <Route exact path="/Profile" component={ProfileList} />
-            <Route exact path="/Subject" component={SubjectByNameList} />
-            <Route exact path="/Search" component={SearchList} />
+            <Route path="/Profile" component={ProfileList} />
+            <Route path="/Subject" component={SubjectByNameList} />
+            <Route path="/Search" component={Search} />
 
         </React.Fragment>
     );}
