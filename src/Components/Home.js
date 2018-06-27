@@ -6,6 +6,9 @@ class Home extends Component {
     super(props);
     this.state = {
     }
+    this.flagHeader = false
+    this.cards=this.cards.bind(this);
+
   }
   active = {
       backgroundColor: "#212F3D",
@@ -13,12 +16,30 @@ class Home extends Component {
       fontWeight: "bold"
   };
   
+  cards(event) {
+      if(this.flagHeader === false){
+        this.flagHeader = true
+        return (
+          <div className='stam'>
+             <p className="stam">
+              dsflksjdf
+             </p>
+            </div>
+        ); 
+      }
+      else{
+        return (
+            <div className='book'>
+              <div>{this.props.children}</div>
+              <NavLink to="/Subject" activeStyle={this.active} className="btn btn-primary followSub">Follow</NavLink>
+            </div>
+        ); 
+      }
+  }
+
   render() {
         return (
-          <div className='book'>
-            <div>{this.props.children}</div>
-            <NavLink to="/Subject" activeStyle={this.active} className="btn btn-primary followSub">Follow</NavLink>
-          </div>
+            this.cards()
     );
   }
 }

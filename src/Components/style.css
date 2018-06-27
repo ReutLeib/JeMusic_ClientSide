@@ -1,6 +1,6 @@
-.bb{
-  background-color: gray;
-  color: white;
+.cards{
+  border-radius: 20px;
+  border-color: black;
 }
 
 .followSub{
@@ -15,4 +15,9 @@
   padding-left: 106px;
   margin-top: 30px;
   margin-bottom: 30px;
+}
+
+.stam{
+  background-color: black;
+  color: white;
 }

@@ -15,6 +15,11 @@ class HomeList extends Component {
     this.nextID     = this.nextID.bind(this)
   }
 
+  backgroundActive = {
+      width: `20rem`,
+      backgroundImage: `url(${this.background})`
+  };
+
   add(txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9) {
     this.setState(prevState => ({
       subjects: [
@@ -29,7 +34,7 @@ class HomeList extends Component {
           about: txt6,
           price: txt7,
           requredSkills: txt8,
-          participent: txt9
+          background: txt9
           
       }]
     }))
@@ -49,7 +54,7 @@ class HomeList extends Component {
       data.map((data) => {            
         data.map((json) => {
         self.add(json.name, json.date, json.hours, json.type,
-          json.location, json.about, json.price, json.requredSkills);        
+          json.location, json.about, json.price, json.requredSkills, json.background);        
           console.log(json);  
         })
       })    // endOf data.map((data)  
@@ -63,10 +68,15 @@ class HomeList extends Component {
       )
     }))
   } 
+//   <div key={'container'+i} className="card" style={{width: `20rem`, backgroundImage: `url(defaultBackgroundPic.jpeg)` }}>
+//  <div key={'container'+i} className="card" style={{width: `20rem`,
+                  // background: 'url(' + require(`defaultBackgroundPic.jpeg`) + ')', backgroundRepeat: 'no-repeat' }}>
 
   eachSubjects (sub,i) {
+    console.log(`backgroundImage: url(${sub.background})`)
+    const imageUrl = require(`../images/${sub.background}`)
     return (          
-      <div key={'container'+i} className="card bb" style={{width: 18 + 'rem'}}>
+      <div key={'container'+i} className="card cards" style={{width: `20rem`, backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat' }}>    
         <div className="card-body">
           <Home key={'sub'+i} index={i} onChange={this.update}>         
             <h1 className="card-title">{sub.name}</h1>
@@ -81,6 +91,7 @@ class HomeList extends Component {
         </div>
       </div>
       )
+
   }
 
   render() {
