@@ -17,24 +17,24 @@ class Home extends Component {
   };
   
   cards(event) {
-      if(this.flagHeader === false){
-        this.flagHeader = true
-        return (
-          <div className='stam'>
-             <p className="stam">
-              dsflksjdf
-             </p>
-            </div>
-        ); 
-      }
-      else{
+      // if(this.flagHeader === false){
+      //   this.flagHeader = true
+      //   return (
+      //     <div className='stam'>
+      //        <p className="stam">
+      //         dsflksjdf
+      //        </p>
+      //       </div>
+      //   ); 
+      // }
+      // else{
         return (
             <div className='book'>
               <div>{this.props.children}</div>
               <NavLink to="/Subject" activeStyle={this.active} className="btn btn-primary followSub">Follow</NavLink>
             </div>
         ); 
-      }
+      // }
   }
 
   render() {
