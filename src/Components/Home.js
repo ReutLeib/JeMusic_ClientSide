@@ -6,14 +6,24 @@ class Home extends Component {
     super(props);
     this.state = {
     }
-    this.flagHeader = false
-
+    this.flagHeader = false 
+    // this.bla=this.bla.bind(this);
+    // this.bla()
   }
+
   active = {
       backgroundColor: "#212F3D",
       color: "white",
       fontWeight: "bold"
   };
+
+  // bla(){
+  //   return(    
+  //     <div>
+  //       <p>bla bla</p>
+  //     </div>
+  //   )
+  // }
 
   render() {
         return (

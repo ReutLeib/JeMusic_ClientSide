@@ -27,7 +27,10 @@ class Header extends Component {
                 <NavLink exact to="/" activeStyle={this.active}>
                      <MdHome size={35} />
                 </NavLink> 
-                <div style={this.header}>          
+                <div style={this.header}> 
+                <NavLink exact to="/NewSubject" activeStyle={this.active}>
+                     newSubject
+                </NavLink>          
                 </div>
                 <a href="#" className="btn btn-primary newJem">New Jem</a>
             </div>

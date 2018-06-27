@@ -64,7 +64,7 @@ class Search extends Component {
                     Date:
                     <input onChange={this.handleRankChange} value={this.state.newRank} type="text" name="date" />                  
                   </label>
-                  <input type="submit" value="Send"/>
+                   <button  type="submit" className="btn btn-primary" onClick={this.delete}><MdSend/> </button> 
                 </form>
                 <div id="response">
                 </div>

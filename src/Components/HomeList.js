@@ -69,33 +69,11 @@ class HomeList extends Component {
       )
     }))
   } 
-//   <div key={'container'+i} className="card" style={{width: `20rem`, backgroundImage: `url(defaultBackgroundPic.jpeg)` }}>
-//  <div key={'container'+i} className="card" style={{width: `20rem`,
-                  // background: 'url(' + require(`defaultBackgroundPic.jpeg`) + ')', backgroundRepeat: 'no-repeat' }}>
 
   eachSubjects (sub,i) {
-    console.log(`backgroundImage: url(${sub.background})`)
+    // console.log(`backgroundImage: url(${sub.background})`)
     const imageUrl = require(`../images/${sub.background}`)
-
-    if(this.flagHeader === false){
-      this.flagHeader = true
-           return (
-            <div>
-                <form action="https://books-ranking.herokuapp.com/bookByRank/" method="POST" onSubmit={this.handleSubmit}>
-                  <label>
-                    <p> book rank parameter is number must be under, equal 10</p>
-                    (Enter 8 \ 9) <br></br>
-                    Rank:
-                    <input onChange={this.handleRankChange} value={this.state.newRank} type="text" name="rank" />                  
-                  </label>
-                  <input type="submit" value="Send" />
-                </form>
-                <div id="response">
-                </div>
-            </div>
-        )
-    }
-    return (          
+     return (          
       <div key={'container'+i} className="card cards" style={{width: `18rem`, backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat' }}>    
         <div className="card-body">
           <Home key={'sub'+i} index={i} onChange={this.update}>         
@@ -111,7 +89,6 @@ class HomeList extends Component {
         </div>
       </div>
       )
-
   }
 
   render() {
