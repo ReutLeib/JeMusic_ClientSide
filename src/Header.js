@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import MdSearch from "react-icons/lib/md/search";
+import MdHome from "react-icons/lib/md/home";
 
 class Header extends Component {
     active = {
@@ -17,19 +18,16 @@ class Header extends Component {
     render() {
         return (
             <div>
+                <NavLink to="/Profile" activeStyle={this.active}>
+                    Profile
+                </NavLink>
                 <NavLink to="/Search" activeStyle={this.active}>
                     <MdSearch size={35} />
                 </NavLink>
-                <div style={this.header}>
-                    <NavLink exact to="/" activeStyle={this.active}>
-                    Home
-                    </NavLink>
-                    <NavLink to="/Subject" activeStyle={this.active}>
-                    Subject
-                    </NavLink>
-                    <NavLink to="/Profile" activeStyle={this.active}>
-                    Profile
-                    </NavLink>
+                <NavLink exact to="/" activeStyle={this.active}>
+                     <MdHome size={35} />
+                </NavLink> 
+                <div style={this.header}>          
                 </div>
                 <a href="#" className="btn btn-primary newJem">New Jem</a>
             </div>
