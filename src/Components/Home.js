@@ -6,9 +6,7 @@ class Home extends Component {
     super(props);
     this.state = {
     }
-    this.flagHeader = false 
-    // this.bla=this.bla.bind(this);
-    // this.bla()
+    this.flagHeader = false
   }
 
   active = {
@@ -16,14 +14,6 @@ class Home extends Component {
       color: "white",
       fontWeight: "bold"
   };
-
-  // bla(){
-  //   return(    
-  //     <div>
-  //       <p>bla bla</p>
-  //     </div>
-  //   )
-  // }
 
   render() {
         return (

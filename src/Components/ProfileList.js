@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Profile from './Profile'
+import './style.css';
 
 class ProfileList extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class ProfileList extends Component {
     this.nextID     = this.nextID.bind(this)
   }
 
-  add(txt1,txt2,txt3,txt4) {
+  add(txt1,txt2,txt3,txt4,txt5) {
     this.setState(prevState => ({
       profiles: [
       ...prevState.profiles,
@@ -23,7 +24,8 @@ class ProfileList extends Component {
           userName: txt1,
           name: txt2,
           age: txt3,
-          city: txt4
+          city: txt4,
+          profilePic: txt5
           
       }]
     }))
@@ -34,13 +36,12 @@ class ProfileList extends Component {
   }
 
  componentDidMount() {   
- console.log("HERE");   
     const url = "https://jemusic.herokuapp.com/getUserByUserName/Yo";
     fetch(url).then((res) => {        
       return res.json();      
     }).then((data) => {        
       var self=this;        
-        self.add(data.userName, data.name, data.age, data.city);        
+        self.add(data.userName, data.name, data.age, data.city, data.profilePic);        
     })  
 }
 
@@ -53,9 +54,14 @@ class ProfileList extends Component {
   } 
 
   eachProfile (prof,i) {
+    const imageUrl = require(`../images/${prof.profilePic}`)
     return (          
-      <div key={'container'+i}className="card" style={{width: 18 + 'rem'}}>
-        <div className="card-body">
+      <div key={'container'+i}className="card" style={{width: 18 + 'rem', backgroundColor: `black`}}>
+          <div style={{width: `170px`,height: `170px`, backgroundImage: `url(${imageUrl})`, 
+                        backgroundRepeat: 'no-repeat',borderRadius: `50%`,
+                        backgroundPosition: `center center`, margin: `0 auto` }}>
+          </div>
+          <div className="card-body">
           <Profile key={'prof'+i} index={i} onChange={this.update}>         
             <h1 className="card-title">{prof.userName}</h1>
             <p className="card-text">{prof.name}</p>

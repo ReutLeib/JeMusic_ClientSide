@@ -1,10 +1,15 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
+
+
 const SearchList = ({ subjects, index }) => (
 
    <div>
    { subjects && subjects.map( (item, index) => 
-       <div key={'container'+index}className="card" style={{width: 18 + 'rem'}}>
+    
+       <div key={'container'+index}  
+       className="card cards" style={{width: `18rem`, backgroundImage: `url(../images/${item.background})`, backgroundRepeat: 'no-repeat' }}>
+
          <div className="card-body">
           <div key={'subject'+index} index={index} >
             <h1 className="card-title">{item.name}</h1>
@@ -17,6 +22,8 @@ const SearchList = ({ subjects, index }) => (
             <p className="card-text">{item.participent}</p>
           </div>
         </div>
+
+      <a href="/Subject" className="btn btn-primary followSub">Follow</a>
       </div>
     )}
   </div>

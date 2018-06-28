@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import MdSearch from "react-icons/lib/md/search";
 import MdHome from "react-icons/lib/md/home";
+import MdFace from "react-icons/lib/md/face";
 
 class Header extends Component {
     active = {
@@ -19,7 +20,7 @@ class Header extends Component {
         return (
             <div>
                 <NavLink to="/Profile" activeStyle={this.active}>
-                    Profile
+                    <MdFace size={35} />
                 </NavLink>
                 <NavLink to="/Search" activeStyle={this.active}>
                     <MdSearch size={35} />
