@@ -61,13 +61,20 @@ class ProfileList extends Component {
                         backgroundRepeat: 'no-repeat',borderRadius: `50%`,
                         backgroundPosition: `center center`, margin: `0 auto` }}>
           </div>
+        
           <div className="card-body">
           <Profile key={'prof'+i} index={i} onChange={this.update}>         
-            <h1 className="card-title">{prof.userName}</h1>
-            <p className="card-text">{prof.name}</p>
-            <p className="card-text">{prof.age}</p>
-            <p className="card-text">{prof.city}</p>
+            <h1 className="card-title" style={{ textAlign:`center`}}>{prof.userName} </h1>
+            <p className="card-text" style={{ textAlign:`center`}}>{prof.name} * {prof.age} * {prof.city}</p>
           </Profile>
+        </div>
+        
+        <div>
+          <p>Jems:</p>
+        </div>
+
+        <div>
+          <p>Videos:</p>
         </div>
       </div>
       )
