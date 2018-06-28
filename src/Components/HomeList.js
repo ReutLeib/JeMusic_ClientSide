@@ -1,13 +1,19 @@
 import React, {Component} from 'react'
 import Home from './Home'
 import './style.css';
+import {Redirect} from 'react-router-dom';
+
 
 class HomeList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       subjects: [
-      ]
+      ],
+      name:'',
+      redirect: false,
+      products:[],
+      pid:''
     }
     this.eachSubjects   = this.eachSubjects.bind(this)
     this.update     = this.update.bind(this)
@@ -45,22 +51,27 @@ class HomeList extends Component {
       return this.uniqueId++
   }
 
- componentDidMount() {      
-    const url = "https://jemusic.herokuapp.com/getSubjectsByFavorites/Yo";
-
-    fetch(url).then((res) => {        
-      return res.json();      
-    }).then((data) => {        
-      var self=this;        
-      data.map((data) => {            
-        data.map((json) => {
-        self.add(json.name, json.date, json.hours, json.type,
-          json.location, json.about, json.price, json.requredSkills, json.background);        
-          console.log(json);  
-        })
-      })    // endOf data.map((data)  
-    })  
-}
+  componentDidMount() {  
+    console.log(sessionStorage.getItem('userData'));
+    let data = JSON.parse(sessionStorage.getItem('userData'));
+    console.log(data.name);
+    var tmp_usr=data.name.replace(/ /g, "%20");
+    const url = `https://jemusic.herokuapp.com/getSubjectsByFavorites/${tmp_usr}`;
+    console.log(url); 
+    fetch(url).then((res) => {  
+        console.log(res);
+        return res.json();      
+      }).then((data) => {        
+        var self=this;        
+        data.map((data) => {            
+          data.map((json) => {
+          self.add(json.name, json.date, json.hours, json.type,
+            json.location, json.about, json.price, json.requredSkills, json.background);        
+            console.log(json);  
+          })
+        })    // endOf data.map((data)  
+       })  
+  }
 
   update(newSub, i) {
     this.setState(() => ({
@@ -92,6 +103,8 @@ class HomeList extends Component {
   }
 
   render() {
+    if(!sessionStorage.getItem('userData'))
+      return (<Redirect to={'/'}/>);
     return (
         <div className="ideaList">
           {this.state.subjects.map(this.eachSubjects)}

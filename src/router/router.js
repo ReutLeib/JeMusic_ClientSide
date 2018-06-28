@@ -5,13 +5,16 @@ import ProfileList from "../Components/ProfileList";
 import Search from "../Components/Search";
 import NewSubject from "../Components/NewSubject";
 import SubjectByNameList from "../Components/SubjectByNameList";
+import Welcome from "../Components/Welcome";
+
 import Header from "../Header";
 
 const ReactRouter =()=>{
     return (
         <React.Fragment>
             <Header />
-            <Route exact path="/" component={HomeList} />
+            <Route exact path="/" component={Welcome} />
+            <Route exact path="/Home" component={HomeList} />
             <Route path="/Profile" component={ProfileList} />
             <Route path="/Subject" component={SubjectByNameList} />
             <Route path="/Search" component={Search} />
