@@ -2,12 +2,17 @@ import React, {Component} from 'react'
 import Profile from './Profile'
 import './style.css';
 
+
 class ProfileList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       profiles: [
-      ]
+      ],
+      name:'',
+      redirect: false,
+      products:[],
+      pid:''
     }
     this.eachProfile   = this.eachProfile.bind(this);
     this.update     = this.update.bind(this);
@@ -36,7 +41,13 @@ class ProfileList extends Component {
   }
 
  componentDidMount() {   
-    const url = "https://jemusic.herokuapp.com/getUserByUserName/Yo";
+    console.log(sessionStorage.getItem('userData'));
+    let data = JSON.parse(sessionStorage.getItem('userData'));
+    console.log(data.userName);
+    var tmp_usr=data.userName.replace(/ /g, "%20");
+    const url = `https://jemusic.herokuapp.com/getUserByUserName/${tmp_usr}`;
+    console.log(url);
+
     fetch(url).then((res) => {        
       return res.json();      
     }).then((data) => {        

@@ -9,17 +9,13 @@ class HomeList extends Component {
     super(props);
     this.state = {
       subjects: [
-      ],
-      name:'',
-      redirect: false,
-      products:[],
-      pid:''
+      ]
     }
     this.eachSubjects   = this.eachSubjects.bind(this)
-    this.update     = this.update.bind(this)
-    this.add        = this.add.bind(this)
-    this.nextID     = this.nextID.bind(this)
-    this.flagHeader = false
+    this.update         = this.update.bind(this)
+    this.add            = this.add.bind(this)
+    this.nextID         = this.nextID.bind(this)
+    this.flagHeader     = false
   }
 
   backgroundActive = {
@@ -61,13 +57,13 @@ class HomeList extends Component {
     fetch(url).then((res) => {  
         console.log(res);
         return res.json();      
-      }).then((data) => {        
+    }).then((data) => {        
         var self=this;        
         data.map((data) => {            
           data.map((json) => {
           self.add(json.name, json.date, json.hours, json.type,
-            json.location, json.about, json.price, json.requredSkills, json.background);        
-            console.log(json);  
+                  json.location, json.about, json.price, json.requredSkills, json.background);        
+          console.log(json);  
           })
         })    // endOf data.map((data)  
        })  

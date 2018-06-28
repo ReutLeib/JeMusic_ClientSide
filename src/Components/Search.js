@@ -2,12 +2,16 @@ import React, { Component } from 'react'
 import SearchList from './SearchList'
 import ReactDOM from 'react-dom'
 import MdSend from "react-icons/lib/md/send";
+import {Redirect} from 'react-router-dom';
 
 
 class Search extends Component {
     constructor(props) {
         super(props)
-        this.state = {newRank:0}
+        this.state = {
+          newRank:0,      
+          redirect: false      
+        }
 
         this.handleSubmit=this.handleSubmit.bind(this);
         this.handleRankChange=this.handleRankChange.bind(this);
@@ -38,6 +42,9 @@ class Search extends Component {
   }
 
     handleSubmit(event){
+        console.log(sessionStorage.getItem('userData'));
+        let data = JSON.parse(sessionStorage.getItem('userData'));
+        console.log(data.userName);
         event.preventDefault();
         let newRank = this.state.newRank;
         (async () => {
@@ -56,20 +63,22 @@ class Search extends Component {
 
 
     render() {
-        return (
-            <div>
-                <form action="https://jemusic.herokuapp.com/getSubjectByDate/" method="POST" onSubmit={this.handleSubmit}>
-                  <label>
-                    <p> Date format: 2/10/2018</p>
-                    Date:
-                    <input onChange={this.handleRankChange} value={this.state.newRank} type="text" name="date" />                  
-                  </label>
-                   <button  type="submit" className="btn btn-primary" onClick={this.delete}><MdSend/> </button> 
-                </form>
-                <div id="response">
-                </div>
-            </div>
-        )
+      if(!sessionStorage.getItem('userData'))
+        return (<Redirect to={'/'}/>);
+      return (
+          <div>
+              <form action="https://jemusic.herokuapp.com/getSubjectByDate/" method="POST" onSubmit={this.handleSubmit}>
+                <label>
+                  <p> Date format: 2/10/2018</p>
+                  Date:
+                  <input onChange={this.handleRankChange} value={this.state.newRank} type="text" name="date" />                  
+                </label>
+                  <button  type="submit" className="btn btn-primary" onClick={this.delete}><MdSend/> </button> 
+              </form>
+              <div id="response">
+              </div>
+          </div>
+      )
     }
 }
 

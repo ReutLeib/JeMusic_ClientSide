@@ -1,11 +1,20 @@
 import React, { Component } from 'react'
 import SearchList from './SearchList'
 import ReactDOM from 'react-dom'
+import {Redirect} from 'react-router-dom';
 
 class BookByRankAuthor extends Component {
     constructor(props) {
         super(props)
-        this.state = {newName:0, newDate:0,newHours:0,newType:0,newLocation:0,newRequiredSkills:0,newUsername:0 };
+        this.state = {
+          newName:0, 
+          newDate:0,
+          newHours:0,
+          newType:0,
+          newLocation:0,
+          newRequiredSkills:0
+
+        };
 
         this.handleSubmit=this.handleSubmit.bind(this);
         this.handleName=this.handleName.bind(this);
@@ -14,8 +23,6 @@ class BookByRankAuthor extends Component {
         this.handleType=this.handleType.bind(this);
         this.handleLocation=this.handleLocation.bind(this);
         this.handleRequiredSkills=this.handleRequiredSkills.bind(this);
-        this.handleUsername=this.handleUsername.bind(this);
-
         this.addSubject=this.addSubject.bind(this);
     }
 
@@ -69,11 +76,7 @@ class BookByRankAuthor extends Component {
         console.log(`newRequiredSkills: ${event.target.value}`)
      
      } 
-     handleUsername(event){
-        this.setState({newUsername: event.target.value})
-        console.log(`newUsername: ${event.target.value}`)
-     
-     }  
+
 
 
     handleSubmit(event){
@@ -84,17 +87,22 @@ class BookByRankAuthor extends Component {
         let newType = this.state.newType;
         let newLocation = this.state.newLocation;
         let newRequiredSkills = this.state.newRequiredSkills;
-        let newUsername = this.state.newUsername;
-            console.log(`content: ${newName}, ${newDate}, ${newHours}, ${newType}, ${newLocation}, ${newRequiredSkills}, ${newUsername}!!`);
-
+        
+        console.log(`content: ${newName}, ${newDate}, ${newHours}, ${newType}, ${newLocation}, ${newRequiredSkills}`);
+        console.log(sessionStorage.getItem('userData'));
+        let data = JSON.parse(sessionStorage.getItem('userData'));
+        
+        console.log(data.userName);
         (async () => {
+          console.log(data.userName);
+
           const rawResponse = await fetch('https://jemusic.herokuapp.com/insertSubject/', {
             method: 'POST',
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({name:newName,date:newDate,hours:newHours,type:newType,location:newLocation,requiredSkills:newRequiredSkills,username:newUsername})
+            body: JSON.stringify({name:newName,date:newDate,hours:newHours,type:newType,location:newLocation,requiredSkills:newRequiredSkills,username:data.userName})
           });
             const content = await rawResponse.json();
             // console.log("content: " + content);
@@ -134,44 +142,43 @@ class BookByRankAuthor extends Component {
    //  }
 
     render() {
-        return (
-            <div>
-                <form action="https://jemusic.herokuapp.com/insertSubject/" method="POST" onSubmit={this.handleSubmit}>
-                    <label>
-                    Yeah  ! Let's create a new Jem : <br></br>
-                        name:
-                        <input onChange={this.handleName} value={this.state.newName} type="text" name="name" />
-                      </label><br></br>
-                    <label>
-                        date:
-                        <input onChange={this.handleDate} value={this.state.newDate} type="text" name="date" />
-                      </label><br></br>
-                    <label>
-                        hours:
-                        <input onChange={this.handleHours} value={this.state.newHours} type="text" name="hours" />
-                      </label><br></br>
-                    <label>
-                        type:
-                        <input onChange={this.handleType} value={this.state.newType} type="text" name="type" />
-                      </label><br></br>
-                    <label>
-                        location:
-                        <input onChange={this.handleLocation} value={this.state.newLocation} type="text" name="location" />
-                      </label><br></br>
-                    <label>
-                        requiredSkills:
-                        <input onChange={this.handleRequiredSkills} value={this.state.newRequiredSkills} type="text" name="requiredSkills" />
-                      </label><br></br>
-                    <label>
-                        username:
-                        <input onChange={this.handleUsername} value={this.state.newUsername} type="text" name="username" />
-                      </label><br></br>
-                    <input type="submit" value="Go Go" />
-                </form>
-                <div id="response">
-                </div>
-            </div>
-        )
+      if(!sessionStorage.getItem('userData'))
+        return (<Redirect to={'/'}/>);
+      return (
+          <div>
+              <form action="https://jemusic.herokuapp.com/insertSubject/" method="POST" onSubmit={this.handleSubmit}>
+                  <label>
+                  Yeah  ! Let's create a new Jem : <br></br>
+                      name:
+                      <input onChange={this.handleName} value={this.state.newName} type="text" name="name" />
+                    </label><br></br>
+                  <label>
+                      date:
+                      <input onChange={this.handleDate} value={this.state.newDate} type="text" name="date" />
+                    </label><br></br>
+                  <label>
+                      hours:
+                      <input onChange={this.handleHours} value={this.state.newHours} type="text" name="hours" />
+                    </label><br></br>
+                  <label>
+                      type:
+                      <input onChange={this.handleType} value={this.state.newType} type="text" name="type" />
+                    </label><br></br>
+                  <label>
+                      location:
+                      <input onChange={this.handleLocation} value={this.state.newLocation} type="text" name="location" />
+                    </label><br></br>
+                  <label>
+                      requiredSkills:
+                      <input onChange={this.handleRequiredSkills} value={this.state.newRequiredSkills} type="text" name="requiredSkills" />
+                    </label><br></br>
+                  <br></br>
+                  <input type="submit" value="Go Go" />
+              </form>
+              <div id="response">
+              </div>
+          </div>
+      )
     }
 }
 export default BookByRankAuthor

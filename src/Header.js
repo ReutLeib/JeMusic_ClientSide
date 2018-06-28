@@ -25,7 +25,7 @@ class Header extends Component {
                 <NavLink to="/Search" activeStyle={this.active}>
                     <MdSearch size={35} />
                 </NavLink>
-                <NavLink exact to="/" activeStyle={this.active}>
+                <NavLink exact to="/Home" activeStyle={this.active}>
                      <MdHome size={35} />
                 </NavLink> 
                 <div style={this.header}>       

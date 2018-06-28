@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import SubjectByName from './SubjectByName'
+import {Redirect} from 'react-router-dom';
 
 
 
@@ -41,6 +42,7 @@ class SubjectByNameList extends Component {
   }
 
  componentDidMount() {      
+
     const url = "https://jemusic.herokuapp.com/getSubjectByName/Jem2";
 
     fetch(url).then((res) => {        
