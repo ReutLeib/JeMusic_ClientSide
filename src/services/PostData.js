@@ -2,19 +2,39 @@
 
 export function PostData(type, userData) {
  
-    let BaseURL = 'https://jemusic.herokuapp.com/';
+  let BaseURL = 'https://jemusic.herokuapp.com/';
 
-    return new Promise((resolve, reject) =>{
-        let usrJson={};
-        var tmp_usr=userData.name.replace(/ /g, "%20");
-        type+=tmp_usr;
-        fetch(BaseURL+type, {
-            method: 'GET',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            }
+  return new Promise((resolve, reject) =>{
+    var tmp_usr=userData.name.replace(/ /g, "%20");
+    type+=tmp_usr;
+    fetch(BaseURL+type, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      })
+
+      .then((response)=>{
+        if(response.status===200){
+          response.json().then((res) => {
+            if(res)
+              resolve(res); 
+            else
+              resolve(false);
           })
+        .catch((error) => {
+          console.log(resolve);
+          resolve(error);
+        });
+      }
+      
+      else{
+      resolve(false);}
+  });
+  });
+}
+
 //           .then((response,error) =>{
 //             console.log(response);
 
@@ -46,15 +66,3 @@ export function PostData(type, userData) {
 //       }
 // })
 // }
-.then((response) => response.json())
-.then((res) => {
- resolve(res);
-})
-.catch((error) => {
-  console.log("0000000000000");
-  console.log(resolve);
-
-  resolve(error);
-});
-});
-}

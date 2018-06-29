@@ -63,8 +63,10 @@ class Search extends Component {
 
 
     render() {
+      
       if(!sessionStorage.getItem('userData'))
         return (<Redirect to={'/'}/>);
+
       return (
           <div>
               <form action="https://jemusic.herokuapp.com/getSubjectByDate/" method="POST" onSubmit={this.handleSubmit}>

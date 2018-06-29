@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Profile from './Profile'
 import './style.css';
+import {Redirect} from 'react-router-dom';
 
 
 class ProfileList extends Component {
@@ -30,7 +31,8 @@ class ProfileList extends Component {
           name: txt2,
           age: txt3,
           city: txt4,
-          profilePic: txt5
+          profilePic: txt5,
+          // subjects:[txt6]
           
       }]
     }))
@@ -43,17 +45,18 @@ class ProfileList extends Component {
  componentDidMount() {   
     console.log(sessionStorage.getItem('userData'));
     let data = JSON.parse(sessionStorage.getItem('userData'));
-    console.log(data.userName);
-    var tmp_usr=data.userName.replace(/ /g, "%20");
-    const url = `https://jemusic.herokuapp.com/getUserByUserName/${tmp_usr}`;
-    console.log(url);
+    // console.log(data.userName);
+    // var tmp_usr=data.userName.replace(/ /g, "%20");
+    // const url = `https://jemusic.herokuapp.com/getUserByUserName/${tmp_usr}`;
+    // console.log(url);
 
-    fetch(url).then((res) => {        
-      return res.json();      
-    }).then((data) => {        
+    // fetch(url).then((res) => {        
+    //   return res.json();      
+    // }).then((data) => {        
       var self=this;        
-        self.add(data.userName, data.name, data.age, data.city, data.profilePic);        
-    })  
+      self.add(data.userName, data.name, data.age, data.city, data.profilePic);        
+    // })  
+
 }
 
   update(newProf, i) {
@@ -92,11 +95,13 @@ class ProfileList extends Component {
   }
 
   render() {
-      return (
-        <div className="ideaList">
-          {this.state.profiles.map(this.eachProfile)}
-        </div>
-      )
+    if(!sessionStorage.getItem('userData'))
+      return (<Redirect to={'/'}/>);
+    return (
+      <div className="ideaList">
+        {this.state.profiles.map(this.eachProfile)}
+      </div>
+    )
   }
 }
 

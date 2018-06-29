@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import GoogleLogin from 'react-google-login';
 import {Redirect} from 'react-router-dom';
 import {PostData} from '../services/PostData';
-import HomeList from "../Components/HomeList";
 
-import './Welcome.css';
+import './style.css';
 
 
 class Welcome extends Component {
@@ -38,11 +37,8 @@ class Welcome extends Component {
     if (postData) {
         
       PostData('getUserByUserName/', postData).then((result) => {
-        console.log("WELCOME POSTDATA resulte"+result.name);
-        if(result.userName==postData.name){
-          console.log(result);
-          console.log("-----------------")
-          console.log("usrJson: "+result.name);
+        
+        if((result!=false)&&(result.userName==postData.name)){
 
           let responseJson = result;
           sessionStorage.setItem("userData", JSON.stringify(responseJson));
@@ -52,7 +48,7 @@ class Welcome extends Component {
         }
         else{
           this.setState({loginError:true});
-          this.setState({errorMsg:result});
+          this.setState({errorMsg:"User is NOT exist, please try again."});
           console.log(this.state.errorMsg);
         }
       });
@@ -61,10 +57,13 @@ class Welcome extends Component {
 
   render() {
 
-    if (this.state.redirect ) {
+    if (this.state.redirect )
       return (<Redirect to={'/Home'}/>);
+
+    let errMsg;
+    if(this.state.loginError){
+      errMsg=(<h1 class="welcomeText">{this.state.errorMsg}</h1>)
     }
-   
   
 
     const responseGoogle = (response) => {
@@ -76,12 +75,14 @@ class Welcome extends Component {
     return (
 
       <div>
-            <GoogleLogin
+            
+            <GoogleLogin 
               clientId= "377088806383-5m2155d1dktirnv3qs4e28ma4cicvfjg.apps.googleusercontent.com"
               buttonText="Login with Google"
               onSuccess={responseGoogle}
               onFailure={responseGoogle}/>
 
+              {errMsg}
       </div>
     );
   }

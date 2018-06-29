@@ -86,6 +86,8 @@ class SubjectByNameList extends Component {
   }
 
   render() {
+    if(!sessionStorage.getItem('userData'))
+      return (<Redirect to={'/'}/>);
     return (
         <div >
           {this.state.subjects.map(this.eachSubject)}

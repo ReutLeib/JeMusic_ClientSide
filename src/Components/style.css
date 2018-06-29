@@ -28,3 +28,15 @@
   border-color: black;
   border-radius: 5px;
 }
+
+.welcomeText{
+  color:red;
+  font-size: 15px;
+  padding: 10px;
+  padding-left: 20px;
+}
+
+#welcomeLogin{
+  padding-left: 1000px;
+  color :blue;
+}
