@@ -10,7 +10,7 @@ class SubjectByNameList extends Component {
     this.state = {
       subjects: [
       ],
-      redirect: false
+      redirect: false,
     }
     this.eachSubject   = this.eachSubject.bind(this);
     this.update     = this.update.bind(this);
@@ -42,9 +42,20 @@ class SubjectByNameList extends Component {
       return this.uniqueId++
   }
 
- componentDidMount() {      
+ componentDidMount() {   
+  //TODO: check the potencial bug og sub.name 
+  //that haveas least 2 words.(can't do toString)
 
-    const url = "https://jemusic.herokuapp.com/getSubjectByName/Jem2";
+  //TODO: push via PostData to follow
+  //----------------------------------------------
+
+  
+  console.log("---------"+this.props.location.param1);
+  // var tmp_subName=this.props.location.param1.toString();
+  // tmp_subName=tmp_subName.replace(/ /g, "%20");
+
+
+  const url = `https://jemusic.herokuapp.com/getSubjectByName/${this.props.location.param1}`;
 
     fetch(url).then((res) => {        
       return res.json();      

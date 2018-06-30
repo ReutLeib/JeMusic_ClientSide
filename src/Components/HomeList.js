@@ -97,7 +97,7 @@ class HomeList extends Component {
 
   eachSubjects (sub,i) {
     // console.log(`backgroundImage: url(${sub.background})`)
-   
+
     const imageUrl = require(`../images/${sub.background}`)
      return (          
       <div key={'container'+i} className="card cards" style={{width: `18rem`, backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat' }}>    
@@ -111,14 +111,23 @@ class HomeList extends Component {
             <p className="card-text">{sub.price} $</p>
             <p className="card-text">{sub.requredSkills}</p>
             <p className="card-text">{sub.participent}</p>
+           
+            <NavLink to=
+                        //navigate to SubjectByName with the param sub.name
+                        {{pathname: "/Subject", 
+                          param1: sub.name}}
+                          activeStyle={this.active} 
+            className="btn btn-primary followSub" >Follow</NavLink>
+
           </Home>
+      
         </div>
         
-        <NavLink to="/Subject" activeStyle={this.active} 
-        className="btn btn-primary followSub" >Follow</NavLink>
-         {/* onClick={localStorage.setItem('follow subject',sub)}  */}
+        
       </div>
       )
+               {/* onClick={localStorage.setItem('follow subject',sub)}  */}
+
   }
 
   render() {
