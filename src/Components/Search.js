@@ -43,7 +43,7 @@ class Search extends Component {
 
     handleSubmit(event){
       if(!sessionStorage.getItem('userData'))
-        this.state.redirect=true;
+       this.setState({redirect: true});
       else{  
         let data = JSON.parse(sessionStorage.getItem('userData'));
         console.log(data);

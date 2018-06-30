@@ -18,7 +18,7 @@ class SubjectByNameList extends Component {
   }
 
   add(txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9) {
-    this.setState(prevState => ({
+    this.State(prevState => ({
       subjects: [
       ...prevState.subjects,
       {
@@ -43,22 +43,22 @@ class SubjectByNameList extends Component {
 
   componentDidMount() {      
     if(!sessionStorage.getItem('userData'))
-      this.state.redirect=true;
+     this.setState({redirect: true});
     else{
-    const url = "https://jemusic.herokuapp.com/getSubjectByName/Jem2";
+      const url = "https://jemusic.herokuapp.com/getSubjectByName/Jem2";
 
-    fetch(url).then((res) => {        
-      return res.json();      
-    }).then((data) => {        
-      var self=this;        
-        self.add(data.name, data.date, data.hours, data.type,
-          data.location, data.about, data.price, data.requredSkills, data.background);                
-    }) 
+      fetch(url).then((res) => {        
+        return res.json();      
+      }).then((data) => {        
+        var self=this;        
+          self.add(data.name, data.date, data.hours, data.type,
+            data.location, data.about, data.price, data.requredSkills, data.background);                
+      }) 
   } 
 }
 
   update(newSub, i) {
-    this.setState(() => ({
+    this.State(() => ({
       subjects: this.state.subjects.map(
         (sub) => (sub.id !== i) ? sub : {...sub, name: newSub}
       )

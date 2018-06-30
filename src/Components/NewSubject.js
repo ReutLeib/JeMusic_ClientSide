@@ -89,26 +89,29 @@ class BookByRankAuthor extends Component {
         let newRequiredSkills = this.state.newRequiredSkills;
         
         console.log(`content: ${newName}, ${newDate}, ${newHours}, ${newType}, ${newLocation}, ${newRequiredSkills}`);
-        console.log(sessionStorage.getItem('userData'));
-        let data = JSON.parse(sessionStorage.getItem('userData'));
         
-        console.log(data.userName);
-        (async () => {
-          console.log(data.userName);
+        if(!sessionStorage.getItem('userData'))
+          this.setState({redirect: true});
+        else{
+          let data = JSON.parse(sessionStorage.getItem('userData'));
+          console.log(data);
+          (async () => {
+            console.log(data.userName);
 
-          const rawResponse = await fetch('https://jemusic.herokuapp.com/insertSubject/', {
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({name:newName,date:newDate,hours:newHours,type:newType,location:newLocation,requiredSkills:newRequiredSkills,username:data.userName})
-          });
-            const content = await rawResponse.json();
-            // console.log("content: " + content);
-            ReactDOM.render(<SearchList books={content} />, document.getElementById("response"))
-            
-        })();
+            const rawResponse = await fetch('https://jemusic.herokuapp.com/insertSubject/', {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({name:newName,date:newDate,hours:newHours,type:newType,location:newLocation,requiredSkills:newRequiredSkills,username:data.userName})
+            });
+              const content = await rawResponse.json();
+              // console.log("content: " + content);
+              ReactDOM.render(<SearchList books={content} />, document.getElementById("response"))
+              
+          })();
+        }
     }
     addSubject(data){
       console.log(`data:` + data.toString());
