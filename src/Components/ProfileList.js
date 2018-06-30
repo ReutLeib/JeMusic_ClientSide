@@ -72,7 +72,7 @@ class ProfileList extends Component {
   eachProfile (prof,i) {
     const imageUrl = require(`../images/${prof.profilePic}`)
     return (          
-      <div key={'container'+i}className="card" style={{width: 18 + 'rem', backgroundColor: `black`}}>
+      <div key={'container'+i}className="card" style={{ margin:`0 auto`,width: 18 + 'rem', backgroundColor: `black`}}>
           <div style={{width: `170px`,height: `170px`, backgroundImage: `url(${imageUrl})`, 
                         backgroundRepeat: 'no-repeat',borderRadius: `50%`,
                         backgroundPosition: `center center`, margin: `0 auto` }}>

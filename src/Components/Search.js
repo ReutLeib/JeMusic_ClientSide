@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import MdSend from "react-icons/lib/md/send";
 import {Redirect} from 'react-router-dom';
 
-
+//TODO: centered the elements(there is a problem)
 class Search extends Component {
     constructor(props) {
         super(props)
@@ -74,13 +74,13 @@ class Search extends Component {
 
       return (
           <div>
-              <form action="https://jemusic.herokuapp.com/getSubjectByDate/" method="POST" onSubmit={this.handleSubmit}>
+              <form action="https://jemusic.herokuapp.com/getSubjectByDate/" method="POST" onSubmit={this.handleSubmit} >
                 <label>
                   <p> Date format: 2/10/2018</p>
                   Date:
                   <input onChange={this.handleRankChange} value={this.state.newRank} type="text" name="date" />                  
                 </label>
-                  <button  type="submit" className="btn btn-primary" onClick={this.delete}><MdSend/> </button> 
+                  <button  type="submit" className="btn btn-primary" onClick={this.delete} ><MdSend/> </button> 
               </form>
               <div id="response">
               </div>

@@ -78,7 +78,6 @@ class SubjectByNameList extends Component {
     const imageUrl = require(`../images/${sub.background}`)
     return (          
       <div key={'container'+i} className="myCard" style={{width: `18rem`,borderRadius: `2px` , backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat' }}>
-        <div>
           <SubjectByName key={'sub'+i} index={i} onChange={this.update} >         
             <h1 className="card-title">{sub.name}</h1>
             <p className="card-text">{sub.date} * {sub.hours}</p>
@@ -89,10 +88,6 @@ class SubjectByNameList extends Component {
             <p className="card-text">{sub.requredSkills}</p>
             <p className="card-text">{sub.participent}</p>
           </SubjectByName>
-        </div>
-           <div style={{width: `18rem`, padding: "10px", background:`black` }}>
-            <p>asdasdasd</p>
-          </div>
       </div>
       )
   }
