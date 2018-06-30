@@ -11,9 +11,7 @@ class ProfileList extends Component {
       profiles: [
       ],
       name:'',
-      redirect: false,
-      products:[],
-      pid:''
+      redirect: false
     }
     this.eachProfile   = this.eachProfile.bind(this);
     this.update     = this.update.bind(this);
@@ -43,8 +41,11 @@ class ProfileList extends Component {
   }
 
  componentDidMount() {   
-    console.log(sessionStorage.getItem('userData'));
+  if(!sessionStorage.getItem('userData'))
+    this.state.redirect=true;
+  else{
     let data = JSON.parse(sessionStorage.getItem('userData'));
+    console.log(data);
     // console.log(data.userName);
     // var tmp_usr=data.userName.replace(/ /g, "%20");
     // const url = `https://jemusic.herokuapp.com/getUserByUserName/${tmp_usr}`;
@@ -56,7 +57,7 @@ class ProfileList extends Component {
       var self=this;        
       self.add(data.userName, data.name, data.age, data.city, data.profilePic);        
     // })  
-
+  }
 }
 
   update(newProf, i) {
@@ -95,7 +96,7 @@ class ProfileList extends Component {
   }
 
   render() {
-    if(!sessionStorage.getItem('userData'))
+    if(this.state.redirect)
       return (<Redirect to={'/'}/>);
     return (
       <div className="ideaList">

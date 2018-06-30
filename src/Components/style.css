@@ -2,6 +2,7 @@
   border-radius: 20px;
   border-color: black;
   padding: 5px;
+  margin:0 auto;
 }
 
 .followSub{
@@ -10,12 +11,16 @@
 }
 
 .newJem{
+  display:block;
+  margin:0 auto;
   padding: 10px;
   border-radius: 20px;
   padding-right: 106px;
   padding-left: 106px;
   margin-top: 30px;
   margin-bottom: 30px;
+  width:fit-content;
+
 }
 
 .stam{
@@ -27,6 +32,8 @@
   background-color: black;
   border-color: black;
   border-radius: 5px;
+  margin:0 auto;
+
 }
 
 .welcomeText{
@@ -36,7 +43,6 @@
   padding-left: 20px;
 }
 
-#welcomeLogin{
-  padding-left: 1000px;
-  color :blue;
-}
+
+
+

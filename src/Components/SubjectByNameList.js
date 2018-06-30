@@ -31,8 +31,8 @@ class SubjectByNameList extends Component {
           about: txt6,
           price: txt7,
           requredSkills: txt8,
-          background: txt9
-          
+          background: txt9,
+          redirect: false
       }]
     }))
   }
@@ -41,8 +41,10 @@ class SubjectByNameList extends Component {
       return this.uniqueId++
   }
 
- componentDidMount() {      
-
+  componentDidMount() {      
+    if(!sessionStorage.getItem('userData'))
+      this.state.redirect=true;
+    else{
     const url = "https://jemusic.herokuapp.com/getSubjectByName/Jem2";
 
     fetch(url).then((res) => {        
@@ -51,7 +53,8 @@ class SubjectByNameList extends Component {
       var self=this;        
         self.add(data.name, data.date, data.hours, data.type,
           data.location, data.about, data.price, data.requredSkills, data.background);                
-    })  
+    }) 
+  } 
 }
 
   update(newSub, i) {
@@ -86,8 +89,9 @@ class SubjectByNameList extends Component {
   }
 
   render() {
-    if(!sessionStorage.getItem('userData'))
+    if(this.state.redirect)
       return (<Redirect to={'/'}/>);
+
     return (
         <div >
           {this.state.subjects.map(this.eachSubject)}

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import GoogleLogin from 'react-google-login';
 import {Redirect} from 'react-router-dom';
 import {PostData} from '../services/PostData';
-
+import logo from '../images/logo-JeMusic.png' 
 import './style.css';
 
 
@@ -55,6 +55,25 @@ class Welcome extends Component {
     } else {}
   }
 
+  loginBtn = {
+    display:"block",
+    margin:"0 auto",
+    marginTop:"60px",
+    
+    backgroundColor: "#d82525",
+    border:0,
+    padding:"15px"
+
+  };
+  logoImg={
+    display:"block",
+    margin:"0 auto",
+    marginTop:"120px",
+    backgroundColor: "white",
+    borderRadius: "150px",
+    paddingLeft:"10px"
+
+  };
   render() {
 
     if (this.state.redirect )
@@ -62,7 +81,7 @@ class Welcome extends Component {
 
     let errMsg;
     if(this.state.loginError){
-      errMsg=(<h1 class="welcomeText">{this.state.errorMsg}</h1>)
+      errMsg=(<span class="welcomeText">{this.state.errorMsg}</span>)
     }
   
 
@@ -74,15 +93,16 @@ class Welcome extends Component {
 
     return (
 
-      <div>
-            
-            <GoogleLogin 
-              clientId= "377088806383-5m2155d1dktirnv3qs4e28ma4cicvfjg.apps.googleusercontent.com"
-              buttonText="Login with Google"
-              onSuccess={responseGoogle}
-              onFailure={responseGoogle}/>
+      <div >
+        <img  src={logo} alt="logo" style={this.logoImg}/> 
+        <GoogleLogin 
+          clientId= "377088806383-5m2155d1dktirnv3qs4e28ma4cicvfjg.apps.googleusercontent.com"
+          buttonText="Login with Google"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          style={this.loginBtn}/>
 
-              {errMsg}
+          {errMsg}
       </div>
     );
   }

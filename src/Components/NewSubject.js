@@ -12,8 +12,8 @@ class BookByRankAuthor extends Component {
           newHours:0,
           newType:0,
           newLocation:0,
-          newRequiredSkills:0
-
+          newRequiredSkills:0,
+          redirect: false
         };
 
         this.handleSubmit=this.handleSubmit.bind(this);
@@ -142,7 +142,7 @@ class BookByRankAuthor extends Component {
    //  }
 
     render() {
-      if(!sessionStorage.getItem('userData'))
+      if(this.state.redirect)
         return (<Redirect to={'/'}/>);
       return (
           <div>

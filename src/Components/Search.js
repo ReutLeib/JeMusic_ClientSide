@@ -42,9 +42,11 @@ class Search extends Component {
   }
 
     handleSubmit(event){
-        console.log(sessionStorage.getItem('userData'));
+      if(!sessionStorage.getItem('userData'))
+        this.state.redirect=true;
+      else{  
         let data = JSON.parse(sessionStorage.getItem('userData'));
-        console.log(data.userName);
+        console.log(data);
         event.preventDefault();
         let newRank = this.state.newRank;
         (async () => {
@@ -59,13 +61,15 @@ class Search extends Component {
             const content = await rawResponse.json();
             ReactDOM.render(<SearchList subjects={content} />, document.getElementById("response"))
         })();
+      }  
     }
+
 
 
     render() {
       
-      if(!sessionStorage.getItem('userData'))
-        return (<Redirect to={'/'}/>);
+      if(this.state.redirect)
+      return (<Redirect to={'/'}/>);
 
       return (
           <div>
