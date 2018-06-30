@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import Home from './Home'
 import './style.css';
 import {Redirect} from 'react-router-dom';
+import { NavLink } from "react-router-dom";
+
 
 
 
@@ -23,6 +25,12 @@ class HomeList extends Component {
   backgroundActive = {
       width: `20rem`,
       backgroundImage: `url(${this.background})`
+  };
+
+  active = {
+    backgroundColor: "#212F3D",
+    color: "white",
+    fontWeight: "bold"
   };
 
   add(txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9) {
@@ -48,8 +56,9 @@ class HomeList extends Component {
       this.uniqueId = this.uniqueId || 0
       return this.uniqueId++
   }
-
+  
   componentDidMount() {  
+    //checks if the session is empty
     if(!sessionStorage.getItem('userData'))
      this.setState({redirect: true});
     else{
@@ -66,9 +75,10 @@ class HomeList extends Component {
           var self=this;        
           data.map((data) => {            
             data.map((json) => {
-            self.add(json.name, json.date, json.hours, json.type,
-                    json.location, json.about, json.price, json.requredSkills, json.background);        
-            console.log(json);  
+              self.add(json.name, json.date, json.hours, json.type,
+                      json.location, json.about, json.price, json.requredSkills, json.background);        
+              
+              console.log(json);          
             })
           })    // endOf data.map((data)  
         }) 
@@ -83,8 +93,11 @@ class HomeList extends Component {
     }))
   } 
 
+  
+
   eachSubjects (sub,i) {
     // console.log(`backgroundImage: url(${sub.background})`)
+   
     const imageUrl = require(`../images/${sub.background}`)
      return (          
       <div key={'container'+i} className="card cards" style={{width: `18rem`, backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat' }}>    
@@ -100,17 +113,23 @@ class HomeList extends Component {
             <p className="card-text">{sub.participent}</p>
           </Home>
         </div>
+        
+        <NavLink to="/Subject" activeStyle={this.active} 
+        className="btn btn-primary followSub" >Follow</NavLink>
+         {/* onClick={localStorage.setItem('follow subject',sub)}  */}
       </div>
       )
   }
 
   render() {
+    //Redirect to welcome.js(login) if the session is empty(the check is written above)
     if(this.state.redirect)
       return (<Redirect to={'/'}/>);
 
     return (
         <div className="ideaList">
           {this.state.subjects.map(this.eachSubjects)}
+
         </div>
     )
   }

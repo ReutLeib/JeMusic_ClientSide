@@ -40,7 +40,8 @@ class ProfileList extends Component {
       return this.uniqueId++
   }
 
- componentDidMount() {   
+ componentDidMount() {  
+  //checks if the session is empty 
   if(!sessionStorage.getItem('userData'))
     this.setState({redirect: true});
   else{
@@ -96,6 +97,7 @@ class ProfileList extends Component {
   }
 
   render() {
+    //Redirect to welcome.js(login) if the session is empty(the check is written above)
     if(this.state.redirect)
       return (<Redirect to={'/'}/>);
     return (

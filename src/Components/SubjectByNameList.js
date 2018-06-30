@@ -9,7 +9,8 @@ class SubjectByNameList extends Component {
     super(props);
     this.state = {
       subjects: [
-      ]
+      ],
+      redirect: false
     }
     this.eachSubject   = this.eachSubject.bind(this);
     this.update     = this.update.bind(this);
@@ -18,7 +19,7 @@ class SubjectByNameList extends Component {
   }
 
   add(txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9) {
-    this.State(prevState => ({
+    this.setState(prevState => ({
       subjects: [
       ...prevState.subjects,
       {
@@ -31,8 +32,8 @@ class SubjectByNameList extends Component {
           about: txt6,
           price: txt7,
           requredSkills: txt8,
-          background: txt9,
-          redirect: false
+          background: txt9
+          
       }]
     }))
   }
@@ -41,24 +42,21 @@ class SubjectByNameList extends Component {
       return this.uniqueId++
   }
 
-  componentDidMount() {      
-    if(!sessionStorage.getItem('userData'))
-     this.setState({redirect: true});
-    else{
-      const url = "https://jemusic.herokuapp.com/getSubjectByName/Jem2";
+ componentDidMount() {      
 
-      fetch(url).then((res) => {        
-        return res.json();      
-      }).then((data) => {        
-        var self=this;        
-          self.add(data.name, data.date, data.hours, data.type,
-            data.location, data.about, data.price, data.requredSkills, data.background);                
-      }) 
-  } 
+    const url = "https://jemusic.herokuapp.com/getSubjectByName/Jem2";
+
+    fetch(url).then((res) => {        
+      return res.json();      
+    }).then((data) => {        
+      var self=this;        
+        self.add(data.name, data.date, data.hours, data.type,
+          data.location, data.about, data.price, data.requredSkills, data.background);                
+    })  
 }
 
   update(newSub, i) {
-    this.State(() => ({
+    this.setState(() => ({
       subjects: this.state.subjects.map(
         (sub) => (sub.id !== i) ? sub : {...sub, name: newSub}
       )
@@ -89,9 +87,8 @@ class SubjectByNameList extends Component {
   }
 
   render() {
-    if(this.state.redirect)
+    if(!sessionStorage.getItem('userData'))
       return (<Redirect to={'/'}/>);
-
     return (
         <div >
           {this.state.subjects.map(this.eachSubject)}

@@ -90,6 +90,7 @@ class BookByRankAuthor extends Component {
         
         console.log(`content: ${newName}, ${newDate}, ${newHours}, ${newType}, ${newLocation}, ${newRequiredSkills}`);
         
+        //checks if the session is empty
         if(!sessionStorage.getItem('userData'))
           this.setState({redirect: true});
         else{
@@ -145,6 +146,7 @@ class BookByRankAuthor extends Component {
    //  }
 
     render() {
+      //Redirect to welcome.js(login) if the session is empty(the check is written above)
       if(this.state.redirect)
         return (<Redirect to={'/'}/>);
       return (

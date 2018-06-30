@@ -42,6 +42,7 @@ class Search extends Component {
   }
 
     handleSubmit(event){
+      //checks if the session is empty
       if(!sessionStorage.getItem('userData'))
        this.setState({redirect: true});
       else{  
@@ -67,9 +68,9 @@ class Search extends Component {
 
 
     render() {
-      
+      //Redirect to welcome.js(login) if the session is empty(the check is written above)
       if(this.state.redirect)
-      return (<Redirect to={'/'}/>);
+        return (<Redirect to={'/'}/>);
 
       return (
           <div>
