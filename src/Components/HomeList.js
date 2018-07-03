@@ -3,7 +3,8 @@ import Home from './Home'
 import './style.css';
 import {Redirect} from 'react-router-dom';
 import { NavLink } from "react-router-dom";
-
+// import {PostData} from '../services/PostData';
+// import Trigger from 'rc-trigger';
 
 
 
@@ -20,6 +21,9 @@ class HomeList extends Component {
     this.add            = this.add.bind(this)
     this.nextID         = this.nextID.bind(this)
     this.flagHeader     = false
+    // this.DoPostData = this
+    // .DoPostData
+    // .bind(this);
   }
 
   backgroundActive = {
@@ -112,13 +116,15 @@ class HomeList extends Component {
             <p className="card-text">{sub.requredSkills}</p>
             <p className="card-text">{sub.participent}</p>
            
-            <NavLink to=
-                        //navigate to SubjectByName with the param sub.name
-                        {{pathname: "/Subject", 
-                          param1: sub.name}}
-                          activeStyle={this.active} 
+           {/* <Trigger action={['click']}
+             popup={<div><input ref={node => this.input = node} type="text" /></div>}> */}
+                  <NavLink to=
+                              //navigate to SubjectByName with the param sub.name
+                              {{pathname: "/Subject", 
+                                param1: sub.name}}
+                                activeStyle={this.active} 
             className="btn btn-primary followSub" >Follow</NavLink>
-
+          {/* </Trigger> */}
           </Home>
       
         </div>
@@ -129,6 +135,27 @@ class HomeList extends Component {
                {/* onClick={localStorage.setItem('follow subject',sub)}  */}
 
   }
+  // DoPostData (subName) {
+  //   let postData;
+
+  //   postData = {
+  //     userName: sessionStorage.getItem('userData').userName,
+  //     name: subName
+  //   }
+
+  //   PostData('followSubject/', postData).then((result) => {
+      
+  //     if((result!=false)){
+  //       this.setState({redirect: true});
+  //     }
+  //     else{
+  //       this.setState({loginError:true});
+  //       this.setState({errorMsg:"User is NOT exist, please try again."});
+  //       console.log(this.state.errorMsg);
+  //     }
+  //   });
+    
+  // }
 
   render() {
     //Redirect to welcome.js(login) if the session is empty(the check is written above)

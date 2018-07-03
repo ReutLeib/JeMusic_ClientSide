@@ -1,6 +1,10 @@
 import React, {Component} from 'react'
 import SubjectByName from './SubjectByName'
 import {Redirect} from 'react-router-dom';
+import {PostData} from '../services/PostData';
+import {GetData} from '../services/GetData';
+import { NavLink } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 
 
@@ -11,11 +15,18 @@ class SubjectByNameList extends Component {
       subjects: [
       ],
       redirect: false,
+      loginError:false,
+      errorMsg:"",
+      joinSubject:false
     }
     this.eachSubject   = this.eachSubject.bind(this);
     this.update     = this.update.bind(this);
     this.add        = this.add.bind(this)
     this.nextID     = this.nextID.bind(this)
+    this.doPostData = this.doPostData.bind(this);
+    this.doGetData = this.doGetData.bind(this);
+    this.joinToSubject = this.joinToSubject.bind(this);
+    
   }
 
   add(txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9) {
@@ -38,32 +49,44 @@ class SubjectByNameList extends Component {
     }))
   }
   nextID() {
-      this.uniqueId = this.uniqueId || 0
-      return this.uniqueId++
+    this.uniqueId = this.uniqueId || 0
+    return this.uniqueId++
   }
 
  componentDidMount() {   
-  //TODO: check the potencial bug og sub.name 
-  //that haveas least 2 words.(can't do toString)
+    //TODO: check the potencial bug og sub.name 
+    //that haveas least 2 words.(can't do toString)
 
-  //TODO: push via PostData to follow
-  //----------------------------------------------
-
+    //----------------------------------------------
   
-  console.log("---------"+this.props.location.param1);
-  // var tmp_subName=this.props.location.param1.toString();
-  // tmp_subName=tmp_subName.replace(/ /g, "%20");
+      console.log("*****************")
+      this.doPostData(this.props.location.param1,'followSubject/');
+    //get the subject either way
+    this.doGetData(this.props.location.param1,'getSubjectByName/');  
+  }
 
 
-  const url = `https://jemusic.herokuapp.com/getSubjectByName/${this.props.location.param1}`;
 
-    fetch(url).then((res) => {        
-      return res.json();      
-    }).then((data) => {        
-      var self=this;        
-        self.add(data.name, data.date, data.hours, data.type,
-          data.location, data.about, data.price, data.requredSkills, data.background);                
-    })  
+  doGetData(subName,route) {
+    let getData = {
+      name: subName
+    }
+
+    if (getData) {
+      getData.name=getData.name.replace(/ /g, "%20");
+      GetData(route,getData.name).then((result) => {
+        if((result!=false)){
+          var self=this;        
+          self.add(result.name, result.date, result.hours, result.type,
+            result.location, result.about, result.price, result.requredSkills, result.background);                
+        }
+        else{
+          this.setState({loginError:true});
+          this.setState({errorMsg:"Subject not found."});
+          console.log(this.state.errorMsg);
+        }
+      });
+    } else {}
 }
 
   update(newSub, i) {
@@ -74,6 +97,7 @@ class SubjectByNameList extends Component {
     }))
   }    
 
+  //TODO: change it to one subject and not a arry of(remove map..)
   eachSubject (sub,i) {
     const imageUrl = require(`../images/${sub.background}`)
     return (          
@@ -87,11 +111,51 @@ class SubjectByNameList extends Component {
             <p className="card-text">{sub.price} $</p>
             <p className="card-text">{sub.requredSkills}</p>
             <p className="card-text">{sub.participent}</p>
+       
           </SubjectByName>
+          <button
+           
+             activeStyle={this.active} 
+             className="btn btn-primary followSub">
+             
+             Join</button>
+             {/* style={(this.state.joinSubject)?{display:'none'}:{}} */}
+              {/* onClick={this.joinToSubject.bind(this.props.location.param1)} */}
+             {/* navigate to SubjectByName with the param sub.name */}
+                      {/* {{pathname: window.location.reload(), 
+                        param1: sub.name,
+                        param2:true}} */}
       </div>
       )
   }
 
+  joinToSubject(subName){
+    this.setState({joinSubject: true});
+    
+    console.log("++++++++++++++++: "+subName)
+    this.doPostData(subName,'UpdateParticipentsByUserName/');
+  }
+
+
+  doPostData (subName,route) {
+    
+    let postData = {
+      userName: JSON.parse(sessionStorage.getItem('userData')).userName,
+      name: subName
+    }
+
+    PostData(route, postData).then((result) => {
+      if((result!=false)){
+        this.setState({redirect: true});
+      }
+      else{
+        this.setState({loginError:true});
+        this.setState({errorMsg:"User is NOT exist, please try again."});
+        console.log(this.state.errorMsg);
+      }
+    });
+    
+  }
   render() {
     if(!sessionStorage.getItem('userData'))
       return (<Redirect to={'/'}/>);

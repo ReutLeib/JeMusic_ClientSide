@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import GoogleLogin from 'react-google-login';
 import {Redirect} from 'react-router-dom';
-import {PostData} from '../services/PostData';
+import {GetData} from '../services/GetData';
 import logo from '../images/logo-JeMusic.png' 
 import './style.css';
 
@@ -20,25 +20,27 @@ class Welcome extends Component {
   }
 
   login(res, type) {
-    let postData;
+    let getData;
 
     if (type === 'google' && res.w3.U3) {
-      postData = {
+      getData = {
+        //optionaly to take whatever we want from googleLogin
         name: res.w3.ig,
-        provider: type,
-        email: res.w3.U3,
-        provider_id: res.El,
-        token: res.Zi.access_token,
-        provider_pic: res.w3.Paa
+        // provider: type,
+        // email: res.w3.U3,
+        // provider_id: res.El,
+        // token: res.Zi.access_token,
+        // provider_pic: res.w3.Paa
       };
 
     }
 
-    if (postData) {
+    if (getData) {
+      var tmp_userName=getData.name;
+      getData.name=getData.name.replace(/ /g, "%20");
+      GetData('getUserByUserName/', getData.name).then((result) => {
         
-      PostData('getUserByUserName/', postData).then((result) => {
-        
-        if((result!=false)&&(result.userName==postData.name)){
+        if((result!=false)&&(result.userName==tmp_userName)){
 
           let responseJson = result;
           sessionStorage.setItem("userData", JSON.stringify(responseJson));
