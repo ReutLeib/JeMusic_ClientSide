@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import SearchList from './SearchList'
 import ReactDOM from 'react-dom'
 import {Redirect} from 'react-router-dom';
+import {PostData} from '../services/PostData';
 
 class BookByRankAuthor extends Component {
     constructor(props) {
@@ -80,40 +81,57 @@ class BookByRankAuthor extends Component {
 
 
     handleSubmit(event){
-        event.preventDefault();
-        let newName = this.state.newName;
-        let newDate = this.state.newDate;
-        let newHours = this.state.newHours;
-        let newType = this.state.newType;
-        let newLocation = this.state.newLocation;
-        let newRequiredSkills = this.state.newRequiredSkills;
-        
-        console.log(`content: ${newName}, ${newDate}, ${newHours}, ${newType}, ${newLocation}, ${newRequiredSkills}`);
         
         //checks if the session is empty
         if(!sessionStorage.getItem('userData'))
           this.setState({redirect: true});
         else{
-          let data = JSON.parse(sessionStorage.getItem('userData'));
-          console.log(data);
-          (async () => {
-            console.log(data.userName);
+          event.preventDefault();
+          let newName = this.state.newName;
+          let newDate = this.state.newDate;
+          let newHours = this.state.newHours;
+          let newType = this.state.newType;
+          let newLocation = this.state.newLocation;
+          let newRequiredSkills = this.state.newRequiredSkills;
+          
+          console.log(`content: ${newName}, ${newDate}, ${newHours}, ${newType}, ${newLocation}, ${newRequiredSkills}`);
+          
+          this.doPostData(newName,newDate,newHours,newType,
+                          newLocation,newRequiredSkills,
+                          'insertSubject/');
 
-            const rawResponse = await fetch('https://jemusic.herokuapp.com/insertSubject/', {
-              method: 'POST',
-              headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({name:newName,date:newDate,hours:newHours,type:newType,location:newLocation,requiredSkills:newRequiredSkills,username:data.userName})
-            });
-              const content = await rawResponse.json();
-              // console.log("content: " + content);
-              ReactDOM.render(<SearchList books={content} />, document.getElementById("response"))
-              
-          })();
         }
     }
+
+
+  doPostData (newName,newDate,newHours,newType,newLocation,newRequiredSkills,route) {
+    
+    let postData = {
+      userName: JSON.parse(sessionStorage.getItem('userData')).userName,
+      name:newName,
+      date:newDate,
+      hours:newHours,
+      type:newType,
+      location:newLocation,
+      requiredSkills:newRequiredSkills
+    }
+
+    PostData(route, postData).then((result) => {
+      if((result!=false)){
+        this.setState({redirect: true});
+         const content = JSON.parse(result);
+        //  ReactDOM.render(<SearchList books={content} />, document.getElementById("response"));
+      }
+      else{
+        this.setState({loginError:true});
+        this.setState({errorMsg:"Can't insert a new subject."});
+        console.log(this.state.errorMsg);
+      }
+    });
+    
+  }
+
+
     addSubject(data){
       console.log(`data:` + data.toString());
     }
@@ -180,8 +198,8 @@ class BookByRankAuthor extends Component {
                   <br></br>
                   <input type="submit" value="Go Go" />
               </form>
-              <div id="response">
-              </div>
+              {/* <div id="response">
+              </div> */}
           </div>
       )
     }

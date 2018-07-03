@@ -3,6 +3,8 @@ import Home from './Home'
 import './style.css';
 import {Redirect} from 'react-router-dom';
 import { NavLink } from "react-router-dom";
+import {GetData} from '../services/GetData';
+
 // import {PostData} from '../services/PostData';
 // import Trigger from 'rc-trigger';
 
@@ -66,28 +68,37 @@ class HomeList extends Component {
     if(!sessionStorage.getItem('userData'))
      this.setState({redirect: true});
     else{
-      let data = JSON.parse(sessionStorage.getItem('userData'));
-      console.log(data);
-      console.log(data.name);
-      var tmp_usr=data.name.replace(/ /g, "%20");
-      const url = `https://jemusic.herokuapp.com/getSubjectsByFavorites/${tmp_usr}`;
-      console.log(url); 
-      fetch(url).then((res) => {  
-          console.log(res);
-          return res.json();      
-      }).then((data) => {        
-          var self=this;        
-          data.map((data) => {            
-            data.map((json) => {
-              self.add(json.name, json.date, json.hours, json.type,
-                      json.location, json.about, json.price, json.requredSkills, json.background);        
-              
-              console.log(json);          
-            })
-          })    // endOf data.map((data)  
-        }) 
+      this.doGetData('getSubjectsByFavorites/)');
     } 
   }
+
+
+  doGetData(route) {
+    let getData = {
+      name: JSON.parse(sessionStorage.getItem('userData')).userName
+    }
+
+    if (getData) {
+      getData.name=getData.name.replace(/ /g, "%20");
+      GetData(route,getData.name).then((result) => {
+        if((result!=false)){
+          var self=this;        
+          result.map((result) => {            
+            result.map((json) => {
+              self.add(json.name, json.date, json.hours, json.type,
+                      json.location, json.about, json.price, json.requredSkills, json.background);         
+              console.log(json);          
+            })
+          })  
+        }
+        else{
+          this.setState({loginError:true});
+          this.setState({errorMsg:"There is a problem with favorites."});
+          console.log(this.state.errorMsg);
+        }
+      });
+    } else {}
+}
 
   update(newSub, i) {
     this.setState(() => ({
@@ -132,30 +143,9 @@ class HomeList extends Component {
         
       </div>
       )
-               {/* onClick={localStorage.setItem('follow subject',sub)}  */}
 
   }
-  // DoPostData (subName) {
-  //   let postData;
-
-  //   postData = {
-  //     userName: sessionStorage.getItem('userData').userName,
-  //     name: subName
-  //   }
-
-  //   PostData('followSubject/', postData).then((result) => {
-      
-  //     if((result!=false)){
-  //       this.setState({redirect: true});
-  //     }
-  //     else{
-  //       this.setState({loginError:true});
-  //       this.setState({errorMsg:"User is NOT exist, please try again."});
-  //       console.log(this.state.errorMsg);
-  //     }
-  //   });
-    
-  // }
+ 
 
   render() {
     //Redirect to welcome.js(login) if the session is empty(the check is written above)
