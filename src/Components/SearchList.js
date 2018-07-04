@@ -1,5 +1,6 @@
 import React from 'react';
-
+//TODO:check if the user is allready follows this subject
+//TODO: fix background of subject
 
 const SearchList = ({ subjects, index }) => (
 

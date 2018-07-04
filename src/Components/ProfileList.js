@@ -3,7 +3,7 @@ import Profile from './Profile'
 import './style.css';
 import {Redirect} from 'react-router-dom';
 
-
+//TODO: show all subjects and videos of usr
 class ProfileList extends Component {
   constructor(props) {
     super(props);
@@ -46,18 +46,10 @@ class ProfileList extends Component {
     this.setState({redirect: true});
   else{
     let data = JSON.parse(sessionStorage.getItem('userData'));
-    console.log(data);
-    // console.log(data.userName);
-    // var tmp_usr=data.userName.replace(/ /g, "%20");
-    // const url = `https://jemusic.herokuapp.com/getUserByUserName/${tmp_usr}`;
-    // console.log(url);
-
-    // fetch(url).then((res) => {        
-    //   return res.json();      
-    // }).then((data) => {        
-      var self=this;        
-      self.add(data.userName, data.name, data.age, data.city, data.profilePic);        
-    // })  
+    console.log(data);  
+    var self=this;        
+    self.add(data.userName, data.name, data.age,
+              data.city, data.profilePic);        
   }
 }
 

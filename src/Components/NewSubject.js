@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import SearchList from './SearchList'
-import ReactDOM from 'react-dom'
+// import SearchList from './SearchList'
+// import ReactDOM from 'react-dom'
 import {Redirect} from 'react-router-dom';
 import {PostData} from '../services/PostData';
 

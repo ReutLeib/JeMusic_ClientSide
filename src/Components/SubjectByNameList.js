@@ -3,9 +3,9 @@ import SubjectByName from './SubjectByName'
 import {Redirect} from 'react-router-dom';
 import {PostData} from '../services/PostData';
 import {GetData} from '../services/GetData';
-import { NavLink } from "react-router-dom";
-import { Route } from "react-router-dom";
-
+// import { NavLink } from "react-router-dom";
+// import { Route } from "react-router-dom";
+//TODO: do the join(by removing the segment of notRefresh)
 
 
 class SubjectByNameList extends Component {
@@ -59,9 +59,8 @@ class SubjectByNameList extends Component {
 
     //----------------------------------------------
   
-      console.log("*****************")
-      this.doPostData(this.props.location.param1,'followSubject/');
-    //get the subject either way
+    console.log("*****************")
+    this.doPostData(this.props.location.param1,'followSubject/');
     this.doGetData(this.props.location.param1,'getSubjectByName/');  
   }
 

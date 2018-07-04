@@ -109,6 +109,7 @@ class HomeList extends Component {
   } 
 
   
+//TODO:check if the user is allready follows this subject
 
   eachSubjects (sub,i) {
     // console.log(`backgroundImage: url(${sub.background})`)
