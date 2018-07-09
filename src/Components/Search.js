@@ -45,8 +45,7 @@ class Search extends Component {
           about: txt6,
           price: txt7,
           requredSkills: txt8,
-          background: txt9
-          
+          background: txt9  
       }]
     }))
   }
@@ -144,12 +143,8 @@ class Search extends Component {
                           param1: sub.name}}
                           activeStyle={this.active} 
             className="btn btn-primary followSub" >Follow</NavLink>
-          {/* </Trigger> */}
           </Home>
-      
         </div>
-        
-        
       </div>
       )
 

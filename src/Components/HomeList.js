@@ -8,8 +8,6 @@ import {GetData} from '../services/GetData';
 // import {PostData} from '../services/PostData';
 // import Trigger from 'rc-trigger';
 
-
-
 class HomeList extends Component {
   constructor(props) {
     super(props);
@@ -67,9 +65,20 @@ class HomeList extends Component {
     //checks if the session is empty
     if(!sessionStorage.getItem('userData'))
      this.setState({redirect: true});
-    else{
-      this.doGetData('getSubjectsByFavorites/)');
+    else{   
+      const url = "https://jemusic.herokuapp.com/getAllSubjects";
+      fetch(url).then((res) => {        
+        return res.json();      
+      }).then((data) => {        
+        var self=this;        
+        data.map((json) => {            
+          self.add(json.name, json.date, json.hours, json.type,
+            json.location, json.about, json.price, json.requredSkills,json.background);        
+            console.log(json);  
+        })    // endOf data.map((data)  
+      })
     } 
+
   }
 
   doGetData(route) {
@@ -112,7 +121,7 @@ class HomeList extends Component {
 
   eachSubjects (sub,i) {
     // console.log(`backgroundImage: url(${sub.background})`)
-
+    console.log("sub: " + sub)
     const imageUrl = require(`../images/${sub.background}`)
      return (          
       <div key={'container'+i} className="card cards" style={{width: `18rem`, backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat' }}>    
@@ -127,15 +136,12 @@ class HomeList extends Component {
             <p className="card-text">{sub.requredSkills}</p>
             <p className="card-text">{sub.participent}</p>
            
-           {/* <Trigger action={['click']}
-             popup={<div><input ref={node => this.input = node} type="text" /></div>}> */}
-                  <NavLink to=
-                              //navigate to SubjectByName with the param sub.name
-                              {{pathname: "/Subject", 
-                                param1: sub.name}}
-                                activeStyle={this.active} 
+            <NavLink to=
+                        //navigate to SubjectByName with the param sub.name
+                        {{pathname: "/Subject", 
+                          param1: sub.name}}
+                          activeStyle={this.active} 
             className="btn btn-primary followSub" >Follow</NavLink>
-          {/* </Trigger> */}
           </Home>
       
         </div>

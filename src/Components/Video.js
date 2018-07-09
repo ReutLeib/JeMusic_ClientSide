@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
- class Profile extends Component {
+ class Video extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,4 +15,4 @@ import React, {Component} from 'react'
     );
   }
 }
-export default Profile
+export default Video
