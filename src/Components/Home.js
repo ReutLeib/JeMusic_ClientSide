@@ -23,7 +23,7 @@ class Home extends Component {
     //   })  
     // }
         return (
-            <div className='book'>
+            <div>
               <div>{this.props.children}</div>
               {/* <NavLink to="/Subject" activeStyle={this.active} className="btn btn-primary followSub" >Follow</NavLink> */}
             </div>

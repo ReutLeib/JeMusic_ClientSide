@@ -57,6 +57,7 @@ class HomeList extends Component {
       }]
     }))
   }
+
   nextID() {
       this.uniqueId = this.uniqueId || 0
       return this.uniqueId++
@@ -70,7 +71,6 @@ class HomeList extends Component {
       this.doGetData('getSubjectsByFavorites/)');
     } 
   }
-
 
   doGetData(route) {
     let getData = {
@@ -97,7 +97,7 @@ class HomeList extends Component {
         }
       });
     } else {}
-}
+  }
 
   update(newSub, i) {
     this.setState(() => ({
@@ -139,8 +139,6 @@ class HomeList extends Component {
           </Home>
       
         </div>
-        
-        
       </div>
       )
 
@@ -153,9 +151,8 @@ class HomeList extends Component {
       return (<Redirect to={'/'}/>);
 
     return (
-        <div className="ideaList">
+        <div>
           {this.state.subjects.map(this.eachSubjects)}
-
         </div>
     )
   }
