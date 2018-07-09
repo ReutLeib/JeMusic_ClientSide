@@ -82,8 +82,6 @@ class ProfileList extends Component {
           background: txt9  
       }]
     }))
-    console.log("jems:______ " + this.jems)
-
   }
 
 GetDataVideo(userName_,route) {
@@ -117,7 +115,6 @@ GetDataJem(userName_,route) {
       GetData(route,getData.userName).then((result) => {
         if((result!=false)){
           var self=this;  
-            console.log("result: " + result);            
            result.map((json) => {            
               self.addJem(json.name, json.date, json.hours, json.type,
                       json.location, json.about, json.price, json.requredSkills, json.background);         
@@ -232,20 +229,15 @@ GetDataJem(userName_,route) {
   }
 
   viewJems(prof,i) {
-    // const imageUrl = require(`../images/${prof.background}`)
-    // backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat'
+    let backgroundUrl = require(`../images/${prof.background}`)
+    
      return (          
-      <div key={'container'+i} className="card cards" style={{width: `18rem` }}>    
+      <div key={'container'+i} className="card cards" style={{width: `18rem`,backgroundImage:`url(${backgroundUrl})`, backgroundRepeat: 'no-repeat' }}>    
         <div className="card-body">
           <Home key={'jem'+i} index={i} onChange={this.updateJems}>         
             <h1 className="card-title">{prof.name}</h1>
             <p className="card-text">{prof.date} * {prof.hours}</p>
             <p className="card-text">{prof.location}</p>
-            <p className="card-text">{prof.type}</p>
-            <p className="card-text">{prof.about}</p>
-            <p className="card-text">{prof.price} $</p>
-            <p className="card-text">{prof.requredSkills}</p>
-            <p className="card-text">{prof.participent}</p>
           </Home>
         </div>
       </div>
