@@ -3,7 +3,6 @@ import Home from './Home'
 import './style.css';
 import {Redirect} from 'react-router-dom';
 import { NavLink } from "react-router-dom";
-import {GetData} from '../services/GetData';
 
 // import {PostData} from '../services/PostData';
 // import Trigger from 'rc-trigger';
@@ -79,33 +78,6 @@ class HomeList extends Component {
       })
     } 
 
-  }
-
-  doGetData(route) {
-    let getData = {
-      name: JSON.parse(sessionStorage.getItem('userData')).userName
-    }
-
-    if (getData) {
-      getData.name=getData.name.replace(/ /g, "%20");
-      GetData(route,getData.name).then((result) => {
-        if((result!=false)){
-          var self=this;        
-          result.map((result) => {            
-            result.map((json) => {
-              self.add(json.name, json.date, json.hours, json.type,
-                      json.location, json.about, json.price, json.requredSkills, json.background);         
-              console.log(json);          
-            })
-          })  
-        }
-        else{
-          this.setState({loginError:true});
-          this.setState({errorMsg:"There is a problem with favorites."});
-          console.log(this.state.errorMsg);
-        }
-      });
-    } else {}
   }
 
   update(newSub, i) {

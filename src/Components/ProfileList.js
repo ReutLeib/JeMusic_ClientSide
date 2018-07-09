@@ -23,13 +23,13 @@ class ProfileList extends Component {
     this.viewVideos       = this.viewVideos.bind(this)
     this.updateProfiles   = this.updateProfiles.bind(this)
     this.updateVideos     = this.updateVideos.bind(this)
-    this.add              = this.add.bind(this)
+    this.addProfile       = this.addProfile.bind(this)
     this.addVideo         = this.addVideo.bind(this)
     this.nextID           = this.nextID.bind(this)
     this.doGetData        = this.doGetData.bind(this)
   }
 
-  add(txt1,txt2,txt3,txt4,txt5) {
+  addProfile(txt1,txt2,txt3,txt4,txt5) {
     this.setState(prevState => ({
       profiles: [
       ...prevState.profiles,
@@ -69,7 +69,7 @@ doGetData(userName_,route) {
           var self=this;     
             result.map((data) => {            
               self.addVideo(data.vid, data.likes);        
-    })              
+       })              
         }
         else{
           this.setState({loginError:true});
@@ -77,7 +77,7 @@ doGetData(userName_,route) {
           console.log(this.state.errorMsg);
         }
       });
-    } else {}
+    }
 }
 
   nextID() {
@@ -93,7 +93,7 @@ doGetData(userName_,route) {
     let data = JSON.parse(sessionStorage.getItem('userData'));
     this.doGetData(data.userName,'getAllVideosByUserName/');
     var self=this; 
-    self.add(data.userName, data.name, data.age,
+    self.addProfile(data.userName, data.name, data.age,
               data.city, data.profilePic);        
   }
 }
@@ -133,6 +133,7 @@ doGetData(userName_,route) {
         <div>
           <p>Jems:</p>
         </div>
+
         <div>
           <p>videos:</p>
             <div>
@@ -144,19 +145,15 @@ doGetData(userName_,route) {
   }
 
   viewVideos (prof,i) {
+    console.log("prof.video: " + prof.video)
+    const videoUrl = prof.video
+
     return (          
       <div key={'container'+i}className="card" style={{ margin:`0 auto`,width: 18 + 'rem', backgroundColor: `black`}}>
-          <div style={{width: `170px`,height: `170px`, 
-                        backgroundRepeat: 'no-repeat',borderRadius: `50%`,
-                        backgroundPosition: `center center`, margin: `0 auto` }}>
-          </div>
-        
-
-          <div className="card-body">
           <Video key={'prof'+i} index={i} onChange={this.updateVideos}>
           <Iframe url="http://www.youtube.com/embed/xDMP3i36naA"
                     width="100%"
-                    height="190px"
+                    height="150px"
                     id="myId"
                     className="myClassname"
                     display="initial"
@@ -164,9 +161,6 @@ doGetData(userName_,route) {
                     allowFullScreen
                 />
           </Video>
-        </div>
-        
-       
       </div>
       )
   }
