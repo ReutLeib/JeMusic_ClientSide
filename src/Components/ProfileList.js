@@ -230,7 +230,6 @@ GetDataJem(userName_,route) {
 
   viewJems(prof,i) {
     let backgroundUrl = require(`../images/${prof.background}`)
-    
      return (          
       <div key={'container'+i} className="card cards" style={{width: `18rem`,backgroundImage:`url(${backgroundUrl})`, backgroundRepeat: 'no-repeat' }}>    
         <div className="card-body">
