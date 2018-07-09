@@ -22,7 +22,6 @@ class HomeList extends Component {
     this.update         = this.update.bind(this)
     this.add            = this.add.bind(this)
     this.nextID         = this.nextID.bind(this)
-    this.flagHeader     = false
     // this.DoPostData = this
     // .DoPostData
     // .bind(this);

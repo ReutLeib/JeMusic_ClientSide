@@ -84,7 +84,7 @@ class Search extends Component {
       }
   
       
-      doPostData (newRank,route) {
+      doPostData(newRank,route) {
       
         let postData = {
           date:newRank

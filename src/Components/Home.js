@@ -6,15 +6,7 @@ class Home extends Component {
     super(props);
     this.state = {
     }
-    this.flagHeader = false
   }
-
-  // active = {
-  //     backgroundColor: "#212F3D",
-  //     color: "white",
-  //     fontWeight: "bold"
-  // };
-  
 
   render() {
     // moveSubjectName=(sub)=>{
