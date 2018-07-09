@@ -6,8 +6,8 @@ import {Redirect} from 'react-router-dom';
 import {PostData} from '../services/PostData';
 import {GetData} from '../services/GetData';
 import Home from './Home'
-import './style.css';
 import { NavLink } from "react-router-dom";
+import './style.css';
 
 //TODO: centered the elements(there is a problem)
 //TODO: not able to display the patch, it collapse
@@ -84,7 +84,7 @@ class Search extends Component {
           result.map((result) => {            
             result.map((json) => {
               self.add(json.name, json.date, json.hours, json.type,
-                      json.location, json.about, json.price, json.requredSkills, json.background);         
+                      json.location, json.about, json.price, json.requredSkills, json.backgroundImage);         
               console.log(json);          
             })
           })  

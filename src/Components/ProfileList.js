@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
 import Profile from './Profile'
 import Video from './Video'
-import './style.css';
+import Home from './Home'
 import {Redirect} from 'react-router-dom';
 import {GetData} from '../services/GetData';
 import Iframe from 'react-iframe'
+import './style.css';
 
 
 //TODO: show all subjects and videos of usr
@@ -16,17 +17,23 @@ class ProfileList extends Component {
       ],
       videos: [
       ],
+      jems: [
+      ],
       name:'',
       redirect: false
     }
     this.viewProfile      = this.viewProfile.bind(this)
     this.viewVideos       = this.viewVideos.bind(this)
+    this.viewJems         = this.viewJems.bind(this)
     this.updateProfiles   = this.updateProfiles.bind(this)
     this.updateVideos     = this.updateVideos.bind(this)
+    this.updateJems       = this.updateJems.bind(this)
     this.addProfile       = this.addProfile.bind(this)
     this.addVideo         = this.addVideo.bind(this)
+    this.addJem           = this.addJem.bind(this)
     this.nextID           = this.nextID.bind(this)
-    this.doGetData        = this.doGetData.bind(this)
+    this.GetDataVideo     = this.GetDataVideo.bind(this)
+    this.GetDataJem       = this.GetDataJem.bind(this)
   }
 
   addProfile(txt1,txt2,txt3,txt4,txt5) {
@@ -58,7 +65,28 @@ class ProfileList extends Component {
     }))
   }
 
-doGetData(userName_,route) {
+   addJem(txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9) {
+    this.setState(prevState => ({
+      jems: [
+      ...prevState.jems,
+      {
+          id: this.nextID(),
+          name: txt1,
+          date: txt2,
+          hours: txt3,
+          type: txt4,
+          location: txt5,
+          about: txt6,
+          price: txt7,
+          requredSkills: txt8,
+          background: txt9  
+      }]
+    }))
+    console.log("jems:______ " + this.jems)
+
+  }
+
+GetDataVideo(userName_,route) {
     let getData = {
       userName: userName_    }
 
@@ -80,6 +108,31 @@ doGetData(userName_,route) {
     }
 }
 
+GetDataJem(userName_,route) {
+    let getData = {
+      userName: userName_    }
+
+    if (getData) {
+      getData.userName=getData.userName.replace(/ /g, "%20");
+      GetData(route,getData.userName).then((result) => {
+        if((result!=false)){
+          var self=this;  
+            console.log("result: " + result);            
+           result.map((json) => {            
+              self.addJem(json.name, json.date, json.hours, json.type,
+                      json.location, json.about, json.price, json.requredSkills, json.background);         
+              console.log(json);          
+          })               
+        }
+        else{
+          this.setState({loginError:true});
+          this.setState({errorMsg:"Subject not found."});
+          console.log(this.state.errorMsg);
+        }
+      });
+    }
+}
+
   nextID() {
       this.uniqueId = this.uniqueId || 0
       return this.uniqueId++
@@ -91,13 +144,14 @@ doGetData(userName_,route) {
     this.setState({redirect: true});
   else{
     let data = JSON.parse(sessionStorage.getItem('userData'));
-    this.doGetData(data.userName,'getAllVideosByUserName/');
+    this.GetDataVideo(data.userName,'getAllVideosByUserName/');
+    this.GetDataJem(data.userName,'getAllSubjectsByUserName/');
     var self=this; 
     self.addProfile(data.userName, data.name, data.age,
               data.city, data.profilePic);        
   }
 }
-
+// 
   updateProfiles(newProf, i) {
     this.setState(() => ({
       profiles: this.state.profiles.map(
@@ -106,19 +160,28 @@ doGetData(userName_,route) {
     }))
   } 
 
-  updateVideos (newProf, i) {
+  updateVideos(newVid, i) {
     this.setState(() => ({
       videos: this.state.videos.map(
-        (prof) => (prof.id !== i) ? prof : {...prof, name: newProf}
+        (prof) => (prof.id !== i) ? prof : {...prof, name: newVid}
       )
     }))
   }
 
-  viewProfile (prof,i) {
+  updateJems(newJem, i) {
+    this.setState(() => ({
+      jems: this.state.jems.map(
+        (prof) => (prof.id !== i) ? prof : {...prof, name: newJem}
+      )
+    }))
+  }
+
+
+  viewProfile(prof,i) {
     const imageUrl = require(`../images/${prof.profilePic}`)
     return (          
       <div key={'container'+i}className="card" style={{ margin:`0 auto`,width: 18 + 'rem', backgroundColor: `black`}}>
-          <div style={{width: `170px`,height: `170px`, backgroundImage: `url(${imageUrl})`, 
+          <div style={{width: `170px`,height: `170px`, backgroundImage: `url(${imageUrl})`,
                         backgroundRepeat: 'no-repeat',borderRadius: `50%`,
                         backgroundPosition: `center center`, margin: `0 auto` }}>
           </div>
@@ -132,6 +195,9 @@ doGetData(userName_,route) {
         
         <div>
           <p>Jems:</p>
+            <div>
+              {this.state.jems.map(this.viewJems)}
+            </div>
         </div>
 
         <div>
@@ -144,7 +210,7 @@ doGetData(userName_,route) {
       )
   }
 
-  viewVideos (prof,i) {
+  viewVideos(prof,i) {
     console.log("prof.video: " + prof.video)
     const videoUrl = prof.video
 
@@ -161,6 +227,27 @@ doGetData(userName_,route) {
                     allowFullScreen
                 />
           </Video>
+      </div>
+      )
+  }
+
+  viewJems(prof,i) {
+    // const imageUrl = require(`../images/${prof.background}`)
+    // backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat'
+     return (          
+      <div key={'container'+i} className="card cards" style={{width: `18rem` }}>    
+        <div className="card-body">
+          <Home key={'jem'+i} index={i} onChange={this.updateJems}>         
+            <h1 className="card-title">{prof.name}</h1>
+            <p className="card-text">{prof.date} * {prof.hours}</p>
+            <p className="card-text">{prof.location}</p>
+            <p className="card-text">{prof.type}</p>
+            <p className="card-text">{prof.about}</p>
+            <p className="card-text">{prof.price} $</p>
+            <p className="card-text">{prof.requredSkills}</p>
+            <p className="card-text">{prof.participent}</p>
+          </Home>
+        </div>
       </div>
       )
   }
