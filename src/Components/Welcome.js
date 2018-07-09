@@ -5,7 +5,6 @@ import {GetData} from '../services/GetData';
 import logo from '../images/logo-JeMusic.png' 
 import './style.css';
 
-
 class Welcome extends Component {
   constructor(props) {
     super(props);
