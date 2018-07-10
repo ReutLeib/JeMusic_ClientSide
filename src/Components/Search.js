@@ -23,12 +23,13 @@ class Search extends Component {
     }
     this.renderFlag = false;
 
-    this.handleSubmit=this.handleSubmit.bind(this);
-    this.handleRankChange=this.handleRankChange.bind(this);
-    this.eachSubjects   = this.eachSubjects.bind(this)
-    this.update         = this.update.bind(this)
-    this.add            = this.add.bind(this)
-    this.nextID         = this.nextID.bind(this)
+    this.handleSubmit     = this.handleSubmit.bind(this);
+    this.handleRankChange = this.handleRankChange.bind(this);
+    this.eachSubjects     = this.eachSubjects.bind(this)
+    this.update           = this.update.bind(this)
+    this.add              = this.add.bind(this)
+    this.nextID           = this.nextID.bind(this)
+    this.cleanDiv         = this.cleanDiv.bind(this)
   }
 
   add(txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9) {
@@ -54,6 +55,16 @@ class Search extends Component {
     this.setState({newRank: event.target.value})
   }
 
+  cleanDiv() {
+    let arr = []
+      for (let i = 0; i < 10; i++) {
+            arr.push({name:"", date:"", hours:"", type:"",
+                      location:"", about:"", price:"", requredSkills:"", background:""})
+           }
+           return arr;
+    
+  }
+
   handleSubmit(event){
       event.preventDefault();
       let newRank = this.state.newRank;
@@ -67,6 +78,9 @@ class Search extends Component {
           body: JSON.stringify({date:newRank})
         });
           const content = await rawResponse.json();
+          console.log("content: " + content)
+          // document.getElementById("response").innerHTML = ""
+          ReactDOM.render(<SearchList subjects={this.cleanDiv()} />, document.getElementById("response"))
           ReactDOM.render(<SearchList subjects={content} />, document.getElementById("response"))
       })();
   }
@@ -162,10 +176,8 @@ class Search extends Component {
                    <button type="submit" className="btn btn-primary" onClick={this.delete}><MdSend/> </button> 
                 </form>
                 <div id="response">
+                {this.state.subjects.map(this.eachSubjects)}
                 </div>
-                  <div>
-                  {this.state.subjects.map(this.eachSubjects)}
-              </div>
             </div>
           </div>
       )
