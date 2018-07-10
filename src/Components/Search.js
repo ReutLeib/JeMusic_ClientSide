@@ -24,7 +24,7 @@ class Search extends Component {
     this.renderFlag = false;
 
     this.handleSubmit     = this.handleSubmit.bind(this);
-    this.handleRankChange = this.handleRankChange.bind(this);
+    this.handleSubChange  = this.handleSubChange.bind(this);
     this.eachSubjects     = this.eachSubjects.bind(this)
     this.update           = this.update.bind(this)
     this.add              = this.add.bind(this)
@@ -51,8 +51,8 @@ class Search extends Component {
     }))
   }
 
-  handleRankChange(event){
-    this.setState({newRank: event.target.value})
+  handleSubChange(event){
+    this.setState({newSub: event.target.value})
   }
 
   cleanDiv() {
@@ -67,7 +67,7 @@ class Search extends Component {
 
   handleSubmit(event){
       event.preventDefault();
-      let newRank = this.state.newRank;
+      let newSub = this.state.newSub;
       (async () => {
         const rawResponse = await fetch('https://jemusic.herokuapp.com/getSubjectByDate/', {
           method: 'POST',
@@ -75,7 +75,7 @@ class Search extends Component {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({date:newRank})
+          body: JSON.stringify({date:newSub})
         });
           const content = await rawResponse.json();
           console.log("content: " + content)
@@ -171,7 +171,7 @@ class Search extends Component {
                   <label>
                     <p> Date format: 2/10/2018</p>
                     Date:
-                    <input onChange={this.handleRankChange} value={this.state.newRank} type="text" name="date" />                  
+                    <input onChange={this.handleSubChange} value={this.state.newSub} type="text" name="date" />                  
                   </label>
                    <button type="submit" className="btn btn-primary" onClick={this.delete}><MdSend/> </button> 
                 </form>
