@@ -209,12 +209,12 @@ GetDataJem(userName_,route) {
 
   viewVideos(prof,i) {
     console.log("prof.video: " + prof.video)
-    const videoUrl = prof.video
+    const videoUrl = `https://www.youtube.com/embed/${prof.video}`
 
     return (          
       <div key={'container'+i}className="card" style={{ margin:`0 auto`,width: 18 + 'rem', backgroundColor: `black`}}>
           <Video key={'prof'+i} index={i} onChange={this.updateVideos}>
-          <Iframe url="http://www.youtube.com/embed/xDMP3i36naA"
+          <Iframe url={videoUrl}
                     width="100%"
                     height="150px"
                     id="myId"
