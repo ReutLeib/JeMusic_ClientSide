@@ -131,7 +131,7 @@ class Search extends Component {
             <p className="card-text">{sub.location}</p>
             <p className="card-text">{sub.type}</p>
             <p className="card-text">{sub.about}</p>
-            <p className="card-text">{sub.price} $</p>
+            <p className="card-text">{sub.price} ₪</p>
             <p className="card-text">{sub.requredSkills}</p>
             <p className="card-text">{sub.participent}</p>
 
@@ -151,18 +151,21 @@ class Search extends Component {
   render() {
       return (
           <div>
-              <form action="https://jemusic.herokuapp.com/getSubjectByDate/" method="POST" onSubmit={this.handleSubmit}>
-                <label>
-                  <p> Date format: 2/10/2018</p>
-                  Date:
-                  <input onChange={this.handleRankChange} value={this.state.newRank} type="text" name="date" />                  
-                </label>
-                 <button  type="submit" className="btn btn-primary" onClick={this.delete}><MdSend/> </button> 
-              </form>
-              <div id="response">
+            <div>
+                <form action="https://jemusic.herokuapp.com/getSubjectByDate/" method="POST" onSubmit={this.handleSubmit}  
+                      className="col-xs-12 col-md-4 offset-md-5 padding5">
+                  <label>
+                    <p> Date format: 2/10/2018</p>
+                    Date:
+                    <input onChange={this.handleRankChange} value={this.state.newRank} type="text" name="date" />                  
+                  </label>
+                   <button type="submit" className="btn btn-primary" onClick={this.delete}><MdSend/> </button> 
+                </form>
+                <div id="response">
+                </div>
+                  <div>
+                  {this.state.subjects.map(this.eachSubjects)}
               </div>
-                <div>
-                {this.state.subjects.map(this.eachSubjects)}
             </div>
           </div>
       )

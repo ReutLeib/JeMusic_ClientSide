@@ -104,7 +104,7 @@ class HomeList extends Component {
             <p className="card-text">{sub.location}</p>
             <p className="card-text">{sub.type}</p>
             <p className="card-text">{sub.about}</p>
-            <p className="card-text">{sub.price} $</p>
+            <p className="card-text">{sub.price} ₪</p>
             <p className="card-text">{sub.requredSkills}</p>
             <p className="card-text">{sub.participent}</p>
            

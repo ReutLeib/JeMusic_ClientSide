@@ -8,7 +8,7 @@ const SearchList = ({ subjects, index }) => (
    { subjects && subjects.map( (item, index) => 
     
        <div key={'container'+index}  
-       className="card cards" style={{width: `18rem`, backgroundImage: `url(../images/${item.background})`, backgroundRepeat: 'no-repeat' }}>
+       className="card cards" style={{width: `18rem`, backgroundImage: `url(../images/${item.background})`, backgroundRepeat: 'no-repeat'}}>
 
          <div className="card-body">
           <div key={'subject'+index} index={index} >
@@ -17,7 +17,7 @@ const SearchList = ({ subjects, index }) => (
             <p className="card-text">{item.location}</p>
             <p className="card-text">{item.type}</p>
             <p className="card-text">{item.about}</p>
-            <p className="card-text">{item.price} $</p>
+            <p className="card-text">{item.price} ₪</p>
             <p className="card-text">{item.requredSkills}</p>
             <p className="card-text">{item.participent}</p>
           </div>
