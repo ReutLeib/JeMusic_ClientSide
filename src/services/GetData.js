@@ -4,8 +4,11 @@ export function GetData(type, userData) {
   let BaseURL = 'https://jemusic.herokuapp.com/';
 
   return new Promise((resolve, reject) =>{
+    console.log("type: " + type)
+
     type+=userData;
-    console.log(BaseURL+type)
+    console.log("userData: " + userData)
+    console.log("GetData: " + BaseURL+type)
     fetch(BaseURL+type, {
         method: 'GET',
         headers: {

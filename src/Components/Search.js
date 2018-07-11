@@ -90,6 +90,7 @@ class Search extends Component {
 
     if (getData) {
       getData.name=getData.name.replace(/ /g, "%20");
+      // console.log("NAMEEEE: " + getData.name);
       GetData(route,getData.name).then((result) => {
         if((result!=false)){
           var self=this;        
@@ -128,7 +129,7 @@ class Search extends Component {
     if(!sessionStorage.getItem('userData'))
      this.setState({redirect: true});
     else{
-      this.doGetData('getSubjectsByFavorites/)');
+      this.doGetData('getSubjectsByFavorites/');
     } 
   }
 
