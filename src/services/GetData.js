@@ -5,6 +5,7 @@ export function GetData(type, userData) {
 
   return new Promise((resolve, reject) =>{
     type+=userData;
+    console.log(BaseURL+type)
     fetch(BaseURL+type, {
         method: 'GET',
         headers: {

@@ -57,11 +57,9 @@ class Search extends Component {
 
   cleanDiv() {
     let arr = []
-      for (let i = 0; i < 10; i++) {
-            arr.push({name:"", date:"", hours:"", type:"",
-                      location:"", about:"", price:"", requredSkills:"", background:""})
-           }
-           return arr;
+    arr.push({name:"", date:"", hours:"", type:"",
+              location:"", about:"", price:"", requredSkills:"", background:""})
+    return arr;
     
   }
 
