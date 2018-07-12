@@ -18,7 +18,6 @@ const SearchList = ({ subjects, index }) => (
             <p className="card-text">{item.date} ● {item.hours}</p>
             <p className="card-text">{item.location}</p>
             <p className="card-text">{item.type}</p>
-            <p className="card-text">{item.about}</p>
             <p className="card-text">{item.price} ₪</p>
             <p className="card-text">{item.requredSkills}</p>
             <p className="card-text">{item.participent}</p>

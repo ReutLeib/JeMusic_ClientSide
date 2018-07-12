@@ -117,10 +117,13 @@ class SubjectByNameList extends Component {
              className="btn btn-primary followSub"> 
              Join</button>
           </div>
-          <div className="backgroundBlack paddinTop5">
-            <p className="card-text">{sub.location}</p>
+          <div>
+            <p className="card-text textCenter paddinTop5 marginTop20">{sub.about}</p>
+          </div>
+          <div className="paddinTop5 marginTop20">
+            <p className="card-text"><FaClockO/>&nbsp;{sub.date} ● {sub.hours}</p>
+            <p className="card-text"><FaLocationArrow/>&nbsp;{sub.location}</p>
             <p className="card-text">{sub.type}</p>
-            <p className="card-text">{sub.about}</p>
             <p className="card-text">{sub.price} ₪</p>
             <p className="card-text">{sub.requredSkills}</p>
             <p className="card-text">{sub.participent}</p>
