@@ -1,4 +1,6 @@
 import React from 'react';
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 //TODO:check if the user is allready follows this subject
 //TODO: fix background of subject
 

@@ -4,6 +4,9 @@ import {Redirect} from 'react-router-dom';
 import {PostData} from '../services/PostData';
 import {GetData} from '../services/GetData';
 import FaClockO from 'react-icons/lib/fa/clock-o';
+import FaLocationArrow from 'react-icons/lib/fa/location-arrow';
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 // import { NavLink } from "react-router-dom";
 // import { Route } from "react-router-dom";
 //TODO: do the join(by removing the segment of notRefresh)
@@ -20,13 +23,16 @@ class SubjectByNameList extends Component {
       errorMsg:"",
       joinSubject:false
     }
-    this.eachSubject   = this.eachSubject.bind(this);
-    this.update     = this.update.bind(this);
-    this.add        = this.add.bind(this)
-    this.nextID     = this.nextID.bind(this)
-    this.doPostData = this.doPostData.bind(this);
-    this.doGetData = this.doGetData.bind(this);
-    this.joinToSubject = this.joinToSubject.bind(this);
+
+    this.flagNotification = true;
+    this.eachSubject    = this.eachSubject.bind(this);
+    this.update         = this.update.bind(this);
+    this.add            = this.add.bind(this)
+    this.nextID         = this.nextID.bind(this)
+    this.doPostData     = this.doPostData.bind(this);
+    this.doGetData      = this.doGetData.bind(this);
+    this.joinToSubject  = this.joinToSubject.bind(this);
+    this.notificationsFollowing  = this.notificationsFollowing.bind(this);
     
   }
 
@@ -120,11 +126,6 @@ class SubjectByNameList extends Component {
             <p className="card-text">{sub.participent}</p>
           </div>
           </SubjectByName>
-          <button           
-             activeStyle={this.active} 
-             className="btn btn-primary followSub">
-             
-             Join</button>
              {/* style={(this.state.joinSubject)?{display:'none'}:{}} */}
               {/* onClick={this.joinToSubject.bind(this.props.location.param1)} */}
              {/* navigate to SubjectByName with the param sub.name */}
@@ -137,7 +138,7 @@ class SubjectByNameList extends Component {
 
   joinToSubject(subName){
     this.setState({joinSubject: true});
-    
+    NotificationManager.success('Success message', 'Yeahy! now you are participent:)');
     console.log("++++++++++++++++: "+subName)
     this.doPostData(subName,'UpdateParticipentsByUserName/');
   }
@@ -149,7 +150,7 @@ class SubjectByNameList extends Component {
       userName: JSON.parse(sessionStorage.getItem('userData')).userName,
       name: subName
     }
-
+    this.notificationsFollowing();
     PostData(route, postData).then((result) => {
       if((result!=false)){
         this.setState({redirect: true});
@@ -162,11 +163,21 @@ class SubjectByNameList extends Component {
     });
     
   }
+  
+  notificationsFollowing(){
+    console.log("flagNotification: " + this.flagNotification);
+    if(this.flagNotification){
+      NotificationManager.success('Success message', 'Yeahy! now you are following:)');  
+      this.flagNotification = false;
+    }
+  }
+
   render() {
     if(!sessionStorage.getItem('userData'))
       return (<Redirect to={'/'}/>);
     return (
         <div >
+          <NotificationContainer/>
           {this.state.subjects.map(this.eachSubject)}
         </div>
       )

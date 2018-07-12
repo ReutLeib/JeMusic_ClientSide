@@ -7,6 +7,8 @@ import {PostData} from '../services/PostData';
 import {GetData} from '../services/GetData';
 import Home from './Home'
 import { NavLink } from "react-router-dom";
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 import './style.css';
 
 //TODO: centered the elements(there is a problem)
@@ -66,6 +68,8 @@ class Search extends Component {
   handleSubmit(event){
       event.preventDefault();
       let newSub = this.state.newSub;
+      // NotificationManager.success('Success message', 'Yeahy! now you are following:)');
+
       (async () => {
         const rawResponse = await fetch('https://jemusic.herokuapp.com/getSubjectByDate/', {
           method: 'POST',

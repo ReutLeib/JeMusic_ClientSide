@@ -3,6 +3,8 @@ import Home from './Home'
 import './style.css';
 import {Redirect} from 'react-router-dom';
 import { NavLink } from "react-router-dom";
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 // import {PostData} from '../services/PostData';
 // import Trigger from 'rc-trigger';
@@ -66,6 +68,8 @@ class HomeList extends Component {
      this.setState({redirect: true});
     else{   
       const url = "https://jemusic.herokuapp.com/getAllSubjects";
+      // NotificationManager.success('Success message', 'Yeahy! now you are following:)');
+    
       fetch(url).then((res) => {        
         return res.json();      
       }).then((data) => {        
