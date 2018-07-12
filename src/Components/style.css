@@ -29,12 +29,13 @@
   /*margin:0 auto;*/
   /*padding: 10px;*/
   border-radius: 20px;
-  padding-right: 95px;
-  padding-left: 95px;
+  padding-right: 81px;
+  padding-left: 88px;
   margin-top: 30px;
   margin-bottom: 30px;
   width:fit-content;
   background-color: black;
+  border-color: black;
 
 }
 

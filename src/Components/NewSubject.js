@@ -191,7 +191,7 @@ class InsertSubject extends Component {
                         requiredSkills:<br></br>
                         <input onChange={this.handleRequiredSkills} value={this.state.newRequiredSkills} type="text" name="requiredSkills" />
                       </label><br></br>
-                   <button type="submit" className="btn btn-primary insertSub" onClick={this.delete}><FaCaretSquareORight size={30} background={'#666666'} /> </button> 
+                   <button type="submit" className="btn btn-primary insertSub" onClick={this.delete}><FaCaretSquareORight size={45} background={'#666666'} /> </button> 
 
                 </form>
                 <div id="response">
