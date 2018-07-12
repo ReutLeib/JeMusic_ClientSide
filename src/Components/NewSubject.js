@@ -168,30 +168,30 @@ class InsertSubject extends Component {
                       className="col-xs-12 col-md-4 offset-md-5 ">
                     <label>
                     Yeah  ! Let's create a new Jem : <br></br>
-                        name:
+                        name:<br></br>
                         <input onChange={this.handleName} value={this.state.newName} type="text" name="name" />
                       </label><br></br>
                     <label>
-                        date:
+                        date:<br></br>
                         <input onChange={this.handleDate} value={this.state.newDate} type="text" name="date" />
                       </label><br></br>
                     <label>
-                        hours:
+                        hours:<br></br>
                         <input onChange={this.handleHours} value={this.state.newHours} type="text" name="hours" />
                       </label><br></br>
                     <label>
-                        type:
+                        type:<br></br>
                         <input onChange={this.handleType} value={this.state.newType} type="text" name="type" />
                       </label><br></br>
                     <label>
-                        location:
+                        location:<br></br>
                         <input onChange={this.handleLocation} value={this.state.newLocation} type="text" name="location" />
                       </label><br></br>
                     <label>
-                        requiredSkills:
+                        requiredSkills:<br></br>
                         <input onChange={this.handleRequiredSkills} value={this.state.newRequiredSkills} type="text" name="requiredSkills" />
                       </label><br></br>
-                   <button type="submit" className="btn btn-primary" onClick={this.delete}><FaCaretSquareORight/> </button> 
+                   <button type="submit" className="btn btn-primary insertSub" onClick={this.delete}><FaCaretSquareORight size={30} background={'#666666'} /> </button> 
 
                 </form>
                 <div id="response">
