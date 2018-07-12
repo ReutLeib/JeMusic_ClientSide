@@ -109,7 +109,7 @@ class SubjectByNameList extends Component {
     return (          
       <div key={'container'+i} className="myCard backgroundBlack" style={{width: `18rem`,borderRadius: `2px` }}>
           <SubjectByName key={'sub'+i} index={i} onChange={this.update}>
-          <div className="padding10" style={{ backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat'}}>         
+          <div style={{ backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat'}}>         
             <h1 className="card-title">{sub.name}</h1>
             <p className="card-text">{sub.date} ● {sub.hours}</p>
             <button           
