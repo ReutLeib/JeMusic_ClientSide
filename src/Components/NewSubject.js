@@ -5,6 +5,7 @@ import {Redirect} from 'react-router-dom';
 import {PostData} from '../services/PostData';
 import FaCaretSquareORight from 'react-icons/lib/fa/caret-square-o-right';
 import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 class InsertSubject extends Component {
     constructor(props) {
@@ -92,6 +93,7 @@ class InsertSubject extends Component {
         let newLocation = this.state.newLocation;
         let newRequiredSkills = this.state.newRequiredSkills;
         let newUsername = JSON.parse(sessionStorage.getItem('userData')).userName;
+        NotificationManager.success('Success message', 'Your Subject is created!');
 
 
         (async () => {
@@ -163,6 +165,7 @@ class InsertSubject extends Component {
     render() {
         return (
             <div>
+                <NotificationContainer/>
                 <form action="https://jemusic.herokuapp.com/insertSubject/" method="POST" onSubmit={this.handleSubmit}
                       className="col-xs-12 col-md-4 offset-md-5 ">
                     <label>
