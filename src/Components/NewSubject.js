@@ -6,6 +6,7 @@ import SearchList from './SearchList'
 import ReactDOM from 'react-dom'
 import {Redirect} from 'react-router-dom';
 import {PostData} from '../services/PostData';
+import FaCaretSquareORight from 'react-icons/lib/fa/caret-square-o-right';
 
 class InsertSubject extends Component {
     constructor(props) {
@@ -102,7 +103,7 @@ class InsertSubject extends Component {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({name:newName,date:newDate,hours:newHours,type:newType,location:newLocation,requiredSkills:newRequiredSkills,username:newUsername})
+            body: JSON.stringify({name:newName,date:newDate,hours:newHours,type:newType,location:newLocation,requiredSkills:newRequiredSkills,userName:newUsername})
           });
             const content = await rawResponse.json();
             // console.log("content: " + content);
@@ -163,7 +164,8 @@ class InsertSubject extends Component {
     render() {
         return (
             <div>
-                <form action="https://jemusic.herokuapp.com/insertSubject/" method="POST" onSubmit={this.handleSubmit}>
+                <form action="https://jemusic.herokuapp.com/insertSubject/" method="POST" onSubmit={this.handleSubmit}
+                      className="col-xs-12 col-md-4 offset-md-5 ">
                     <label>
                     Yeah  ! Let's create a new Jem : <br></br>
                         name:
@@ -189,7 +191,8 @@ class InsertSubject extends Component {
                         requiredSkills:
                         <input onChange={this.handleRequiredSkills} value={this.state.newRequiredSkills} type="text" name="requiredSkills" />
                       </label><br></br>
-                    <input type="submit" value="Go Go" />
+                   <button type="submit" className="btn btn-primary" onClick={this.delete}><FaCaretSquareORight/> </button> 
+
                 </form>
                 <div id="response">
                 </div>
@@ -198,6 +201,9 @@ class InsertSubject extends Component {
     }
 }
 export default InsertSubject
+
+                    // <input type="submit" value="Go Go" />
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
