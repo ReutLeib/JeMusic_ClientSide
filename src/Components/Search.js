@@ -140,7 +140,7 @@ class Search extends Component {
         <div className="card-body">
           <Home key={'sub'+i} index={i} onChange={this.update}>         
             <h1 className="card-title">{sub.name}</h1>
-            <p className="card-text">{sub.date} * {sub.hours}</p>
+            <p className="card-text">{sub.date} ● {sub.hours}</p>
             <p className="card-text">{sub.location}</p>
             <p className="card-text">{sub.type}</p>
             <p className="card-text">{sub.about}</p>

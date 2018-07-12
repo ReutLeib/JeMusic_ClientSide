@@ -186,7 +186,7 @@ GetDataJem(userName_,route) {
           <div className="card-body">
           <Profile key={'prof'+i} index={i} onChange={this.updateProfiles}>         
             <h1 className="card-title" style={{ textAlign:`center`}}>{prof.userName} </h1>
-            <p className="card-text" style={{ textAlign:`center`}}>{prof.name} * {prof.age} * {prof.city}</p>
+            <p className="card-text" style={{ textAlign:`center`}}>{prof.name} ● {prof.age} ● {prof.city}</p>
           </Profile>
         </div>
         
@@ -235,7 +235,7 @@ GetDataJem(userName_,route) {
         <div className="card-body">
           <Home key={'jem'+i} index={i} onChange={this.updateJems}>         
             <h1 className="card-title">{prof.name}</h1>
-            <p className="card-text">{prof.date} * {prof.hours}</p>
+            <p className="card-text">{prof.date} ● {prof.hours}</p>
             <p className="card-text">{prof.location}</p>
           </Home>
         </div>

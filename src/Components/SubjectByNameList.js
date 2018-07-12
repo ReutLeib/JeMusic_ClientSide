@@ -103,7 +103,7 @@ class SubjectByNameList extends Component {
       <div key={'container'+i} className="myCard" style={{width: `18rem`,borderRadius: `2px` , backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat' }}>
           <SubjectByName key={'sub'+i} index={i} onChange={this.update} >         
             <h1 className="card-title">{sub.name}</h1>
-            <p className="card-text">{sub.date} * {sub.hours}</p>
+            <p className="card-text">{sub.date} ● {sub.hours}</p>
             <p className="card-text">{sub.location}</p>
             <p className="card-text">{sub.type}</p>
             <p className="card-text">{sub.about}</p>

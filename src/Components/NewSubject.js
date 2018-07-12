@@ -1,12 +1,10 @@
-
-
-
 import React, { Component } from 'react'
 import SearchList from './SearchList'
 import ReactDOM from 'react-dom'
 import {Redirect} from 'react-router-dom';
 import {PostData} from '../services/PostData';
 import FaCaretSquareORight from 'react-icons/lib/fa/caret-square-o-right';
+import 'react-notifications/lib/notifications.css';
 
 class InsertSubject extends Component {
     constructor(props) {
@@ -160,6 +158,7 @@ class InsertSubject extends Component {
 
    //     // if(status === 201)
    //  }
+
 
     render() {
         return (
