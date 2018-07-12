@@ -8,7 +8,6 @@ import {Redirect} from 'react-router-dom';
 
 class Header extends Component {
     active = {
-        backgroundColor: "#212F3D",
         color: "white",
         fontWeight: "bold",
     };

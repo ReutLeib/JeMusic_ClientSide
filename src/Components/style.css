@@ -1,3 +1,9 @@
+*{font-family: arial;}
+
+p{
+  font-weight: bold;
+}
+
 .cards{
   border-radius: 20px;
   border-color: black;
@@ -36,7 +42,6 @@
   width:fit-content;
   background-color: black;
   border-color: black;
-
 }
 
 .myCard{
@@ -58,3 +63,14 @@
   padding: 10px;
 }
 
+.backgroundBlack{
+  background-color: black;
+}
+
+.padding10{
+  padding: 10%;
+}
+
+.paddinTop5{
+  padding-top: 5px;
+}

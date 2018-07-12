@@ -3,6 +3,7 @@ import SubjectByName from './SubjectByName'
 import {Redirect} from 'react-router-dom';
 import {PostData} from '../services/PostData';
 import {GetData} from '../services/GetData';
+import FaClockO from 'react-icons/lib/fa/clock-o';
 // import { NavLink } from "react-router-dom";
 // import { Route } from "react-router-dom";
 //TODO: do the join(by removing the segment of notRefresh)
@@ -100,20 +101,26 @@ class SubjectByNameList extends Component {
   eachSubject (sub,i) {
     const imageUrl = require(`../images/${sub.background}`)
     return (          
-      <div key={'container'+i} className="myCard" style={{width: `18rem`,borderRadius: `2px` , backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat' }}>
-          <SubjectByName key={'sub'+i} index={i} onChange={this.update} >         
+      <div key={'container'+i} className="myCard backgroundBlack" style={{width: `18rem`,borderRadius: `2px` }}>
+          <SubjectByName key={'sub'+i} index={i} onChange={this.update}>
+          <div className="padding10" style={{ backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat'}}>         
             <h1 className="card-title">{sub.name}</h1>
             <p className="card-text">{sub.date} ● {sub.hours}</p>
+            <button           
+             activeStyle={this.active} 
+             className="btn btn-primary followSub"> 
+             Join</button>
+          </div>
+          <div className="backgroundBlack paddinTop5">
             <p className="card-text">{sub.location}</p>
             <p className="card-text">{sub.type}</p>
             <p className="card-text">{sub.about}</p>
             <p className="card-text">{sub.price} ₪</p>
             <p className="card-text">{sub.requredSkills}</p>
             <p className="card-text">{sub.participent}</p>
-       
+          </div>
           </SubjectByName>
-          <button
-           
+          <button           
              activeStyle={this.active} 
              className="btn btn-primary followSub">
              
