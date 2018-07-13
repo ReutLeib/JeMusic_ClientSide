@@ -122,7 +122,8 @@ class InsertSubject extends Component {
             <div>
                 <NotificationContainer/>
                 <form action="https://jemusic.herokuapp.com/insertSubject/" method="POST" onSubmit={this.handleSubmit}
-                      className="col-xs-12 col-md-4 offset-md-5 textWhite">
+
+                      className="col-xs-12 col-md-4 offset-md-5 whiteTxt">
                     <label>
                     Yeah  ! Let's create a new Jem : <br></br>
                         name:<br></br>

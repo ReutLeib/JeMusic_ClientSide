@@ -22,9 +22,7 @@ class HomeList extends Component {
     this.update         = this.update.bind(this)
     this.add            = this.add.bind(this)
     this.nextID         = this.nextID.bind(this)
-    // this.DoPostData = this
-    // .DoPostData
-    // .bind(this);
+
   }
 
   backgroundActive = {
@@ -79,6 +77,29 @@ class HomeList extends Component {
     });
     
   }
+
+  doPostDataDelete(subName,subUserName,route) {
+    
+    let userName=JSON.parse(sessionStorage.getItem('userData')).userName;
+    //checks if the online user is the owner of the Jem(Created the jem)
+    if(subUserName==userName)
+    {
+      let postData = {
+        name: subName
+      }
+      NotificationManager.success('Success message', 'Yeahy! now you are participent:)');
+      PostData(route, postData).then((result) => {
+        if((result==false)){
+          this.setState({loginError:true});
+          this.setState({errorMsg:"something went wrong with the User/Jem while join button."});
+          console.log(this.state.errorMsg);
+        }
+      });
+    }
+    else{
+      NotificationManager.error('Error message', 'The User is NOT the owner of this jem!', 5000, () => {alert('callback');});
+    }
+  }
   
 
   componentDidMount() {  
@@ -92,6 +113,13 @@ class HomeList extends Component {
       {
         //adding the user as a participent of this Jem(join Jem)
         this.doPostData(this.props.location.subName,'UpdateParticipentsByUserName/');
+        this.props.location.isJoined=false;
+      }
+      //else-check if it's the return from pushing delete Jem button
+      else if(this.props.location.isDelete){
+        //deleting a jem(check if the user is the owner is in the func)
+        this.doPostDataDelete(this.props.location.subName,this.props.location.subUserName,'deleteSubjectByName/');
+        this.props.location.isDelete=false;
       }
 
       const url = "https://jemusic.herokuapp.com/getAllSubjects";

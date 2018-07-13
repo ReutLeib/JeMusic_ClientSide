@@ -27,7 +27,6 @@ class SubjectByNameList extends Component {
       redirect: false,
       loginError:false,
       errorMsg:"",
-      joinSubject:false
     }
 
     this.flagNotification = true;
@@ -42,7 +41,7 @@ class SubjectByNameList extends Component {
     
   }
 
-  add(txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9) {
+  add(txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9,txt10) {
     this.setState(prevState => ({
       subjects: [
       ...prevState.subjects,
@@ -56,8 +55,8 @@ class SubjectByNameList extends Component {
           about: txt6,
           price: txt7,
           requredSkills: txt8,
-          background: txt9
-          
+          background: txt9,
+          userName:txt10
       }]
     }))
   }
@@ -90,7 +89,7 @@ class SubjectByNameList extends Component {
         if((result!=false)){
           var self=this;        
           self.add(result.name, result.date, result.hours, result.type,
-            result.location, result.about, result.price, result.requredSkills, result.background);                
+            result.location, result.about, result.price, result.requredSkills, result.background, result.userName);                
         }
         else{
           this.setState({loginError:true});
@@ -156,7 +155,7 @@ class SubjectByNameList extends Component {
       <div key={'container'+i} className="myCard backgroundBlack textWhite" style={{width: `18rem`,borderRadius: `2px` }}>
           <SubjectByName key={'sub'+i} index={i} onChange={this.update }>
           <div style={{ backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat'}}>   
-            <div className="card-body">      
+            <div className="card-body blackTxt">      
               <h1 className="card-title">{sub.name}</h1>
               <p className="card-text">{sub.date} <span className="greenElement">●</span>  {sub.hours}</p>
     
@@ -167,6 +166,15 @@ class SubjectByNameList extends Component {
                             subName:sub.name}}
                             activeStyle={this.active} 
               className="btn btn-primary followSub" >Join</NavLink>
+              <br/>
+              <NavLink to=
+                          //navigate to SubjectByName with the param sub.name
+                          {{pathname: "/Home", 
+                            isDelete: true,
+                            subName:sub.name,
+                            subUserName:sub.userName}}
+                            activeStyle={this.active} 
+              className="btn btn-primary followSub" >Delete</NavLink>
             </div>
           </div>
           <div className="card-body backgroundBlack">      

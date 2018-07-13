@@ -63,6 +63,7 @@ p{
 
 }
 
+
 .myCard{
   background-color: black;
   border-color: black;
@@ -99,9 +100,8 @@ p{
   text-align: center;
 }
 
-.whiteCenterTxt{
+.whiteTxt{
   color:white;
-  text-align: center;
 }
 
 a,.greenElement{
@@ -130,4 +130,8 @@ a,.greenElement{
 
 .textGrey{
   color: grey;
+}
+
+.blackTxt{
+  color:black;
 }
