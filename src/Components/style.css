@@ -114,3 +114,18 @@ a,.greenElement{
   width:132px;
   margin-left:4px;
 }
+.nonBold{
+  font-weight: normal;
+}
+
+.font12{
+  font-size: 12px;
+}
+
+.textWhite{
+  color: white;
+}
+
+.textGrey{
+  color: grey;
+}

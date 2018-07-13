@@ -6,6 +6,8 @@ import {GetData} from '../services/GetData';
 import FaClockO from 'react-icons/lib/fa/clock-o';
 import FaLocationArrow from 'react-icons/lib/fa/location-arrow';
 import 'react-notifications/lib/notifications.css';
+import Iframe from 'react-iframe'
+import Video from './Video'
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 // import { NavLink } from "react-router-dom";
 // import { Route } from "react-router-dom";
@@ -35,6 +37,7 @@ class SubjectByNameList extends Component {
     this.nextID         = this.nextID.bind(this)
     this.doPostData     = this.doPostData.bind(this);
     this.doGetData      = this.doGetData.bind(this);
+    this.viewVideos     = this.viewVideos.bind(this)    
     this.notificationsFollowing  = this.notificationsFollowing.bind(this);
     
   }
@@ -106,11 +109,51 @@ class SubjectByNameList extends Component {
     }))
   }    
 
+  viewVideos(i) {
+    return (          
+      <div className="card" style={{ width: 18 + 'rem', backgroundColor: `black`}}>
+          <Video>
+          <Iframe url="https://www.youtube.com/embed/OmLNs6zQIHo"
+                    width="100%"
+                    height="150px"
+                    id="myId"
+                    className="myClassname"
+                    display="initial"
+                    position="relative"
+                    allowFullScreen
+                />
+          </Video>
+           <Video>
+          <Iframe url="https://www.youtube.com/embed/7Qqtqj1odfw"
+                    width="100%"
+                    height="150px"
+                    id="myId"
+                    className="myClassname"
+                    display="initial"
+                    position="relative"
+                    allowFullScreen
+                />
+          </Video>
+          <Video>
+          <Iframe url="https://www.youtube.com/embed/lT67liGjZhw"
+                    width="100%"
+                    height="150px"
+                    id="myId"
+                    className="myClassname"
+                    display="initial"
+                    position="relative"
+                    allowFullScreen
+                />
+          </Video>
+         
+      </div>
+      )
+  }
   //TODO: change it to one subject and not a arry of(remove map..)
   eachSubject (sub,i) {
     const imageUrl = require(`../images/${sub.background}`)
     return (          
-      <div key={'container'+i} className="myCard backgroundBlack" style={{width: `18rem`,borderRadius: `2px` }}>
+      <div key={'container'+i} className="myCard backgroundBlack textWhite" style={{width: `18rem`,borderRadius: `2px` }}>
           <SubjectByName key={'sub'+i} index={i} onChange={this.update }>
           <div style={{ backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat'}}>   
             <div className="card-body">      
@@ -126,7 +169,7 @@ class SubjectByNameList extends Component {
               className="btn btn-primary followSub" >Join</NavLink>
             </div>
           </div>
-          <div className="card-body">      
+          <div className="card-body backgroundBlack">      
             <div>
               <p className="card-text textCenter paddinTop5 marginTop20">{sub.about}</p>
             </div>
@@ -138,6 +181,30 @@ class SubjectByNameList extends Component {
               <p className="card-text">{sub.requredSkills}</p>
               <p className="card-text">{sub.participent}</p>
             </div>
+          </div>
+          <div className="paddinTop5 marginTop20">
+            <p className="card-text"><FaClockO/>&nbsp;{sub.date} ● {sub.hours}</p>
+            <p className="card-text"><FaLocationArrow/>&nbsp;{sub.location}</p>
+            <p className="card-text">{sub.type}</p>
+            <p className="card-text">{sub.price} ₪</p>
+          <div>
+          <h5>participents:</h5>
+          {this.viewVideos()}
+          </div>
+          <div>
+            <h5 className="card-text textWhite">Sound system</h5>
+            <h6 className="card-text nonBold font12 textGrey">EAW + 2 double sub 15inch</h6>            
+            <h5 className="card-text textWhite">Mixer</h5>
+            <h6 className="card-text nonBold font12 textGrey">AP0</h6>            
+            <h5 className="card-text textWhite">Electric piano</h5>
+            <h6 className="card-text nonBold font12 textGrey">Yamaha</h6>
+            <h5 className="card-text textWhite">Amplifier</h5>
+            <h6 className="card-text nonBold font12 textGrey">Fender: Twin Reverb 65</h6>
+            <h6 className="card-text nonBold font12 textGrey">Marshall JCM500</h6>
+            <h6 className="card-text nonBold font12 textGrey">Bass 800RMS</h6>  
+            <h5 className="card-text textWhite">Microphone</h5>
+            <h6 className="card-text nonBold font12 textGrey">Shure</h6>
+          </div>
           </div>
           </SubjectByName>
     

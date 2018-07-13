@@ -11,7 +11,6 @@ import 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import './style.css';
 
-//TODO: centered the elements(there is a problem)
 //TODO: not able to display the patch, it collapse
 
 class Search extends Component {
@@ -147,7 +146,6 @@ class Search extends Component {
             <p className="card-text">{sub.date} <span className="greenElement">●</span>  {sub.hours}</p>
             <p className="card-text">{sub.location}</p>
             <p className="card-text">{sub.type}</p>
-            <p className="card-text">{sub.about}</p>
             <p className="card-text">{sub.price} ₪</p>
             <p className="card-text">{sub.requredSkills}</p>
             <p className="card-text">{sub.participent}</p>
