@@ -115,7 +115,7 @@ class SubjectByNameList extends Component {
           <div style={{ backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat'}}>   
             <div className="card-body">      
               <h1 className="card-title">{sub.name}</h1>
-              <p className="card-text">{sub.date} ● {sub.hours}</p>
+              <p className="card-text">{sub.date} <span className="greenElement">●</span>  {sub.hours}</p>
     
               <NavLink to=
                           //navigate to SubjectByName with the param sub.name
@@ -131,7 +131,7 @@ class SubjectByNameList extends Component {
               <p className="card-text textCenter paddinTop5 marginTop20">{sub.about}</p>
             </div>
             <div className="paddinTop5 marginTop20">
-              <p className="card-text"><FaClockO/>&nbsp;{sub.date} ● {sub.hours}</p>
+              <p className="card-text"><FaClockO/>&nbsp;{sub.date} <span className="greenElement">●</span>  {sub.hours}</p>
               <p className="card-text"><FaLocationArrow/>&nbsp;{sub.location}</p>
               <p className="card-text">{sub.type}</p>
               <p className="card-text">{sub.price} ₪</p>

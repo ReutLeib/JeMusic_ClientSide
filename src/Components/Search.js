@@ -144,7 +144,7 @@ class Search extends Component {
         <div className="card-body">
           <Home key={'sub'+i} index={i} onChange={this.update}>         
             <h1 className="card-title">{sub.name}</h1>
-            <p className="card-text">{sub.date} ● {sub.hours}</p>
+            <p className="card-text">{sub.date} <span className="greenElement">●</span>  {sub.hours}</p>
             <p className="card-text">{sub.location}</p>
             <p className="card-text">{sub.type}</p>
             <p className="card-text">{sub.about}</p>
@@ -170,7 +170,7 @@ class Search extends Component {
           <div>
             <div>
                 <form action="https://jemusic.herokuapp.com/getSubjectByDate/" method="POST" onSubmit={this.handleSubmit}  
-                      className="col-xs-12 col-md-2 offset-md-5 padding5 searchTxt">
+                      className="col-xs-12 col-md-2 offset-md-5 padding5 whiteCenterTxt">
                   <label>
                     <p> Date format: 2/10/2018</p>
                     Date:

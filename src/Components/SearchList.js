@@ -15,7 +15,7 @@ const SearchList = ({ subjects, index }) => (
          <div className="card-body">
           <div key={'subject'+index} index={index} >
             <h1 className="card-title HomeStyle">{item.name}</h1>
-            <p className="card-text">{item.date} ● {item.hours}</p>
+            <p className="card-text">{item.date} <span className="greenElement">●</span>  {item.hours}</p>
             <p className="card-text">{item.location}</p>
             <p className="card-text">{item.type}</p>
             <p className="card-text">{item.price} ₪</p>

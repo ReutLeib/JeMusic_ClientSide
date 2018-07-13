@@ -101,12 +101,12 @@ p{
   text-align: center;
 }
 
-.searchTxt{
+.whiteCenterTxt{
   color:white;
   text-align: center;
 }
 
-a{
+a,.greenElement{
  color:#4dffdb;
 }
 
