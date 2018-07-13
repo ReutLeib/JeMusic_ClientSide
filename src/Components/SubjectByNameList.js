@@ -11,6 +11,8 @@ import {NotificationContainer, NotificationManager} from 'react-notifications';
 // import { Route } from "react-router-dom";
 //TODO: do the join(by removing the segment of notRefresh)
 import { NavLink } from "react-router-dom";
+import './style.css';
+
 
 
 
@@ -109,29 +111,33 @@ class SubjectByNameList extends Component {
     const imageUrl = require(`../images/${sub.background}`)
     return (          
       <div key={'container'+i} className="myCard backgroundBlack" style={{width: `18rem`,borderRadius: `2px` }}>
-          <SubjectByName key={'sub'+i} index={i} onChange={this.update}>
-          <div style={{ backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat'}}>         
-            <h1 className="card-title">{sub.name}</h1>
-            <p className="card-text">{sub.date} ● {sub.hours}</p>
-   
-             <NavLink to=
-                        //navigate to SubjectByName with the param sub.name
-                        {{pathname: "/Home", 
-                          isJoined: true,
-                          subName:sub.name}}
-                          activeStyle={this.active} 
-            className="btn btn-primary followSub" >Join</NavLink>
+          <SubjectByName key={'sub'+i} index={i} onChange={this.update }>
+          <div style={{ backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat'}}>   
+            <div className="card-body">      
+              <h1 className="card-title">{sub.name}</h1>
+              <p className="card-text">{sub.date} ● {sub.hours}</p>
+    
+              <NavLink to=
+                          //navigate to SubjectByName with the param sub.name
+                          {{pathname: "/Home", 
+                            isJoined: true,
+                            subName:sub.name}}
+                            activeStyle={this.active} 
+              className="btn btn-primary followSub" >Join</NavLink>
+            </div>
           </div>
-          <div>
-            <p className="card-text textCenter paddinTop5 marginTop20">{sub.about}</p>
-          </div>
-          <div className="paddinTop5 marginTop20">
-            <p className="card-text"><FaClockO/>&nbsp;{sub.date} ● {sub.hours}</p>
-            <p className="card-text"><FaLocationArrow/>&nbsp;{sub.location}</p>
-            <p className="card-text">{sub.type}</p>
-            <p className="card-text">{sub.price} ₪</p>
-            <p className="card-text">{sub.requredSkills}</p>
-            <p className="card-text">{sub.participent}</p>
+          <div className="card-body">      
+            <div>
+              <p className="card-text textCenter paddinTop5 marginTop20">{sub.about}</p>
+            </div>
+            <div className="paddinTop5 marginTop20">
+              <p className="card-text"><FaClockO/>&nbsp;{sub.date} ● {sub.hours}</p>
+              <p className="card-text"><FaLocationArrow/>&nbsp;{sub.location}</p>
+              <p className="card-text">{sub.type}</p>
+              <p className="card-text">{sub.price} ₪</p>
+              <p className="card-text">{sub.requredSkills}</p>
+              <p className="card-text">{sub.participent}</p>
+            </div>
           </div>
           </SubjectByName>
     

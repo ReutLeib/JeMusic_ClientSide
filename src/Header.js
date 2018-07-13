@@ -43,7 +43,7 @@ class Header extends Component {
                     </NavLink>  
                     <div style={this.header}>       
                     </div>
-                    <a href="/NewSubject" className="btn btn-primary newJem">New Jem</a>
+                    <a href="/NewSubject" className="btn btn-primary newJem ">New Jem</a>
                 </div>
             </div>
 );}}
