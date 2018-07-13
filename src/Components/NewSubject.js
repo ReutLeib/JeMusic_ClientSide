@@ -122,7 +122,7 @@ class InsertSubject extends Component {
             <div>
                 <NotificationContainer/>
                 <form action="https://jemusic.herokuapp.com/insertSubject/" method="POST" onSubmit={this.handleSubmit}
-                      className="col-xs-12 col-md-4 offset-md-5 ">
+                      className="col-xs-12 col-md-4 offset-md-5 textWhite">
                     <label>
                     Yeah  ! Let's create a new Jem : <br></br>
                         name:<br></br>
@@ -148,7 +148,7 @@ class InsertSubject extends Component {
                         requiredSkills:<br></br>
                         <input onChange={this.handleRequiredSkills} value={this.state.newRequiredSkills} type="text" name="requiredSkills" />
                       </label><br></br>
-                   <button type="submit" className="btn btn-primary insertSub" onClick={this.delete}><FaCaretSquareORight size={45} background={'#666666'} /> </button> 
+                   <button type="submit" className="btn btn-primary insertSub" onClick={this.delete}><FaCaretSquareORight size={45} background={'#666666'} className="greenElement"/> </button> 
 
                 </form>
                 <div id="response">

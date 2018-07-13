@@ -56,7 +56,7 @@ p{
   /*padding: 10px;*/
   border-radius: 20px;
   padding-right: 81px;
-  padding-left: 88px;
+  padding-left: 69px;
   margin-top: 30px;
   margin-bottom: 30px;
   width:fit-content;
@@ -116,6 +116,10 @@ a,.greenElement{
 }
 .nonBold{
   font-weight: normal;
+}
+
+.textBold{
+  font-weight: bold;
 }
 
 .font12{

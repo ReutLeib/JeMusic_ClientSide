@@ -173,14 +173,6 @@ class SubjectByNameList extends Component {
             <div>
               <p className="card-text textCenter paddinTop5 marginTop20">{sub.about}</p>
             </div>
-            <div className="paddinTop5 marginTop20">
-              <p className="card-text"><FaClockO/>&nbsp;{sub.date} <span className="greenElement">●</span>  {sub.hours}</p>
-              <p className="card-text"><FaLocationArrow/>&nbsp;{sub.location}</p>
-              <p className="card-text">{sub.type}</p>
-              <p className="card-text">{sub.price} ₪</p>
-              <p className="card-text">{sub.requredSkills}</p>
-              <p className="card-text">{sub.participent}</p>
-            </div>
           </div>
           <div className="paddinTop5 marginTop20">
             <p className="card-text"><FaClockO/>&nbsp;{sub.date} ● {sub.hours}</p>
@@ -188,7 +180,7 @@ class SubjectByNameList extends Component {
             <p className="card-text">{sub.type}</p>
             <p className="card-text">{sub.price} ₪</p>
           <div>
-          <h5>participents:</h5>
+          <h5 className="textBold">participents:</h5>
           {this.viewVideos()}
           </div>
           <div>
