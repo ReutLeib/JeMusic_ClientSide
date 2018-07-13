@@ -170,7 +170,7 @@ class Search extends Component {
           <div>
             <div>
                 <form action="https://jemusic.herokuapp.com/getSubjectByDate/" method="POST" onSubmit={this.handleSubmit}  
-                      className="col-xs-12 col-md-2 offset-md-5 padding5 whiteCenterTxt">
+                      className="col-xs-12 col-md-2 offset-md-5 padding5 whiteTxt textCenter">
                   <label>
                     <p> Date format: 2/10/2018</p>
                     Date:

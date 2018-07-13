@@ -183,7 +183,7 @@ GetDataJem(userName_,route) {
                         backgroundPosition: `center center`, margin: `0 auto` }}>
           </div>
         
-          <div className=" whiteCenterTxt">
+          <div className="whiteTxt centerTxt">
           <Profile key={'prof'+i} index={i} onChange={this.updateProfiles}>         
             <h1 className="card-title" style={{ textAlign:`center`}}>{prof.userName} </h1>
             <p className="card-text" style={{ textAlign:`center`}}>{prof.name} <span className="greenElement">●</span>
