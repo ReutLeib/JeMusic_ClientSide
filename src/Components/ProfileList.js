@@ -192,14 +192,14 @@ GetDataJem(userName_,route) {
         </div>
         
         <div>
-          <p>Jems:</p>
+          <p className="textWhite">Jems:</p>
             <div>
               {this.state.jems.map(this.viewJems)}
             </div>
         </div>
 
         <div>
-          <p>videos:</p>
+          <p className="textWhite">videos:</p>
             <div>
               {this.state.videos.map(this.viewVideos)}
             </div>
