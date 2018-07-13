@@ -79,3 +79,19 @@ p{
 .textCenter{
   text-align: center;
 }
+
+.nonBold{
+  font-weight: normal;
+}
+
+.font12{
+  font-size: 12px;
+}
+
+.textWhite{
+  color: white;
+}
+
+.textGrey{
+  color: grey;
+}

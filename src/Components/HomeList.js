@@ -68,7 +68,6 @@ class HomeList extends Component {
      this.setState({redirect: true});
     else{   
       const url = "https://jemusic.herokuapp.com/getAllSubjects";
-      // NotificationManager.success('Success message', 'Yeahy! now you are following:)');
     
       fetch(url).then((res) => {        
         return res.json();      

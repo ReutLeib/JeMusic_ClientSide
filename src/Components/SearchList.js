@@ -10,7 +10,7 @@ const SearchList = ({ subjects, index }) => (
    { subjects && subjects.map( (item, index) => 
     
        <div key={'container'+index}  
-       className="card cards" style={{width: `18rem`, backgroundImage: `url(../images/${item.background})`, backgroundRepeat: 'no-repeat'}}>
+       className="card cards padding5" style={{width: `18rem`,borderRadius: `20px`,background: `linear-gradient(black, #808080)` }}>
 
          <div className="card-body">
           <div key={'subject'+index} index={index} >
