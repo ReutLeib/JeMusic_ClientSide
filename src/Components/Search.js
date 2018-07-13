@@ -155,7 +155,7 @@ class Search extends Component {
             <NavLink to=
                         //navigate to SubjectByName with the param sub.name
                         {{pathname: "/Subject", 
-                          param1: sub.name}}
+                          subName: sub.name}}
                           activeStyle={this.active} 
             className="btn btn-primary followSub" >Follow</NavLink>
           </Home>

@@ -5,6 +5,7 @@ import {Redirect} from 'react-router-dom';
 import { NavLink } from "react-router-dom";
 import 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
+import {PostData} from '../services/PostData';
 
 // import {PostData} from '../services/PostData';
 // import Trigger from 'rc-trigger';
@@ -61,12 +62,38 @@ class HomeList extends Component {
       this.uniqueId = this.uniqueId || 0
       return this.uniqueId++
   }
+
+  doPostData (subName,route) {
+    
+    let postData = {
+      userName: JSON.parse(sessionStorage.getItem('userData')).userName,
+      name: subName
+    }
+    NotificationManager.success('Success message', 'Yeahy! now you are participent:)');
+    PostData(route, postData).then((result) => {
+      if((result==false)){
+        this.setState({loginError:true});
+        this.setState({errorMsg:"something went wrong with the User/Jem while join button."});
+        console.log(this.state.errorMsg);
+      }
+    });
+    
+  }
   
+
   componentDidMount() {  
     //checks if the session is empty
     if(!sessionStorage.getItem('userData'))
      this.setState({redirect: true});
     else{   
+      
+      //check if it's the return from pushing join to Jem button
+      if(this.props.location.isJoined)
+      {
+        //adding the user as a participent of this Jem(join Jem)
+        this.doPostData(this.props.location.subName,'UpdateParticipentsByUserName/');
+      }
+
       const url = "https://jemusic.herokuapp.com/getAllSubjects";
       // NotificationManager.success('Success message', 'Yeahy! now you are following:)');
     
@@ -114,7 +141,7 @@ class HomeList extends Component {
             <NavLink to=
                         //navigate to SubjectByName with the param sub.name
                         {{pathname: "/Subject", 
-                          param1: sub.name}}
+                          subName: sub.name}}
                           activeStyle={this.active} 
             className="btn btn-primary followSub" >Follow</NavLink>
           </Home>
@@ -133,6 +160,7 @@ class HomeList extends Component {
 
     return (
         <div>
+          <NotificationContainer/>
           {this.state.subjects.map(this.eachSubjects)}
         </div>
     )

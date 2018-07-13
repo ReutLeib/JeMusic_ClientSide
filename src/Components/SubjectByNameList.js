@@ -10,6 +10,8 @@ import {NotificationContainer, NotificationManager} from 'react-notifications';
 // import { NavLink } from "react-router-dom";
 // import { Route } from "react-router-dom";
 //TODO: do the join(by removing the segment of notRefresh)
+import { NavLink } from "react-router-dom";
+
 
 
 class SubjectByNameList extends Component {
@@ -31,7 +33,6 @@ class SubjectByNameList extends Component {
     this.nextID         = this.nextID.bind(this)
     this.doPostData     = this.doPostData.bind(this);
     this.doGetData      = this.doGetData.bind(this);
-    this.joinToSubject  = this.joinToSubject.bind(this);
     this.notificationsFollowing  = this.notificationsFollowing.bind(this);
     
   }
@@ -65,10 +66,10 @@ class SubjectByNameList extends Component {
     //that haveas least 2 words.(can't do toString)
 
     //----------------------------------------------
-  
+    let subName=this.props.location.subName;
     console.log("*****************")
-    this.doPostData(this.props.location.param1,'followSubject/');
-    this.doGetData(this.props.location.param1,'getSubjectByName/');  
+    this.doPostData(subName,'followSubject/');
+    this.doGetData(subName,'getSubjectByName/');  
   }
 
 
@@ -112,10 +113,14 @@ class SubjectByNameList extends Component {
           <div style={{ backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat'}}>         
             <h1 className="card-title">{sub.name}</h1>
             <p className="card-text">{sub.date} ● {sub.hours}</p>
-            <button           
-             activeStyle={this.active} 
-             className="btn btn-primary followSub"> 
-             Join</button>
+   
+             <NavLink to=
+                        //navigate to SubjectByName with the param sub.name
+                        {{pathname: "/Home", 
+                          isJoined: true,
+                          subName:sub.name}}
+                          activeStyle={this.active} 
+            className="btn btn-primary followSub" >Join</NavLink>
           </div>
           <div>
             <p className="card-text textCenter paddinTop5 marginTop20">{sub.about}</p>
@@ -129,23 +134,10 @@ class SubjectByNameList extends Component {
             <p className="card-text">{sub.participent}</p>
           </div>
           </SubjectByName>
-             {/* style={(this.state.joinSubject)?{display:'none'}:{}} */}
-              {/* onClick={this.joinToSubject.bind(this.props.location.param1)} */}
-             {/* navigate to SubjectByName with the param sub.name */}
-                      {/* {{pathname: window.location.reload(), 
-                        param1: sub.name,
-                        param2:true}} */}
+    
       </div>
       )
   }
-
-  joinToSubject(subName){
-    this.setState({joinSubject: true});
-    NotificationManager.success('Success message', 'Yeahy! now you are participent:)');
-    console.log("++++++++++++++++: "+subName)
-    this.doPostData(subName,'UpdateParticipentsByUserName/');
-  }
-
 
   doPostData (subName,route) {
     
@@ -153,6 +145,7 @@ class SubjectByNameList extends Component {
       userName: JSON.parse(sessionStorage.getItem('userData')).userName,
       name: subName
     }
+    //Q: why not in a metter of sucssess?
     this.notificationsFollowing();
     PostData(route, postData).then((result) => {
       if((result!=false)){
