@@ -31,6 +31,8 @@ class Search extends Component {
     this.add              = this.add.bind(this)
     this.nextID           = this.nextID.bind(this)
     this.cleanDiv         = this.cleanDiv.bind(this)
+    this.doPostData     = this.doPostData.bind(this);
+
   }
 
   add(txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9) {
@@ -69,23 +71,44 @@ class Search extends Component {
       let newSub = this.state.newSub;
       // NotificationManager.success('Success message', 'Yeahy! now you are following:)');
 
-      (async () => {
-        const rawResponse = await fetch('https://jemusic.herokuapp.com/getSubjectByDate/', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({date:newSub})
-        });
-          const content = await rawResponse.json();
-          console.log("content: " + content)
+         this.doPostData(newSub,'getSubjectByDate/')
+          
           // document.getElementById("response").innerHTML = ""
-          ReactDOM.render(<SearchList subjects={this.cleanDiv()} />, document.getElementById("response"))
-          ReactDOM.render(<SearchList subjects={content} />, document.getElementById("response"))
-      })();
+          // ReactDOM.render(<SearchList subjects={content} />, document.getElementById("response"))
+      
   }
+   
+  doPostData (subDate,route) {
     
+    let postData = {
+      date: subDate
+    }
+
+    PostData(route, postData).then((result) => {
+      if((result!=false)){
+        
+        //in order to remove the errorMsg if there is one
+        if(this.state.loginError)
+          this.setState({loginError:false});
+
+        var self=this;        
+            result.map((json) => {
+                        ReactDOM.render(<SearchList subjects={this.cleanDiv()} />, document.getElementById("response"))
+              self.add(json.name, json.date, json.hours, json.type,
+                      json.location, json.about, json.price, json.requredSkills, json.background);         
+              console.log(json);          
+          })  
+      }
+      else{
+        //printing this error in the render
+        this.setState({loginError:true});
+        this.setState({errorMsg:"Sorry, there is no Jems in this date."});
+        console.log(this.state.errorMsg);
+      }
+    });
+    
+  }
+
   doGetData(route) {
     let getData = {
       name: JSON.parse(sessionStorage.getItem('userData')).userName
@@ -141,15 +164,15 @@ class Search extends Component {
      return (          
       <div key={'container'+i} className="card cards" style={{width: `18rem`, backgroundImage: `url(${backUrl})`, backgroundRepeat: 'no-repeat' }}>    
         <div className="card-body">
-          <Home key={'sub'+i} index={i} onChange={this.update}>         
+            <Home key={'sub'+i} index={i} onChange={this.update}>         
             <h1 className="card-title">{sub.name}</h1>
-            <p className="card-text">{sub.date} <span className="greenElement">●</span>  {sub.hours}</p>
+            <p className="card-text">{sub.date} <span className="greenElement">●</span> {sub.hours}</p>
             <p className="card-text">{sub.location}</p>
             <p className="card-text">{sub.type}</p>
             <p className="card-text">{sub.price} ₪</p>
             <p className="card-text">{sub.requredSkills}</p>
             <p className="card-text">{sub.participent}</p>
-
+           
             <NavLink to=
                         //navigate to SubjectByName with the param sub.name
                         {{pathname: "/Subject", 
@@ -164,6 +187,11 @@ class Search extends Component {
   }
 
   render() {
+
+    let errMsg;
+    if(this.state.loginError){
+      errMsg=(<span class="welcomeText">{this.state.errorMsg}</span>)
+    }
       return (
           <div>
             <div>
@@ -178,6 +206,7 @@ class Search extends Component {
                   </label>
                    <button type="submit" className="btn btn-primary" onClick={this.delete}><MdSend/> </button> 
                 </form>
+                {errMsg}
                 <div id="response">
                 {this.state.subjects.map(this.eachSubjects)}
                 </div>

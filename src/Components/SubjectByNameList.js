@@ -71,7 +71,7 @@ class SubjectByNameList extends Component {
 
     //----------------------------------------------
     let subName=this.props.location.subName;
-    console.log("*****************")
+    console.log("*****************subName:"+this.props.location.subName)
     this.doPostData(subName,'followSubject/');
     this.doGetData(subName,'getSubjectByName/');  
   }

@@ -1,35 +1,23 @@
-import React from 'react';
+import React, {Component} from 'react'
 import 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
+import { NavLink } from "react-router-dom";
+
 //TODO:check if the user is allready follows this subject
 //TODO: fix background of subject
 
-const SearchList = ({ subjects, index }) => (
 
-   <div>
-   { subjects && subjects.map( (item, index) => 
-    
-       <div key={'container'+index}  
-       className="card cards padding5" style={{width: `18rem`,borderRadius: `20px`,background: `linear-gradient(black, #808080)` }}>
+class SearchList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    }
+  }
 
-         <div className="card-body">
-          <div key={'subject'+index} index={index} >
-            <h1 className="card-title HomeStyle">{item.name}</h1>
-            <p className="card-text">{item.date} <span className="greenElement">●</span>  {item.hours}</p>
-            <p className="card-text">{item.location}</p>
-            <p className="card-text">{item.type}</p>
-            <p className="card-text">{item.price} ₪</p>
-            <p className="card-text">{item.requredSkills}</p>
-            <p className="card-text">{item.participent}</p>
-          </div>
-        </div>
-
-      <a href="/Subject" className="btn btn-primary followSub">Follow</a>
-      </div>
-    )}
-  </div>
-
-
-  );
-
-export default SearchList;
+  render() {
+      return (
+        <div>{this.props.children}</div>
+    );
+  }
+}
+export default SearchList
