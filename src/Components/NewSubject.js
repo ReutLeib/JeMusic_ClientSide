@@ -42,40 +42,25 @@ class InsertSubject extends Component {
     }))
   }
    handleName(event){
-      this.setState({newName: event.target.value})
-      console.log(`newName: ${event.target.value}`)
-   
+      this.setState({newName: event.target.value})   
    }
-
    handleDate(event){
-      this.setState({newDate: event.target.value})
-      console.log(`newDate: ${event.target.value}`)
-   
+      this.setState({newDate: event.target.value})   
    }
    handleHours(event){
-      this.setState({newHours: event.target.value})
-      console.log(`newHours: ${event.target.value}`)
-   
+      this.setState({newHours: event.target.value})   
    }
    handleType(event){
-      this.setState({newType: event.target.value})
-      console.log(`newType: ${event.target.value}`)
-   
+      this.setState({newType: event.target.value})   
    }    
    handleLocation(event){
-      this.setState({newLocation: event.target.value})
-      console.log(`newLocation: ${event.target.value}`)
-   
+      this.setState({newLocation: event.target.value})   
    } 
    handleRequiredSkills(event){
-      this.setState({newRequiredSkills: event.target.value})
-      console.log(`newRequiredSkills: ${event.target.value}`)
-   
+      this.setState({newRequiredSkills: event.target.value})   
    } 
    handleUsername(event){
-      this.setState({newUsername: event.target.value})
-      console.log(`newUsername: ${event.target.value}`)
-   
+      this.setState({newUsername: event.target.value})   
    }  
 
   handleSubmit(event){

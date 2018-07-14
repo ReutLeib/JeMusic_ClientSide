@@ -203,9 +203,7 @@ GetDataJem(userName_,route) {
   }
 
   viewVideos(prof,i) {
-    console.log("prof.video: " + prof.video)
     const videoUrl = `https://www.youtube.com/embed/${prof.video}`
-
     return (          
       <div key={'container'+i}className="card" style={{ margin:`0 auto`,width: 18 + 'rem', backgroundColor: `black`}}>
           <Video key={'prof'+i} index={i} onChange={this.updateVideos}>

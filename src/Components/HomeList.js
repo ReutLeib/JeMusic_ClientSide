@@ -136,8 +136,6 @@ class HomeList extends Component {
   } 
 
   eachSubjects (sub,i) {
-    // console.log(`backgroundImage: url(${sub.background})`)
-    console.log("sub: " + sub)
     const imageUrl = require(`../images/${sub.background}`)
      return (          
       <div key={'container'+i} className="card cards" style={{width: `18rem`, backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat' }}>    

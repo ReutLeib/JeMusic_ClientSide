@@ -75,7 +75,7 @@ class Search extends Component {
             result.map((json) => {
               self.add(json.name, json.date, json.hours, json.type,
                       json.location, json.about, json.price, json.requredSkills, json.background);         
-              console.log("im here: " + json.name);          
+              console.log(json.name);          
           })  
       }
       else{
@@ -99,7 +99,7 @@ class Search extends Component {
             result.map((json) => {
               self.add(json.name, json.date, json.hours, json.type,
                       json.location, json.about, json.price, json.requredSkills, json.background);         
-              console.log("wow: " + json);          
+              console.log(json);          
             })
           })  
         }

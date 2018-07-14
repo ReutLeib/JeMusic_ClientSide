@@ -66,6 +66,7 @@ class SubjectByNameList extends Component {
     this.doGetData(subName,'getSubjectByName/');  
   }
 
+  // get data from server
   doGetData(subName,route) {
     let getData = {
       name: subName
@@ -85,7 +86,7 @@ class SubjectByNameList extends Component {
           console.log(this.state.errorMsg);
         }
       });
-    } else {}
+    }
   }
 
   update(newSub, i) {
@@ -96,6 +97,7 @@ class SubjectByNameList extends Component {
     }))
   }    
 
+  // static videos for all subjects 
   viewVideos(i) {
     return (          
       <div className="card" style={{ width: 18 + 'rem', backgroundColor: `black`}}>
@@ -218,7 +220,6 @@ class SubjectByNameList extends Component {
   }
   
   notificationsFollowing(){
-    console.log("flagNotification: " + this.flagNotification);
     if(this.flagNotification){
       NotificationManager.success('Success message', 'Yeahy! now you are following:)');  
       this.flagNotification = false;

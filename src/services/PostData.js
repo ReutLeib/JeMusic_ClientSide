@@ -30,7 +30,6 @@ export function PostData(type, userData) {
       }
       
       else{
-        console.log("--------"+response)
       resolve(false);}
   });
   });
