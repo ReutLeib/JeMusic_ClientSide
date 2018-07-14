@@ -149,10 +149,6 @@ a,.greenElement{
    fill: #4dffdb;
 }
 
-.borderBlack: hover{
-  border-color: black;
-}
-
 .btn-primary:hover {
     color: #fff;
     background-color: #4dffdb;
