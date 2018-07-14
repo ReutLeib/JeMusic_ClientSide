@@ -3,10 +3,6 @@ import 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import { NavLink } from "react-router-dom";
 
-//TODO:check if the user is allready follows this subject
-//TODO: fix background of subject
-
-
 class SearchList extends Component {
   constructor(props) {
     super(props);
@@ -15,9 +11,10 @@ class SearchList extends Component {
   }
 
   render() {
-      return (
-        <div>{this.props.children}</div>
+    return (
+      <div>{this.props.children}</div>
     );
   }
 }
+
 export default SearchList

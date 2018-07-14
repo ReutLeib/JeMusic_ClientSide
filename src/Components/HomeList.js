@@ -86,7 +86,7 @@ class HomeList extends Component {
       let postData = {
         name: subName
       }
-      NotificationManager.success('Success message', 'Yeahy! now you are participent:)');
+      // NotificationManager.success('Success message', 'Yeahy! now you are participent:)');
       PostData(route, postData).then((result) => {
         if((result==false)){
           NotificationManager.error('Error message', 'something went wrong with the User/Jem while join button.', 5000, () => {alert('callback');});

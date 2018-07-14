@@ -92,10 +92,9 @@ class InsertSubject extends Component {
         let newType = this.state.newType;
         let newLocation = this.state.newLocation;
         let newRequiredSkills = this.state.newRequiredSkills;
-        
+
         this.doPostData(newName,newDate,newHours,newType,
           newLocation,newRequiredSkills,'insertSubject/')
-
       }
     }
 

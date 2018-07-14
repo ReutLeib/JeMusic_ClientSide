@@ -1,9 +1,18 @@
 *{font-family: 'Open Sans', sans-serif;}
 
+p{
+  font-weight: 600;
+}
+
+a,.greenElement{
+ color:#4dffdb;
+}
+
 .card-title{
   font-family: 'Alfa Slab One', cursive;
   font-size: 35px;
 }
+
 .btn-primary{
   background-color:#4dffdb;
   border-color:#4dffdb;
@@ -16,18 +25,12 @@
   margin: 10px;
 }
 
-
-p{
-  font-weight: 600;
-}
-
 .cards{
   border-radius: 20px;
   border-color: black;
   padding: 5px;
   margin:0 auto;
   font-weight: 700;
-
 }
 
 .followSub{
@@ -47,7 +50,6 @@ p{
   width:fit-content;
   background-color: black;
   color:white;
-
 }
 
 .insertSub{
@@ -60,16 +62,13 @@ p{
   width:fit-content;
   background-color: black;
   border-color: black;
-
 }
-
 
 .myCard{
   background-color: black;
   border-color: black;
   border-radius: 5px;
   margin:0 auto;
-  
 }
 
 .welcomeText{
@@ -91,7 +90,6 @@ p{
   padding-top: 5px;
 }
 
-
 .marginTop20{
   margin-top: 20px;
 }
@@ -104,14 +102,11 @@ p{
   color:white;
 }
 
-a,.greenElement{
- color:#4dffdb;
-}
-
 .inputWidth{
   width:132px;
   margin-left:4px;
 }
+
 .nonBold{
   font-weight: normal;
 }
@@ -152,11 +147,11 @@ a,.greenElement{
 .btn-primary:hover {
     color: #fff;
     background-color: #4dffdb;
-    border-color: #4dffdb; /*set the color you want here*/
+    border-color: #4dffdb;
 }
 
 form > .btn-primary:hover {
     color: #fff;
     background-color: #4dffdb;
-    border-color: black !important; /*set the color you want here*/
+    border-color: black !important;
 }
