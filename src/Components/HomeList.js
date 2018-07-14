@@ -16,7 +16,8 @@ class HomeList extends Component {
     this.state = {
       subjects: [
       ],
-      redirect: false
+      redirect: false,
+
     }
     this.eachSubjects   = this.eachSubjects.bind(this)
     this.update         = this.update.bind(this)
@@ -70,9 +71,7 @@ class HomeList extends Component {
     NotificationManager.success('Success message', 'Yeahy! now you are participent:)');
     PostData(route, postData).then((result) => {
       if((result==false)){
-        this.setState({loginError:true});
-        this.setState({errorMsg:"something went wrong with the User/Jem while join button."});
-        console.log(this.state.errorMsg);
+        NotificationManager.error('Error message', 'something went wrong with the User/Jem while join button.', 5000, () => {alert('callback');});
       }
     });
     
@@ -90,9 +89,7 @@ class HomeList extends Component {
       NotificationManager.success('Success message', 'Yeahy! now you are participent:)');
       PostData(route, postData).then((result) => {
         if((result==false)){
-          this.setState({loginError:true});
-          this.setState({errorMsg:"something went wrong with the User/Jem while join button."});
-          console.log(this.state.errorMsg);
+          NotificationManager.error('Error message', 'something went wrong with the User/Jem while join button.', 5000, () => {alert('callback');});
         }
       });
     }
@@ -120,6 +117,12 @@ class HomeList extends Component {
         //deleting a jem(check if the user is the owner is in the func)
         this.doPostDataDelete(this.props.location.subName,this.props.location.subUserName,'deleteSubjectByName/');
         this.props.location.isDelete=false;
+      }
+      //else-check if it's the return from pushing create Jem button
+      else if(this.props.location.isCreated){
+        //deleting a jem(check if the user is the owner is in the func)
+        NotificationManager.success('Success message', 'Yeahy! Tou have just created a new jem' );
+        this.props.location.isCreated=false;
       }
 
       const url = "https://jemusic.herokuapp.com/getAllSubjects";

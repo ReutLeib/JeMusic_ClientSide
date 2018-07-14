@@ -10,8 +10,9 @@ import {NotificationContainer, NotificationManager} from 'react-notifications';
 class InsertSubject extends Component {
     constructor(props) {
         super(props)
-        this.state = {newName:0, newDate:0,newHours:0,newType:0,newLocation:0,newRequiredSkills:0,newUsername:0 };
-
+        this.state = {isCreated:false,newSubDirect:""
+                      ,newName:"", newDate:"",newHours:"",newType:""
+                      ,newLocation:"",newRequiredSkills:"",newUsername:"" };
         this.handleSubmit=this.handleSubmit.bind(this);
         this.handleName=this.handleName.bind(this);
         this.handleDate=this.handleDate.bind(this);
@@ -21,7 +22,6 @@ class InsertSubject extends Component {
         this.handleRequiredSkills=this.handleRequiredSkills.bind(this);
         this.handleUsername=this.handleUsername.bind(this);
 
-        this.addSubject=this.addSubject.bind(this);
     }
 
     add(txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9) {
@@ -92,68 +92,82 @@ class InsertSubject extends Component {
         let newType = this.state.newType;
         let newLocation = this.state.newLocation;
         let newRequiredSkills = this.state.newRequiredSkills;
-        let newUsername = JSON.parse(sessionStorage.getItem('userData')).userName;
-        NotificationManager.success('Success message', 'Your Subject is created!');
+        
+        this.doPostData(newName,newDate,newHours,newType,
+          newLocation,newRequiredSkills,'insertSubject/')
 
-
-        (async () => {
-          const rawResponse = await fetch('https://jemusic.herokuapp.com/insertSubject/', {
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({name:newName,date:newDate,hours:newHours,type:newType,location:newLocation,requiredSkills:newRequiredSkills,userName:newUsername})
-          });
-            const content = await rawResponse.json();
-            // console.log("content: " + content);
-            ReactDOM.render(<SearchList books={content} />, document.getElementById("response"))
-            console.log("userName: " + JSON.parse(sessionStorage.getItem('userData')).userName)
-        })();
       }
     }
 
-    addSubject(data){
-      console.log(`data:` + data.toString());
+    doPostData (newName,newDate,newHours,newType,newLocation,newRequiredSkills,route) {
+    
+      let postData = {
+        userName:JSON.parse(sessionStorage.getItem('userData')).userName,
+        name:newName,
+        date:newDate,
+        hours:newHours,
+        type:newType,
+        location:newLocation,
+        requiredSkills:newRequiredSkills
+      }
+  
+      PostData(route, postData).then((result) => {
+        if((result!=false)){
+          
+          //in order to remove the errorMsg if there is one
+          this.setState({isCreated:true})
+        }
+        else{
+          //printing this error in the render
+          NotificationManager.error('Error message','A problem occurred with adding your Jem.', 5000, () => {alert('callback');});
+
+        }
+      });
+  
     }
 
     render() {
+      if(this.state.isCreated){
+  
+        return(<Redirect to=
+              //navigate to HomePage with the param isCreated
+              {{pathname: "/Home", 
+                isCreated: true}}/>)
+      }
         return (
             <div>
                 <NotificationContainer/>
                 <form action="https://jemusic.herokuapp.com/insertSubject/" method="POST" onSubmit={this.handleSubmit}
 
-                      className="col-xs-12 col-md-4 offset-md-5 whiteTxt">
+                      className="col-xs-12 col-md-2 offset-md-5 whiteTxt">
                     <label>
                     Yeah  ! Let's create a new Jem : <br></br>
-                        name:<br></br>
-                        <input onChange={this.handleName} value={this.state.newName} type="text" name="name" />
+                    name:<br></br>
+                        <input placeholder="Choose a name" onChange={this.handleName} value={this.state.newName} type="text" name="name" />
                       </label><br></br>
                     <label>
                         date:<br></br>
-                        <input onChange={this.handleDate} value={this.state.newDate} type="text" name="date" />
+                        <input placeholder="13/10/2018 for example" onChange={this.handleDate} value={this.state.newDate} type="text" name="date" />
                       </label><br></br>
                     <label>
                         hours:<br></br>
-                        <input onChange={this.handleHours} value={this.state.newHours} type="text" name="hours" />
+                        <input placeholder="18:00-20:00 for example" onChange={this.handleHours} value={this.state.newHours} type="text" name="hours" />
                       </label><br></br>
                     <label>
                         type:<br></br>
-                        <input onChange={this.handleType} value={this.state.newType} type="text" name="type" />
+                        <input placeholder="Rock/Pop/etc.." onChange={this.handleType} value={this.state.newType} type="text" name="type" />
                       </label><br></br>
                     <label>
                         location:<br></br>
-                        <input onChange={this.handleLocation} value={this.state.newLocation} type="text" name="location" />
+                        <input placeholder="Tel Aviv for example" onChange={this.handleLocation} value={this.state.newLocation} type="text" name="location" />
                       </label><br></br>
                     <label>
                         requiredSkills:<br></br>
-                        <input onChange={this.handleRequiredSkills} value={this.state.newRequiredSkills} type="text" name="requiredSkills" />
+                        <input placeholder="Guitar, Drumbs, etc.." onChange={this.handleRequiredSkills} value={this.state.newRequiredSkills} type="text" name="requiredSkills" />
                       </label><br></br>
                    <button type="submit" className="btn btn-primary insertSub removeHover" onClick={this.delete}><FaCaretSquareORight size={45} background={'#666666'} className="greenElement" /> </button> 
 
                 </form>
-                <div id="response">
-                </div>
             </div>
         )
     }
