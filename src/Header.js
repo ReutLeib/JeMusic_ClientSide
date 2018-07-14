@@ -29,21 +29,21 @@ class Header extends Component {
         return (
             <div className="container">
                 <div className="col-xs-12 col-md-6 offset-md-3">
-                    <NavLink to="/Profile" activeStyle={this.active} className="col-xs-12 col-md-6 offset-md-3">
+                    <NavLink to="/Profile" activeStyle={this.active} className="col-xs-12 col-md-6 offset-md-3 svgHover">
                         <MdFace size={35} />
                     </NavLink>
-                    <NavLink to="/Search" activeStyle={this.active} className="col-xs-12 col-md-6">
+                    <NavLink to="/Search" activeStyle={this.active} className="col-xs-12 col-md-6 svgHover">
                         <MdSearch size={35} />
                     </NavLink>
-                    <NavLink exact to="/Home" activeStyle={this.active} className="col-xs-12 col-md-6">
+                    <NavLink exact to="/Home" activeStyle={this.active} className="col-xs-12 col-md-6 svgHover">
                          <MdHome size={35} />
                     </NavLink>
-                    <NavLink to="#" onClick={this.logout} activeStyle={this.active} className="col-xs-12 col-md-6">
+                    <NavLink to="#" onClick={this.logout} activeStyle={this.active} className="col-xs-12 col-md-6 svgHover">
                          <MdLogout size={35} />
                     </NavLink>  
                     <div style={this.header}>       
                     </div>
-                    <a href="/NewSubject" className="btn btn-primary newJem ">New Jem</a>
+                    <a href="/NewSubject" className="btn btn-primary newJem removeHover">New Jem</a>
                 </div>
             </div>
 );}}

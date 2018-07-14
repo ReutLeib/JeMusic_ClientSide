@@ -178,7 +178,7 @@ class Search extends Component {
                         {{pathname: "/Subject", 
                           subName: sub.name}}
                           activeStyle={this.active} 
-            className="btn btn-primary followSub" >Follow</NavLink>
+            className="btn btn-primary followSub removeHoverGreen" >Follow</NavLink>
           </Home>
         </div>
       </div>
@@ -196,15 +196,13 @@ class Search extends Component {
           <div>
             <div>
                 <form action="https://jemusic.herokuapp.com/getSubjectByDate/" method="POST" onSubmit={this.handleSubmit}  
-
                       className="col-xs-12 col-md-4 offset-md-5 padding5 whiteTxt">
-
                   <label>
                     <p> Date format: 2/10/2018</p>
                     Date:
                     <input onChange={this.handleSubChange} value={this.state.newSub} type="text" name="date" className="inputWidth"/>                  
                   </label>
-                   <button type="submit" className="btn btn-primary" onClick={this.delete}><MdSend/> </button> 
+                   <button type="submit" className="btn btn-primary removeHoverGreen" onClick={this.delete}><MdSend/> </button> 
                 </form>
                 {errMsg}
                 <div id="response">

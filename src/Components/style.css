@@ -135,3 +135,23 @@ a,.greenElement{
 .blackTxt{
   color:black;
 }
+
+.removeHover{
+   background-color: black !important;
+}
+
+.removeHoverGreen{
+  background-color: #4dffdb !important;
+}
+
+.svgHover svg:hover{
+   fill: #4dffdb;
+}
+
+.borderBlack: hover{
+  border-color: black;
+}
+/*
+.hoverBlack: hover{
+  background-color: black;
+}*/
