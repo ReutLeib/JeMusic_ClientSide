@@ -1,14 +1,8 @@
 // TODO: ES6
 export function GetData(type, userData) {
- 
   let BaseURL = 'https://jemusic.herokuapp.com/';
-
   return new Promise((resolve, reject) =>{
-    console.log("type: " + type)
-
     type+=userData;
-    console.log("userData: " + userData)
-    console.log("GetData: " + BaseURL+type)
     fetch(BaseURL+type, {
         method: 'GET',
         headers: {
@@ -36,35 +30,3 @@ export function GetData(type, userData) {
   });
   });
 }
-
-//           .then((response,error) =>{
-//             console.log(response);
-
-//           if(response.status==200){
-//             response.json().then((res,err) => {
-//             if(err)
-//               reject(err);
-//             else if(res){
-//               console.log("RES: "+res.name);
-//               usrJson=res;
-//               resolve(res);
-//             }
-//           })
-//           resolve(usrJson);
-//         }
-//           else if(response.status==500){
-//             console.log(response.status);
-
-//             console.log(response);
-//             resolve(usrJson);
-//           }
-          
-
-//       });
-//       if(resolve){
-//         console.log("0000000000000");
-//         console.log(usrJson.name);
-//         resolve(usrJson);
-//       }
-// })
-// }

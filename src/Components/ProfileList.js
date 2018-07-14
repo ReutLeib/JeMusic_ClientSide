@@ -89,7 +89,7 @@ GetDataVideo(userName_,route) {
     if (getData) {
       getData.userName=getData.userName.replace(/ /g, "%20");
       GetData(route,getData.userName).then((result) => {
-        if((result!=false)){
+        if((result!==false)){
           var self=this;     
             result.map((data) => {            
               self.addVideo(data.vid, data.likes);        
@@ -111,7 +111,7 @@ GetDataJem(userName_,route) {
     if (getData) {
       getData.userName=getData.userName.replace(/ /g, "%20");
       GetData(route,getData.userName).then((result) => {
-        if((result!=false)){
+        if((result!==false)){
           var self=this;  
            result.map((json) => {            
               self.addJem(json.name, json.date, json.hours, json.type,

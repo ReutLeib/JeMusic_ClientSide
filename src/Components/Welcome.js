@@ -33,7 +33,7 @@ class Welcome extends Component {
       getData.name=getData.name.replace(/ /g, "%20");
       GetData('getUserByUserName/', getData.name).then((result) => {
         
-        if((result!=false)&&(result.userName==tmp_userName)){
+        if((result!==false)&&(result.userName===tmp_userName)){
           let responseJson = result;
           sessionStorage.setItem("userData", JSON.stringify(responseJson));
           console.log(sessionStorage.getItem("userData"));

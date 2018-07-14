@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-import SearchList from './SearchList'
-import ReactDOM from 'react-dom'
 import MdSend from "react-icons/lib/md/send";
-import {Redirect} from 'react-router-dom';
 import {PostData} from '../services/PostData';
 import {GetData} from '../services/GetData';
 import Home from './Home'
@@ -68,7 +65,7 @@ class Search extends Component {
     }
 
     PostData(route, postData).then((result) => {
-      if((result!=false)){
+      if((result!==false)){
         
         //in order to remove the errorMsg if there is one
         if(this.state.loginError)
@@ -96,7 +93,7 @@ class Search extends Component {
     if (getData) {
       getData.name=getData.name.replace(/ /g, "%20");
       GetData(route,getData.name).then((result) => {
-        if((result!=false)){
+        if((result!==false)){
           var self=this;        
           result.map((result) => {            
             result.map((json) => {

@@ -7,9 +7,6 @@ import 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import {PostData} from '../services/PostData';
 
-// import {PostData} from '../services/PostData';
-// import Trigger from 'rc-trigger';
-
 class HomeList extends Component {
   constructor(props) {
     super(props);
@@ -17,13 +14,11 @@ class HomeList extends Component {
       subjects: [
       ],
       redirect: false,
-
     }
     this.eachSubjects   = this.eachSubjects.bind(this)
     this.update         = this.update.bind(this)
     this.add            = this.add.bind(this)
     this.nextID         = this.nextID.bind(this)
-
   }
 
   backgroundActive = {
@@ -51,8 +46,7 @@ class HomeList extends Component {
           about: txt6,
           price: txt7,
           requredSkills: txt8,
-          background: txt9
-          
+          background: txt9 
       }]
     }))
   }
@@ -63,32 +57,27 @@ class HomeList extends Component {
   }
 
   doPostData (subName,route) {
-    
     let postData = {
       userName: JSON.parse(sessionStorage.getItem('userData')).userName,
       name: subName
     }
     NotificationManager.success('Success message', 'Yeahy! now you are participent:)');
     PostData(route, postData).then((result) => {
-      if((result==false)){
+      if((result===false)){
         NotificationManager.error('Error message', 'something went wrong with the User/Jem while join button.', 5000, () => {alert('callback');});
       }
     });
-    
   }
 
   doPostDataDelete(subName,subUserName,route) {
-    
     let userName=JSON.parse(sessionStorage.getItem('userData')).userName;
-    //checks if the online user is the owner of the Jem(Created the jem)
-    if(subUserName==userName)
+    if(subUserName===userName)
     {
       let postData = {
         name: subName
       }
-      // NotificationManager.success('Success message', 'Yeahy! now you are participent:)');
       PostData(route, postData).then((result) => {
-        if((result==false)){
+        if((result===false)){
           NotificationManager.error('Error message', 'something went wrong with the User/Jem while join button.', 5000, () => {alert('callback');});
         }
       });
@@ -98,7 +87,6 @@ class HomeList extends Component {
     }
   }
   
-
   componentDidMount() {  
     //checks if the session is empty
     if(!sessionStorage.getItem('userData'))
@@ -126,7 +114,6 @@ class HomeList extends Component {
       }
 
       const url = "https://jemusic.herokuapp.com/getAllSubjects";
-    
       fetch(url).then((res) => {        
         return res.json();      
       }).then((data) => {        
@@ -138,7 +125,6 @@ class HomeList extends Component {
         })    // endOf data.map((data)  
       })
     } 
-
   }
 
   update(newSub, i) {
@@ -148,9 +134,6 @@ class HomeList extends Component {
       )
     }))
   } 
-
-  
-//TODO:check if the user is allready follows this subject
 
   eachSubjects (sub,i) {
     // console.log(`backgroundImage: url(${sub.background})`)
@@ -167,7 +150,6 @@ class HomeList extends Component {
             <p className="card-text">{sub.price} ₪</p>
             <p className="card-text">{sub.requredSkills}</p>
             <p className="card-text">{sub.participent}</p>
-           
             <NavLink to=
                         //navigate to SubjectByName with the param sub.name
                         {{pathname: "/Subject", 
@@ -175,14 +157,11 @@ class HomeList extends Component {
                           activeStyle={this.active} 
             className="btn btn-primary followSub" >Follow</NavLink>
           </Home>
-      
         </div>
       </div>
       )
-
   }
  
-
   render() {
     //Redirect to welcome.js(login) if the session is empty(the check is written above)
     if(this.state.redirect)
@@ -196,4 +175,5 @@ class HomeList extends Component {
     )
   }
 }
+
 export default HomeList

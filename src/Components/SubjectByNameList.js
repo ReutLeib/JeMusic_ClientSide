@@ -74,7 +74,7 @@ class SubjectByNameList extends Component {
     if (getData) {
       getData.name=getData.name.replace(/ /g, "%20");
       GetData(route,getData.name).then((result) => {
-        if((result!=false)){
+        if((result!==false)){
           var self=this;        
           self.add(result.name, result.date, result.hours, result.type,
             result.location, result.about, result.price, result.requredSkills, result.background, result.userName);                
@@ -205,7 +205,7 @@ class SubjectByNameList extends Component {
     }
     this.notificationsFollowing();
     PostData(route, postData).then((result) => {
-      if((result!=false)){
+      if((result!==false)){
         this.setState({redirect: true});
       }
       else{
@@ -236,4 +236,5 @@ class SubjectByNameList extends Component {
       )
   }
 }
+
 export default SubjectByNameList
