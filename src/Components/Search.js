@@ -30,8 +30,7 @@ class Search extends Component {
     this.update           = this.update.bind(this)
     this.add              = this.add.bind(this)
     this.nextID           = this.nextID.bind(this)
-    this.cleanDiv         = this.cleanDiv.bind(this)
-    this.doPostData     = this.doPostData.bind(this);
+    this.doPostData       = this.doPostData.bind(this)
 
   }
 
@@ -58,14 +57,6 @@ class Search extends Component {
     this.setState({newSub: event.target.value})
   }
 
-  cleanDiv() {
-    let arr = []
-    arr.push({name:"", date:"", hours:"", type:"",
-              location:"", about:"", price:"", requredSkills:"", background:""})
-    return arr;
-    
-  }
-
   handleSubmit(event){
       event.preventDefault();
       let newSub = this.state.newSub;
@@ -73,7 +64,7 @@ class Search extends Component {
 
          this.doPostData(newSub,'getSubjectByDate/')
           
-          // document.getElementById("response").innerHTML = ""
+          document.getElementById("response").innerHTML = ""
           // ReactDOM.render(<SearchList subjects={content} />, document.getElementById("response"))
       
   }
@@ -93,7 +84,6 @@ class Search extends Component {
 
         var self=this;        
             result.map((json) => {
-                        ReactDOM.render(<SearchList subjects={this.cleanDiv()} />, document.getElementById("response"))
               self.add(json.name, json.date, json.hours, json.type,
                       json.location, json.about, json.price, json.requredSkills, json.background);         
               console.log("im here: " + json.name);          
@@ -101,12 +91,7 @@ class Search extends Component {
       }
       else{
         //printing this error in the render
-
         NotificationManager.error('Error message', 'Sorry, there is no Jems in this date.', 5000, () => {alert('callback');});
-
-        // this.setState({loginError:true});
-        // this.setState({errorMsg:""});
-        // console.log(this.state.errorMsg);
       }
     });
     
@@ -190,11 +175,6 @@ class Search extends Component {
   }
 
   render() {
-
-    // let errMsg;
-    // if(this.state.loginError){
-    //   errMsg=(<span className="welcomeText">{this.state.errorMsg}</span>)
-    // }
       return (
           <div>
           <NotificationContainer/>
@@ -208,7 +188,6 @@ class Search extends Component {
                   </label>
                    <button type="submit" className="btn btn-primary removeHoverGreen text" onClick={this.delete}><MdSend/> </button> 
                 </form>
-                {errMsg}
                 <div id="response">
                 {this.state.subjects.map(this.eachSubjects)}
                 </div>
