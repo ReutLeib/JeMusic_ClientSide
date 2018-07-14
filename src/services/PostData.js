@@ -1,6 +1,4 @@
-
 export function PostData(type, userData) {
- 
   let BaseURL = 'https://jemusic.herokuapp.com/';
   return new Promise((resolve, reject) =>{
     fetch(BaseURL+type, {
