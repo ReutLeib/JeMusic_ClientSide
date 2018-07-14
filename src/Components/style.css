@@ -142,6 +142,7 @@ a,.greenElement{
 
 .removeHoverGreen{
   background-color: #4dffdb !important;
+  border-color: #4dffdb; 
 }
 
 .svgHover svg:hover{
@@ -151,7 +152,15 @@ a,.greenElement{
 .borderBlack: hover{
   border-color: black;
 }
-/*
-.hoverBlack: hover{
-  background-color: black;
-}*/
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #4dffdb;
+    border-color: #4dffdb; /*set the color you want here*/
+}
+
+form > .btn-primary:hover {
+    color: #fff;
+    background-color: #4dffdb;
+    border-color: black !important; /*set the color you want here*/
+}

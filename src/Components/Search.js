@@ -202,7 +202,7 @@ class Search extends Component {
                     Date:
                     <input onChange={this.handleSubChange} value={this.state.newSub} type="text" name="date" className="inputWidth"/>                  
                   </label>
-                   <button type="submit" className="btn btn-primary removeHoverGreen" onClick={this.delete}><MdSend/> </button> 
+                   <button type="submit" className="btn btn-primary removeHoverGreen text" onClick={this.delete}><MdSend/> </button> 
                 </form>
                 {errMsg}
                 <div id="response">
