@@ -96,14 +96,17 @@ class Search extends Component {
                         ReactDOM.render(<SearchList subjects={this.cleanDiv()} />, document.getElementById("response"))
               self.add(json.name, json.date, json.hours, json.type,
                       json.location, json.about, json.price, json.requredSkills, json.background);         
-              console.log(json);          
+              console.log("im here: " + json.name);          
           })  
       }
       else{
         //printing this error in the render
-        this.setState({loginError:true});
-        this.setState({errorMsg:"Sorry, there is no Jems in this date."});
-        console.log(this.state.errorMsg);
+
+        NotificationManager.error('Error message', 'Sorry, there is no Jems in this date.', 5000, () => {alert('callback');});
+
+        // this.setState({loginError:true});
+        // this.setState({errorMsg:""});
+        // console.log(this.state.errorMsg);
       }
     });
     
@@ -124,7 +127,7 @@ class Search extends Component {
             result.map((json) => {
               self.add(json.name, json.date, json.hours, json.type,
                       json.location, json.about, json.price, json.requredSkills, json.background);         
-              console.log(json);          
+              console.log("wow: " + json);          
             })
           })  
         }
@@ -188,12 +191,13 @@ class Search extends Component {
 
   render() {
 
-    let errMsg;
-    if(this.state.loginError){
-      errMsg=(<span class="welcomeText">{this.state.errorMsg}</span>)
-    }
+    // let errMsg;
+    // if(this.state.loginError){
+    //   errMsg=(<span className="welcomeText">{this.state.errorMsg}</span>)
+    // }
       return (
           <div>
+          <NotificationContainer/>
             <div>
                 <form action="https://jemusic.herokuapp.com/getSubjectByDate/" method="POST" onSubmit={this.handleSubmit}  
                       className="col-xs-12 col-md-4 offset-md-5 padding5 whiteTxt">
