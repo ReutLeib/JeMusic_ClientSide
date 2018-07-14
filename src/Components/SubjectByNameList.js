@@ -9,14 +9,8 @@ import 'react-notifications/lib/notifications.css';
 import Iframe from 'react-iframe'
 import Video from './Video'
 import {NotificationContainer, NotificationManager} from 'react-notifications';
-// import { NavLink } from "react-router-dom";
-// import { Route } from "react-router-dom";
-//TODO: do the join(by removing the segment of notRefresh)
 import { NavLink } from "react-router-dom";
 import './style.css';
-
-
-
 
 class SubjectByNameList extends Component {
   constructor(props) {
@@ -60,23 +54,17 @@ class SubjectByNameList extends Component {
       }]
     }))
   }
+
   nextID() {
     this.uniqueId = this.uniqueId || 0
     return this.uniqueId++
   }
 
- componentDidMount() {   
-    //TODO: check the potencial bug og sub.name 
-    //that haveas least 2 words.(can't do toString)
-
-    //----------------------------------------------
+ componentDidMount() {
     let subName=this.props.location.subName;
-    console.log("*****************subName:"+this.props.location.subName)
     this.doPostData(subName,'followSubject/');
     this.doGetData(subName,'getSubjectByName/');  
   }
-
-
 
   doGetData(subName,route) {
     let getData = {
@@ -98,7 +86,7 @@ class SubjectByNameList extends Component {
         }
       });
     } else {}
-}
+  }
 
   update(newSub, i) {
     this.setState(() => ({
@@ -144,11 +132,10 @@ class SubjectByNameList extends Component {
                     allowFullScreen
                 />
           </Video>
-         
       </div>
       )
   }
-  //TODO: change it to one subject and not a arry of(remove map..)
+
   eachSubject (sub,i) {
     const imageUrl = require(`../images/${sub.background}`)
     return (          
@@ -158,7 +145,6 @@ class SubjectByNameList extends Component {
             <div className="card-body blackTxt">      
               <h1 className="card-title">{sub.name}</h1>
               <p className="card-text">{sub.date} <span className="greenElement">●</span>  {sub.hours}</p>
-    
               <NavLink to=
                           //navigate to SubjectByName with the param sub.name
                           {{pathname: "/Home", 
@@ -213,12 +199,10 @@ class SubjectByNameList extends Component {
   }
 
   doPostData (subName,route) {
-    
     let postData = {
       userName: JSON.parse(sessionStorage.getItem('userData')).userName,
       name: subName
     }
-    //Q: why not in a metter of sucssess?
     this.notificationsFollowing();
     PostData(route, postData).then((result) => {
       if((result!=false)){
@@ -245,7 +229,7 @@ class SubjectByNameList extends Component {
     if(!sessionStorage.getItem('userData'))
       return (<Redirect to={'/'}/>);
     return (
-        <div >
+        <div>
           <NotificationContainer/>
           {this.state.subjects.map(this.eachSubject)}
         </div>

@@ -8,10 +8,10 @@ import React, {Component} from 'react'
   }
   
   render() {
-          return (
-            <div>
-              <div>{this.props.children}</div>
-            </div>
+    return (
+      <div>
+        <div>{this.props.children}</div>
+      </div>
     );
   }
 }

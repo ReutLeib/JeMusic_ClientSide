@@ -93,7 +93,7 @@ class InsertSubject extends Component {
         let newLocation = this.state.newLocation;
         let newRequiredSkills = this.state.newRequiredSkills;
         let newUsername = JSON.parse(sessionStorage.getItem('userData')).userName;
-        NotificationManager.success('Success message', 'Your Subject is created!');
+        NotificationManager.success('Success message', 'Your JEM is created!');
 
 
         (async () => {

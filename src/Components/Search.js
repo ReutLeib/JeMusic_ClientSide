@@ -11,8 +11,6 @@ import 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import './style.css';
 
-//TODO: not able to display the patch, it collapse
-
 class Search extends Component {
   constructor(props) {
     super(props)
@@ -31,7 +29,6 @@ class Search extends Component {
     this.add              = this.add.bind(this)
     this.nextID           = this.nextID.bind(this)
     this.doPostData       = this.doPostData.bind(this)
-
   }
 
   add(txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9) {
@@ -58,19 +55,14 @@ class Search extends Component {
   }
 
   handleSubmit(event){
-      event.preventDefault();
-      let newSub = this.state.newSub;
-      // NotificationManager.success('Success message', 'Yeahy! now you are following:)');
-
-         this.doPostData(newSub,'getSubjectByDate/')
-          
-          document.getElementById("response").innerHTML = ""
-          // ReactDOM.render(<SearchList subjects={content} />, document.getElementById("response"))
+    event.preventDefault();
+    let newSub = this.state.newSub;
+    this.doPostData(newSub,'getSubjectByDate/')
+    document.getElementById("response").innerHTML = ""
       
   }
    
   doPostData (subDate,route) {
-    
     let postData = {
       date: subDate
     }
@@ -94,7 +86,6 @@ class Search extends Component {
         NotificationManager.error('Error message', 'Sorry, there is no Jems in this date.', 5000, () => {alert('callback');});
       }
     });
-    
   }
 
   doGetData(route) {
@@ -104,7 +95,6 @@ class Search extends Component {
 
     if (getData) {
       getData.name=getData.name.replace(/ /g, "%20");
-      // console.log("NAMEEEE: " + getData.name);
       GetData(route,getData.name).then((result) => {
         if((result!=false)){
           var self=this;        
@@ -122,7 +112,7 @@ class Search extends Component {
           console.log(this.state.errorMsg);
         }
       });
-    } else {}
+    }
   }
 
   update(newSub, i) {
@@ -160,7 +150,6 @@ class Search extends Component {
             <p className="card-text">{sub.price} ₪</p>
             <p className="card-text">{sub.requredSkills}</p>
             <p className="card-text">{sub.participent}</p>
-           
             <NavLink to=
                         //navigate to SubjectByName with the param sub.name
                         {{pathname: "/Subject", 
@@ -171,7 +160,6 @@ class Search extends Component {
         </div>
       </div>
       )
-
   }
 
   render() {
@@ -181,11 +169,11 @@ class Search extends Component {
             <div>
                 <form action="https://jemusic.herokuapp.com/getSubjectByDate/" method="POST" onSubmit={this.handleSubmit}  
                       className="col-xs-12 col-md-4 offset-md-5 padding5 whiteTxt">
-                  <label>
-                    <p> Date format: 2/10/2018</p>
+                <label>
+                  <p> Date format: 2/10/2018</p>
                     Date:
-                    <input onChange={this.handleSubChange} value={this.state.newSub} type="text" name="date" className="inputWidth"/>                  
-                  </label>
+                  <input onChange={this.handleSubChange} value={this.state.newSub} type="text" name="date" className="inputWidth"/>                  
+                </label>
                    <button type="submit" className="btn btn-primary removeHoverGreen text" onClick={this.delete}><MdSend/> </button> 
                 </form>
                 <div id="response">

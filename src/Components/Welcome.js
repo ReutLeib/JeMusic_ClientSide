@@ -23,13 +23,7 @@ class Welcome extends Component {
 
     if (type === 'google' && res.w3.U3) {
       getData = {
-        //optionaly to take whatever we want from googleLogin
         name: res.w3.ig,
-        // provider: type,
-        // email: res.w3.U3,
-        // provider_id: res.El,
-        // token: res.Zi.access_token,
-        // provider_pic: res.w3.Paa
       };
 
     }
@@ -40,11 +34,9 @@ class Welcome extends Component {
       GetData('getUserByUserName/', getData.name).then((result) => {
         
         if((result!=false)&&(result.userName==tmp_userName)){
-
           let responseJson = result;
           sessionStorage.setItem("userData", JSON.stringify(responseJson));
           console.log(sessionStorage.getItem("userData"));
-
           this.setState({redirect: true});
         }
         else{
@@ -75,6 +67,7 @@ class Welcome extends Component {
     paddingLeft:"10px"
 
   };
+
   render() {
 
     if (this.state.redirect )
@@ -84,8 +77,6 @@ class Welcome extends Component {
     if(this.state.loginError){
       errMsg=(<span class="welcomeText">{this.state.errorMsg}</span>)
     }
-  
-
     const responseGoogle = (response) => {
       console.log("google console");
       console.log(response);
@@ -93,7 +84,6 @@ class Welcome extends Component {
     }
 
     return (
-
       <div >
         <img  src={logo} alt="logo" style={this.logoImg}/> 
         <GoogleLogin 
@@ -102,7 +92,6 @@ class Welcome extends Component {
           onSuccess={responseGoogle}
           onFailure={responseGoogle}
           style={this.loginBtn}/>
-
           {errMsg}
       </div>
     );

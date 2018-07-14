@@ -7,8 +7,6 @@ import {GetData} from '../services/GetData';
 import Iframe from 'react-iframe'
 import './style.css';
 
-
-//TODO: show all subjects and videos of usr
 class ProfileList extends Component {
   constructor(props) {
     super(props);
@@ -148,7 +146,7 @@ GetDataJem(userName_,route) {
               data.city, data.profilePic);        
   }
 }
-// 
+
   updateProfiles(newProf, i) {
     this.setState(() => ({
       profiles: this.state.profiles.map(
@@ -173,7 +171,6 @@ GetDataJem(userName_,route) {
     }))
   }
 
-
   viewProfile(prof,i) {
     const imageUrl = require(`../images/${prof.profilePic}`)
     return (          
@@ -182,7 +179,6 @@ GetDataJem(userName_,route) {
                         backgroundRepeat: 'no-repeat',borderRadius: `50%`,
                         backgroundPosition: `center center`, margin: `0 auto` }}>
           </div>
-        
           <div className="whiteTxt centerTxt">
           <Profile key={'prof'+i} index={i} onChange={this.updateProfiles}>         
             <h1 className="card-title" style={{ textAlign:`center`}}>{prof.userName} </h1>
@@ -190,14 +186,12 @@ GetDataJem(userName_,route) {
              {prof.age} <span className="greenElement">●</span>  {prof.city}</p>
           </Profile>
         </div>
-        
         <div>
           <p className="textWhite">Jems:</p>
             <div>
               {this.state.jems.map(this.viewJems)}
             </div>
         </div>
-
         <div>
           <p className="textWhite">videos:</p>
             <div>
@@ -205,7 +199,7 @@ GetDataJem(userName_,route) {
             </div>
         </div>
       </div>
-      )
+    )
   }
 
   viewVideos(prof,i) {

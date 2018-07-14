@@ -87,7 +87,7 @@ class HomeList extends Component {
       let postData = {
         name: subName
       }
-      NotificationManager.success('Success message', 'Yeahy! now you are participent:)');
+      // NotificationManager.success('Success message', 'Yeahy! now you are participent:)');
       PostData(route, postData).then((result) => {
         if((result==false)){
           this.setState({loginError:true});
