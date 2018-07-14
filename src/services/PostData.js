@@ -1,4 +1,3 @@
-// TODO: ES6
 
 export function PostData(type, userData) {
  

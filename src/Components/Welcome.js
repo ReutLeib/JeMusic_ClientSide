@@ -87,7 +87,7 @@ class Welcome extends Component {
       <div >
         <img  src={logo} alt="logo" style={this.logoImg}/> 
         <GoogleLogin 
-          clientId= "377088806383-5m2155d1dktirnv3qs4e28ma4cicvfjg.apps.googleusercontent.com"
+          clientId= "377088806383-b47hpo3htkddlct3rme0d70n0erl490q.apps.googleusercontent.com"
           buttonText="Login with Google"
           onSuccess={responseGoogle}
           onFailure={responseGoogle}

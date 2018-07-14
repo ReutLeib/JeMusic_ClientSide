@@ -1,4 +1,3 @@
-// TODO: ES6
 export function GetData(type, userData) {
   let BaseURL = 'https://jemusic.herokuapp.com/';
   return new Promise((resolve, reject) =>{
