@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import GoogleLogin from 'react-google-login';
 import {Redirect} from 'react-router-dom';
 import {GetData} from '../services/GetData';
-import logo from '../images/logo-JeMusic.png' 
 import './style.css';
 
 class Welcome extends Component {
@@ -71,7 +70,7 @@ class Welcome extends Component {
   render() {
 
     if (this.state.redirect )
-      return (<Redirect to={'/Home'}/>);
+      return (<Redirect to={`/Home`}/>);
 
     let errMsg;
     if(this.state.loginError){
@@ -85,7 +84,7 @@ class Welcome extends Component {
 
     return (
       <div >
-        <img  src={logo} alt="logo" style={this.logoImg}/> 
+        <img  src="https://firebasestorage.googleapis.com/v0/b/jemmusic-5c24e.appspot.com/o/logo-JeMusic.png?alt=media&token=50efe54d-55a6-44c7-bab6-87ba1ce86e7f" alt="logo" style={this.logoImg}/> 
         <GoogleLogin 
           clientId= "377088806383-b47hpo3htkddlct3rme0d70n0erl490q.apps.googleusercontent.com"
           buttonText="Login with Google"

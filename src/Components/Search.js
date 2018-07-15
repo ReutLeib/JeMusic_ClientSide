@@ -135,9 +135,8 @@ class Search extends Component {
   }
 
   eachSubjects (sub,i) {
-    let backUrl = require(`../images/${sub.background}`)
      return (          
-      <div key={'container'+i} className="card cards" style={{width: `18rem`, backgroundImage: `url(${backUrl})`, backgroundRepeat: 'no-repeat' }}>    
+      <div key={'container'+i} className="card cards" style={{width: `18rem`, backgroundImage: 'url('+sub.background+')', backgroundRepeat: 'no-repeat' }}>    
         <div className="card-body">
             <Home key={'sub'+i} index={i} onChange={this.update}>         
             <h1 className="card-title">{sub.name}</h1>
@@ -149,7 +148,7 @@ class Search extends Component {
             <p className="card-text">{sub.participent}</p>
             <NavLink to=
                         //navigate to SubjectByName with the param sub.name
-                        {{pathname: "/Subject", 
+                        {{pathname: `/Subject`, 
                           subName: sub.name}}
                           activeStyle={this.active} 
             className="btn btn-primary followSub removeHoverGreen" >Follow</NavLink>

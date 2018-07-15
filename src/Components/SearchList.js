@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import 'react-notifications/lib/notifications.css';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
-import { NavLink } from "react-router-dom";
+
 
 class SearchList extends Component {
   constructor(props) {

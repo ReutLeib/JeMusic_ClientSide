@@ -136,9 +136,8 @@ class HomeList extends Component {
   } 
 
   eachSubjects (sub,i) {
-    const imageUrl = require(`../images/${sub.background}`)
      return (          
-      <div key={'container'+i} className="card cards" style={{width: `18rem`, backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat' }}>    
+      <div key={'container'+i} className="card cards" style={{width: `18rem`, backgroundImage: 'url('+sub.background+')', backgroundRepeat: 'no-repeat' }}>    
         <div className="card-body">
           <Home key={'sub'+i} index={i} onChange={this.update}>         
             <h1 className="card-title">{sub.name}</h1>
@@ -150,7 +149,7 @@ class HomeList extends Component {
             <p className="card-text">{sub.participent}</p>
             <NavLink to=
                         //navigate to SubjectByName with the param sub.name
-                        {{pathname: "/Subject", 
+                        {{pathname: `${process.env.PUBLIC_URL}/Subject`, 
                           subName: sub.name}}
                           activeStyle={this.active} 
             className="btn btn-primary followSub" >Follow</NavLink>
@@ -163,7 +162,7 @@ class HomeList extends Component {
   render() {
     //Redirect to welcome.js(login) if the session is empty(the check is written above)
     if(this.state.redirect)
-      return (<Redirect to={'/'}/>);
+      return (<Redirect to={`/`}/>);
 
     return (
         <div>

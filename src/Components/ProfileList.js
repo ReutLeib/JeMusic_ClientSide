@@ -172,10 +172,9 @@ GetDataJem(userName_,route) {
   }
 
   viewProfile(prof,i) {
-    const imageUrl = require(`../images/${prof.profilePic}`)
     return (          
       <div key={'container'+i}className="card" style={{ margin:`0 auto`,width: 18 + 'rem', backgroundColor: `black`}}>
-          <div style={{width: `170px`,height: `170px`, backgroundImage: `url(${imageUrl})`,
+          <div style={{width: `170px`,height: `170px`, backgroundImage: 'url('+prof.profilePic+')',
                         backgroundRepeat: 'no-repeat',borderRadius: `50%`,
                         backgroundPosition: `center center`, margin: `0 auto` }}>
           </div>
@@ -222,9 +221,8 @@ GetDataJem(userName_,route) {
   }
 
   viewJems(prof,i) {
-    let backgroundUrl = require(`../images/${prof.background}`)
-     return (          
-      <div key={'container'+i} className="card cards" style={{width: `18rem`,backgroundImage:`url(${backgroundUrl})`, backgroundRepeat: 'no-repeat' }}>    
+    return (          
+      <div key={'container'+i} className="card cards" style={{width: `18rem`,backgroundImage:'url('+prof.background+')', backgroundRepeat: 'no-repeat' }}>    
         <div className="card-body">
           <Home key={'jem'+i} index={i} onChange={this.updateJems}>         
             <h1 className="card-title">{prof.name}</h1>
@@ -239,7 +237,7 @@ GetDataJem(userName_,route) {
   render() {
     //Redirect to welcome.js(login) if the session is empty(the check is written above)
     if(this.state.redirect)
-      return (<Redirect to={'/'}/>);
+      return (<Redirect to={`/`}/>);
     return (
       <div>
         {this.state.profiles.map(this.viewProfile)}

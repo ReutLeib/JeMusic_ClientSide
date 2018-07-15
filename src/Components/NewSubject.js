@@ -107,7 +107,7 @@ class InsertSubject extends Component {
     if(this.state.isCreated){
       return(<Redirect to=
             //navigate to HomePage with the param isCreated
-            {{pathname: "/Home", 
+            {{pathname: `/Home`, 
               isCreated: true}}/>)
     }
     return (

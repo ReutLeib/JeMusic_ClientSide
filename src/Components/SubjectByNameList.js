@@ -139,17 +139,16 @@ class SubjectByNameList extends Component {
   }
 
   eachSubject (sub,i) {
-    const imageUrl = require(`../images/${sub.background}`)
     return (          
       <div key={'container'+i} className="myCard backgroundBlack textWhite" style={{width: `18rem`,borderRadius: `2px` }}>
           <SubjectByName key={'sub'+i} index={i} onChange={this.update }>
-          <div style={{ backgroundImage: `url(${imageUrl})`, backgroundRepeat: 'no-repeat'}}>   
+          <div style={{ backgroundImage: 'url('+sub.background+')', backgroundRepeat: 'no-repeat'}}>   
             <div className="card-body blackTxt">      
               <h1 className="card-title">{sub.name}</h1>
               <p className="card-text">{sub.date} <span className="greenElement">●</span>  {sub.hours}</p>
               <NavLink to=
                           //navigate to SubjectByName with the param sub.name
-                          {{pathname: "/Home", 
+                          {{pathname: `/Home`, 
                             isJoined: true,
                             subName:sub.name}}
                             activeStyle={this.active} 
@@ -157,7 +156,7 @@ class SubjectByNameList extends Component {
               <br/>
               <NavLink to=
                           //navigate to SubjectByName with the param sub.name
-                          {{pathname: "/Home", 
+                          {{pathname: `/Home`, 
                             isDelete: true,
                             subName:sub.name,
                             subUserName:sub.userName}}
@@ -228,7 +227,7 @@ class SubjectByNameList extends Component {
 
   render() {
     if(!sessionStorage.getItem('userData'))
-      return (<Redirect to={'/'}/>);
+      return (<Redirect to={`/`}/>);
     return (
         <div>
           <NotificationContainer/>
