@@ -79,8 +79,11 @@ a,.greenElement{
 .welcomeText{
   color:red;
   font-size: 15px;
-  padding: 10px;
-  padding-left: 20px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+
 }
 
 .padding5 {

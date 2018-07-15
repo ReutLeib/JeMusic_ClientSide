@@ -12,9 +12,21 @@ class Welcome extends Component {
       errorMsg:"",
       redirect: false
     };
+    this.checkLoggedIn=this.checkLoggedIn.bind(this);
     this.login = this
       .login
       .bind(this);
+    this.checkLoggedIn()
+  }
+
+  checkLoggedIn() {
+    const login = sessionStorage.getItem("userData")
+    if(login) {
+      //doesn't work this way...
+      // this.setState({redirect: true});
+      this.state.redirect = true
+    }
+
   }
 
   login(res, type) {
@@ -71,13 +83,12 @@ class Welcome extends Component {
   };
 
   render() {
-
     if (this.state.redirect )
       return (<Redirect to={`/Home`}/>);
 
     let errMsg;
     if(this.state.loginError){
-      errMsg=(<span class="welcomeText">{this.state.errorMsg}</span>)
+      errMsg=(<span class="welcomeText ">{this.state.errorMsg}</span>)
     }
     const responseGoogle = (response) => {
       console.log("google console");
@@ -89,7 +100,7 @@ class Welcome extends Component {
       <div >
         <img  src="https://firebasestorage.googleapis.com/v0/b/jemmusic-5c24e.appspot.com/o/logo-JeMusic.png?alt=media&token=50efe54d-55a6-44c7-bab6-87ba1ce86e7f" alt="logo" style={this.logoImg}/> 
         <GoogleLogin 
-          clientId= "377088806383-b47hpo3htkddlct3rme0d70n0erl490q.apps.googleusercontent.com"
+          clientId= "377088806383-5m2155d1dktirnv3qs4e28ma4cicvfjg.apps.googleusercontent.com"
           buttonText="Login with Google"
           onSuccess={responseGoogle}
           onFailure={responseGoogle}
