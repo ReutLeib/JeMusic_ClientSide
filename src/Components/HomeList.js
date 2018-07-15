@@ -79,8 +79,9 @@ class HomeList extends Component {
       PostData(route, postData).then((result) => {
         if((result===false))
           NotificationManager.error('Error message', 'something went wrong with the User/Jem while join button.', 5000, () => {alert('callback');});
+        
         else
-          NotificationManager.success('Success message', 'Yeahy! Tou have just created a new jem' );
+          NotificationManager.success('Success message', 'You have just deleted your Jem!' );
       
       });
     }
@@ -111,6 +112,7 @@ class HomeList extends Component {
       //else-check if it's the return from pushing create Jem button
       else if(this.props.location.isCreated){
         //deleting a jem(check if the user is the owner is in the func)
+        NotificationManager.success('Success message', 'You have just created a new Jem!' );
         this.props.location.isCreated=false;
       }
 

@@ -58,8 +58,8 @@ class Welcome extends Component {
 
     fontFamily: "Alfa Slab One', cursive",
     fontSize: "16px",
-    fontWeight: "bold"
-
+    fontWeight: "bold",
+    color: "white"
   };
   logoImg={
     display:"block",
