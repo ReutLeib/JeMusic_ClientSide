@@ -141,7 +141,7 @@ class NewSubject extends Component {
                   requiredSkills:<br></br>
                   <input placeholder="Guitar, Drumbs, etc.." onChange={this.handleRequiredSkills} value={this.state.newRequiredSkills} type="text" name="requiredSkills" />
                 </label><br></br>
-             <button type="submit" className="btn btn-primary insertSub removeHover" onClick={this.delete}><FaCaretSquareORight size={45} background={'#666666'} className="greenElement" /> </button> 
+             <button type="submit" className="btn btn-primary playBtn col-xs-12 col-md-12 removeHover" onClick={this.delete}><FaCaretSquareORight size={45} background={'#666666'} className="greenElement" /> </button> 
           </form>
       </div>
     )

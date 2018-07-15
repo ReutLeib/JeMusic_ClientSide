@@ -54,7 +54,11 @@ class Welcome extends Component {
     
     backgroundColor: "#d82525",
     border:0,
-    padding:"15px"
+    padding:"15px",
+
+    fontFamily: "Alfa Slab One', cursive",
+    fontSize: "16px",
+    fontWeight: "bold"
 
   };
   logoImg={
@@ -64,7 +68,6 @@ class Welcome extends Component {
     backgroundColor: "white",
     borderRadius: "150px",
     paddingLeft:"10px"
-
   };
 
   render() {

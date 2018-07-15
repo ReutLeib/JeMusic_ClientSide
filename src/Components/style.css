@@ -64,6 +64,11 @@ a,.greenElement{
   border-color: black;
 }
 
+.playBtn{
+  border-color: black;
+  margin-top: 30px;
+}
+
 .myCard{
   background-color: black;
   border-color: black;
