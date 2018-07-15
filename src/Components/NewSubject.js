@@ -5,7 +5,7 @@ import FaCaretSquareORight from 'react-icons/lib/fa/caret-square-o-right';
 import 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 
-class InsertSubject extends Component {
+class NewSubject extends Component {
   constructor(props) {
       super(props)
       this.state = {isCreated:false,newSubDirect:""
@@ -148,5 +148,6 @@ class InsertSubject extends Component {
   }
 }
 
-export default InsertSubject
+export default NewSubject
+
 
