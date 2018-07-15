@@ -12,7 +12,8 @@
     "react-notifications": "^1.4.3",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
-    "webfontloader": "^1.6.28"
+    "webfontloader": "^1.6.28",
+    "homepage": "http://shenkar.html5-book.co.il/2017-2018/dcs/dev_179/"
   },
   "scripts": {
     "start": "react-scripts start",

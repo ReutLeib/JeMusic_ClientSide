@@ -11,13 +11,15 @@ import Header from "../Header";
 const ReactRouter =()=>{
     return (
         <React.Fragment>
+            {console.log("hhhhhhhhhh")}
             <Header />
-                <Route exact path={`/2017-2018/dcs/dev_179/`} component={Welcome} />
-                <Route exact path={`/2017-2018/dcs/dev_179/Home`} component={HomeList} />
-                <Route path={`/2017-2018/dcs/dev_179/Profile`} component={ProfileList} />
-                <Route path={`/2017-2018/dcs/dev_179/Subject`} component={SubjectByNameList} />
-                <Route path={`/2017-2018/dcs/dev_179/Search`} component={Search} />
-                <Route path={`/2017-2018/dcs/dev_179/NewSubject`} component={NewSubject} />
+            {console.log("hhhhhhhhhh")}
+                <Route exact path={`/`} component={Welcome} />
+                <Route exact path={`/Home`} component={HomeList} />
+                <Route path={`/Profile`} component={ProfileList} />
+                <Route path={`/Subject`} component={SubjectByNameList} />
+                <Route path={`/Search`} component={Search} />
+                <Route path={`/NewSubject`} component={NewSubject} />
         </React.Fragment>
     );}
 
