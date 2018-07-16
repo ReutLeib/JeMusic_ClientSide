@@ -1,3 +1,11 @@
+/*  -----------------------------------------------------------
+    ----------------------------------------------------------- 
+    copyrights reserve to Reut Leib && Tal Chausho Gur-Arie
+    ----------------------------------------------------------- 
+    ----------------------------------------------------------- 
+    */
+   
+
 import React from "react";
 import { Route } from "react-router-dom";
 import HomeList from "../Components/HomeList";

@@ -1,3 +1,11 @@
+/*  -----------------------------------------------------------
+    ----------------------------------------------------------- 
+    copyrights reserve to Reut Leib && Tal Chausho Gur-Arie
+    ----------------------------------------------------------- 
+    ----------------------------------------------------------- 
+    */
+
+    
 import React, { Component } from 'react'
 import MdSend from "react-icons/lib/md/send";
 import {PostData} from '../services/PostData';

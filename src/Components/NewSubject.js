@@ -1,3 +1,10 @@
+/*  -----------------------------------------------------------
+    ----------------------------------------------------------- 
+    copyrights reserve to Reut Leib && Tal Chausho Gur-Arie
+    ----------------------------------------------------------- 
+    ----------------------------------------------------------- 
+    */
+
 import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom';
 import {PostData} from '../services/PostData';
