@@ -1,6 +1,8 @@
 # JeMusic
 
-Welcome to Client-side of JeMusic application!
+Welcome to Client-side of JeMusic application! <br>
+<img src="ReadMe/logo2.JPG" alt="Home page" width="230"/>;
+
 
 ## Getting Started
 ### Installing
@@ -30,16 +32,16 @@ The application will be available after saving.
 ### Login:
 <img src="ReadMe/1.jpeg" alt="Login page" width="230"/>;
 ### Home:
-<img src="ReadMe/homePage2.jpeg" alt="Login page" width="230"/>;
-<img src="ReadMe/homePage3.jpeg" alt="Login page" width="230"/>;
-<img src="ReadMe/homePage4.jpeg" alt="Login page" width="230"/>;
+<img src="ReadMe/homePage2.jpeg" alt="Home page" width="230"/>;
+<img src="ReadMe/homePage3.jpeg" alt="Home page" width="230"/>;
+<img src="ReadMe/homePage4.jpeg" alt="Home page" width="230"/>;
 ### Profile:
-<img src="ReadMe/profile8.jpeg" alt="Login page" width="230"/>;
+<img src="ReadMe/profile8.jpeg" alt="Profile page" width="230"/>;
 ### Create Jem:
-<img src="ReadMe/createJem5.jpeg" alt="Login page" width="230"/>;
-<img src="ReadMe/create10.JPG" alt="Login page" width="230"/>;
+<img src="ReadMe/createJem5.jpeg" alt="Create Jem page" width="230"/>;
+<img src="ReadMe/create10.JPG" alt="Create Jem page" width="230"/>;
 ### Search:
-<img src="ReadMe/searchJem6.jpeg" alt="Login page" width="230"/>;
-<img src="ReadMe/result7.JPG" alt="Login page" width="230"/>;
+<img src="ReadMe/searchJem6.jpeg" alt="Search page" width="230"/>;
+<img src="ReadMe/result7.JPG" alt="Search page" width="230"/>;
 ### Follow:
-<img src="ReadMe/follow9.JPG" alt="Login page" width="230"/>;
+<img src="ReadMe/follow9.JPG" alt="Follow page" width="230"/>;
