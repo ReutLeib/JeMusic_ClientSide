@@ -28,18 +28,18 @@ The application will be available after saving.
 
 ## Screens from JeMusic application
 ### Login:
-<img src="ReadMe/1.jpeg" alt="Login page" width="230"/>
+<img src="ReadMe/1.jpeg" alt="Login page" width="230"/>;
 ### Home:
-<img src="ReadMe/homePage2.jpeg" alt="Login page" width="230"/>
-<img src="ReadMe/homePage3.jpeg" alt="Login page" width="230"/>
-<img src="ReadMe/homePage4.jpeg" alt="Login page" width="230"/>
+<img src="ReadMe/homePage2.jpeg" alt="Login page" width="230"/>;
+<img src="ReadMe/homePage3.jpeg" alt="Login page" width="230"/>;
+<img src="ReadMe/homePage4.jpeg" alt="Login page" width="230"/>;
 ### Profile:
-<img src="ReadMe/profile8.jpeg" alt="Login page" width="230"/>
+<img src="ReadMe/profile8.jpeg" alt="Login page" width="230"/>;
 ### Create Jem:
-<img src="ReadMe/createJem5.jpeg" alt="Login page" width="230"/>
-<img src="ReadMe/create10.jpeg" alt="Login page" width="230"/>
+<img src="ReadMe/createJem5.jpeg" alt="Login page" width="230"/>;
+<img src="ReadMe/create10.JPG" alt="Login page" width="230"/>;
 ### Search:
-<img src="ReadMe/searchJem6.jpeg" alt="Login page" width="230"/>
-<img src="ReadMe/result7.jpeg" alt="Login page" width="230"/>
+<img src="ReadMe/searchJem6.jpeg" alt="Login page" width="230"/>;
+<img src="ReadMe/result7.jpeg" alt="Login page" width="230"/>;
 ### Follow:
-<img src="ReadMe/follow9.jpeg" alt="Login page" width="230"/>
+<img src="ReadMe/follow9.JPG" alt="Login page" width="230"/>;
