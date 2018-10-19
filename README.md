@@ -1,7 +1,7 @@
 # JeMusic
 
 Welcome to Client-side of JeMusic application! <br>
-<p padding="10px">
+<p style="padding: 15px">
   <img src="ReadMe/logo2.JPG" alt="Home page" width="230"/>;
 </p>
 
