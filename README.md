@@ -29,3 +29,4 @@ The application will be available after saving.
 ## Photos from JeMusic application
 
 ![Login page](ReadMe/1.jpeg?raw=true|=200x320 "Login page");
+<img src="ReadMe/1.jpeg" alt="drawing" width="200"/>
