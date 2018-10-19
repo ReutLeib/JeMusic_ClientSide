@@ -17,7 +17,7 @@ npm install
 npm start
 ```
 
-## Running the tests
+## Running:
 
 To run the application in Local host you need to go to 'package.json' file 
 and remove row 16:
