@@ -2,7 +2,7 @@
 
 Welcome to Client-side of JeMusic application! <br>
 <p>
-  <img src="ReadMe/logo2.JPG" alt="Home page" style="padding: 15px" width="230"/>;
+  <img src="ReadMe/logo2.JPG" alt="Home page" style="padding-left: 49px" width="230"/>;
 </p>
 
 ## Getting Started
