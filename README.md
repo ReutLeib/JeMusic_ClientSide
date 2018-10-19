@@ -37,6 +37,10 @@ The application will be available after saving.
 <img src="ReadMe/profile8.jpeg" alt="Login page" width="230"/>;
 ### Create Jem:
 <img src="ReadMe/createJem5.jpeg" alt="Login page" width="230"/>;
+notification: Success message. 
+<img src="ReadMe/create10.jpeg" alt="Login page" width="230"/>;
 ### Search:
 <img src="ReadMe/searchJem6.jpeg" alt="Login page" width="230"/>;
 <img src="ReadMe/result7.jpeg" alt="Login page" width="230"/>;
+### Follow:
+<img src="ReadMe/follow9.jpeg" alt="Login page" width="230"/>;
