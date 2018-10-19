@@ -40,6 +40,6 @@ The application will be available after saving.
 <img src="ReadMe/create10.JPG" alt="Login page" width="230"/>;
 ### Search:
 <img src="ReadMe/searchJem6.jpeg" alt="Login page" width="230"/>;
-<img src="ReadMe/result7.jpeg" alt="Login page" width="230"/>;
+<img src="ReadMe/result7.JPG" alt="Login page" width="230"/>;
 ### Follow:
 <img src="ReadMe/follow9.JPG" alt="Login page" width="230"/>;
