@@ -26,7 +26,17 @@ and remove row 16:
 ```
 The application will be available after saving. 
 
-## Photos from JeMusic application
-
-![Login page](ReadMe/1.jpeg?raw=true|=200x320 "Login page");
-<img src="ReadMe/1.jpeg" alt="drawing" width="200"/>
+## Screens from JeMusic application
+### Login:
+<img src="ReadMe/1.jpeg" alt="Login page" width="230"/>;
+### Home:
+<img src="ReadMe/homePage2.jpeg" alt="Login page" width="230"/>;
+<img src="ReadMe/homePage3.jpeg" alt="Login page" width="230"/>;
+<img src="ReadMe/homePage4.jpeg" alt="Login page" width="230"/>;
+### Profile:
+<img src="ReadMe/profile8.jpeg" alt="Login page" width="230"/>;
+### Create Jem:
+<img src="ReadMe/createJem5.jpeg" alt="Login page" width="230"/>;
+### Search:
+<img src="ReadMe/searchJem6.jpeg" alt="Login page" width="230"/>;
+<img src="ReadMe/result7.jpeg" alt="Login page" width="230"/>;
